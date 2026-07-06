@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CarbonTrack Console</title>
+    <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+<header class="topbar">
+    <div>
+        <p class="eyebrow">CarbonTrack API</p>
+        <h1>CarbonTrack Console</h1>
+    </div>
+    <div class="server-pill">
+        <span class="dot" id="serverDot"></span>
+        <span id="serverStatus">Checking API</span>
+    </div>
+</header>
+
+<main class="shell">
+    <section class="panel auth-panel">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow">Session</p>
+                <h2>Sign in</h2>
+            </div>
+            <div class="segmented" role="tablist" aria-label="Authentication mode">
+                <button class="segmented-btn active" type="button" data-auth-tab="login">Login</button>
+                <button class="segmented-btn" type="button" data-auth-tab="register">Register</button>
+            </div>
+        </div>
+
+        <form id="loginForm" class="stack auth-form">
+            <label>
+                Username or email
+                <input name="usernameOrEmail" autocomplete="username" required>
+            </label>
+            <label>
+                Password
+                <input name="password" type="password" autocomplete="current-password" required>
+            </label>
+            <button class="primary" type="submit">Login</button>
+        </form>
+
+        <form id="registerForm" class="stack auth-form hidden">
+            <label>
+                Username
+                <input name="username" autocomplete="username" required>
+            </label>
+            <label>
+                Email
+                <input name="email" type="email" autocomplete="email" required>
+            </label>
+            <label>
+                Password
+                <input name="password" type="password" autocomplete="new-password" required minlength="8">
+            </label>
+            <button class="primary" type="submit">Create account</button>
+        </form>
+
+        <div class="token-box">
+            <div>
+                <p class="eyebrow">Bearer token</p>
+                <strong id="tokenState">No token saved</strong>
+            </div>
+            <label>
+                Paste token
+                <input id="manualTokenInput" placeholder="eyJhbGciOi...">
+            </label>
+            <div class="button-row">
+                <button type="button" id="saveTokenBtn">Save pasted token</button>
+                <button type="button" id="copyTokenBtn">Copy token</button>
+                <button type="button" id="copyHeaderBtn">Copy header</button>
+                <button type="button" id="clearTokenBtn">Clear</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow">Token check</p>
+                <h2>API access</h2>
+            </div>
+            <button type="button" id="checkTokenBtn">Check</button>
+        </div>
+        <div class="key-grid">
+            <div>
+                <span>Authenticated as</span>
+                <strong id="userName">Not checked</strong>
+            </div>
+            <div>
+                <span>Email</span>
+                <strong id="userEmail">-</strong>
+            </div>
+            <div>
+                <span>Expires</span>
+                <strong id="tokenExpiry">-</strong>
+            </div>
+            <div>
+                <span>Token type</span>
+                <strong id="tokenType">Bearer</strong>
+            </div>
+        </div>
+        <pre id="tokenPreview" class="code-box">Login or paste a token to inspect it.</pre>
+    </section>
+
+    <section class="panel wide">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow">Dashboard</p>
+                <h2>Carbon summary</h2>
+            </div>
+            <button type="button" id="refreshDashboardBtn">Refresh</button>
+        </div>
+        <div class="metric-grid">
+            <div class="metric">
+                <span>Today</span>
+                <strong id="todayCo2e">0.00 kg</strong>
+            </div>
+            <div class="metric">
+                <span>This week</span>
+                <strong id="weeklyCo2e">0.00 kg</strong>
+            </div>
+            <div class="metric">
+                <span>This month</span>
+                <strong id="monthlyCo2e">0.00 kg</strong>
+            </div>
+            <div class="metric">
+                <span>Percentile</span>
+                <strong id="percentileRank">-</strong>
+            </div>
+        </div>
+        <div id="recommendations" class="recommendations"></div>
+    </section>
+
+    <section class="panel">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow">Activity</p>
+                <h2>Log emission</h2>
+            </div>
+        </div>
+        <form id="activityForm" class="stack">
+            <label>
+                Category
+                <select name="category" id="categorySelect"></select>
+            </label>
+            <label>
+                Activity type
+                <select name="activityType" id="activityTypeSelect"></select>
+            </label>
+            <div class="two-col">
+                <label>
+                    Quantity
+                    <input name="quantity" type="number" min="0" step="0.01" required value="10">
+                </label>
+                <label>
+                    Unit
+                    <input name="unit" id="unitInput" required readonly>
+                </label>
+            </div>
+            <label>
+                Date
+                <input name="logDate" id="logDateInput" type="date" required>
+            </label>
+            <label>
+                Notes
+                <textarea name="notes" rows="3" placeholder="Optional note"></textarea>
+            </label>
+            <button class="primary" type="submit">Save activity</button>
+        </form>
+    </section>
+
+    <section class="panel">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow">Goal</p>
+                <h2>Create goal</h2>
+            </div>
+            <button type="button" id="loadGoalsBtn">Load</button>
+        </div>
+        <form id="goalForm" class="stack">
+            <div class="two-col">
+                <label>
+                    Reduction %
+                    <input name="targetReductionPct" type="number" min="0.01" max="100" step="0.01" value="15" required>
+                </label>
+                <label>
+                    Days
+                    <input name="periodDays" type="number" min="1" step="1" value="30" required>
+                </label>
+            </div>
+            <button class="primary" type="submit">Create goal</button>
+        </form>
+        <div id="goalList" class="list"></div>
+    </section>
+
+    <section class="panel wide">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow">API tester</p>
+                <h2>Raw request</h2>
+            </div>
+            <button type="button" id="sendRawBtn">Send</button>
+        </div>
+        <div class="request-row">
+            <select id="rawMethod">
+                <option>GET</option>
+                <option>POST</option>
+                <option>PATCH</option>
+                <option>DELETE</option>
+            </select>
+            <input id="rawPath" value="/api/v1/users/me">
+        </div>
+        <textarea id="rawBody" class="code-input" rows="7" spellcheck="false"></textarea>
+        <pre id="apiOutput" class="code-box">Responses will appear here.</pre>
+    </section>
+
+    <section class="panel wide">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow">Recent</p>
+                <h2>Activity logs</h2>
+            </div>
+            <button type="button" id="loadActivitiesBtn">Load</button>
+        </div>
+        <div id="activityList" class="list"></div>
+    </section>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="/assets/app.js"></script>
+</body>
+</html>
