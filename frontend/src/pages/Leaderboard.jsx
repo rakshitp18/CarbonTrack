@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { leaderboardService } from '../services/api';
 import { toast } from 'react-toastify';
 import { FiAward, FiInfo, FiSmile, FiCheckCircle } from 'react-icons/fi';
+import { badges } from "../data/badges";
 
 const getBadgeIcon = (badgeName) => {
   const meta = {
@@ -14,6 +15,9 @@ const getBadgeIcon = (badgeName) => {
     'Carbon Saver 50': '🌎🛡️',
   };
   return meta[badgeName] || '🏆';
+};
+const getBadgeImage = (badgeName) => {
+  return badges.find((b) => b.title === badgeName)?.image;
 };
 
 export default function Leaderboard() {
@@ -139,9 +143,20 @@ export default function Leaderboard() {
                       <div className="flex flex-wrap gap-1">
                         {entry.badges.length > 0 ? (
                           entry.badges.map((badge, bIdx) => (
-                            <span key={bIdx} className="badge badge-green text-[9px] py-0.5 px-2">
-                              {badge}
-                            </span>
+                            <div
+                              key={bIdx}
+                              className="flex items-center gap-1 bg-[var(--color-accent-dim)] border border-[var(--color-accent)]/20 rounded-md px-2 py-1"
+                            >
+                              <img
+                                src={getBadgeImage(badge)}
+                                alt={badge}
+                                className="w-8 h-8 object-contain"
+                              />
+
+                              <span className="text-[9px] font-semibold text-[var(--color-accent-muted)]">
+                                {badge}
+                              </span>
+                            </div>
                           ))
                         ) : (
                           <span className="text-[10px] text-[var(--color-text-muted)]">No badges yet</span>

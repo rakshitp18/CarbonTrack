@@ -1,8 +1,24 @@
 import { badges } from "../data/badges";
 import BadgeCard from "../components/BadgeCard";
 import { RiMedalLine } from "react-icons/ri";
+import { useEffect, useState } from "react";
+import api from "../api/axiosInstance";
 
 export default function Badges() {
+    const [earnedBadges, setEarnedBadges] = useState([]);
+
+    useEffect(() => {
+      const loadBadges = async () => {
+        try {
+          const { data } = await api.get("/users/me");
+          setEarnedBadges(data.badges || []);
+        } catch (err) {
+          console.error("Failed to load badges", err);
+        }
+      };
+
+      loadBadges();
+    }, []);
   return (
     <div className="space-y-8 fade-in">
 
@@ -28,7 +44,10 @@ export default function Badges() {
         {badges.map((badge) => (
           <BadgeCard
             key={badge.id}
-            badge={badge}
+            badge={{
+              ...badge,
+              unlocked: earnedBadges.includes(badge.title),
+            }}
           />
         ))}
       </div>

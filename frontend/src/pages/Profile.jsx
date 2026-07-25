@@ -3,19 +3,12 @@ import { useForm } from 'react-hook-form';
 import { profileService } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
-import { FiUser, FiEye, FiLoader, FiCamera, FiTrash2, FiAward, FiCompass, FiTarget, FiWind, FiSun, FiGlobe, FiMapPin, FiZap, FiShield, FiCopy, FiCheck } from 'react-icons/fi';
+import { FiUser, FiEye, FiLoader, FiCamera, FiTrash2, FiAward, FiCopy, FiCheck } from 'react-icons/fi';
 import EcoPulse from '../components/EcoPulse';
+import BadgeCard from "../components/BadgeCard";
+import { badges } from "../data/badges";
 
-const ALL_BADGES = [
-  { name: 'First Log', icon: FiCompass, desc: 'Log your very first carbon activity on the platform' },
-  { name: 'First Step', icon: FiTarget, desc: 'Successfully achieve your first carbon reduction goal' },
-  { name: 'Carbon Saver 10', icon: FiWind, desc: 'Reduce cumulative footprint by 10 kg CO₂e' },
-  { name: 'Carbon Saver 25', icon: FiSun, desc: 'Reduce cumulative footprint by 25 kg CO₂e' },
-  { name: 'Carbon Saver 50', icon: FiGlobe, desc: 'Reduce cumulative footprint by 50 kg CO₂e' },
-  { name: 'Green Commuter', icon: FiMapPin, desc: 'Log transit activities for 7 days in a row' },
-  { name: 'Eco Warrior', icon: FiZap, desc: 'Log transit activities for 15 days in a row' },
-  { name: 'Planet Protector', icon: FiShield, desc: 'Log transit activities for 30 days in a row' },
-];
+
 
 export default function Profile() {
   const [loading, setLoading] = useState(true);
@@ -361,7 +354,7 @@ export default function Profile() {
         </div>
 
         {/* Right Column: Badges Grid */}
-        <div className="md:col-span-2">
+        <div className="md:col-span-2 self-start">
           <div className="glass-card p-5 mb-6 overflow-hidden relative flex flex-col sm:flex-row items-center gap-4 shadow-[0_10px_30px_-10px_rgba(16,185,129,0.10)]">
             <EcoPulse className="h-24 w-24 shrink-0" />
             <div className="flex-1 text-center sm:text-left">
@@ -375,39 +368,27 @@ export default function Profile() {
             </button>
           </div>
 
-          <div className="glass-card p-6 h-full shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)]">
+          <div className="glass-card p-6 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)]">
             <h4 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)] mb-6 flex items-center gap-1.5">
               <FiAward className="text-[var(--color-accent)] text-lg" />
               Sustainability Badges & Achievements
             </h4>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {ALL_BADGES.map((item) => {
-                const isEarned = earnedBadges.includes(item.name);
-                const BadgeIcon = item.icon;
-                return (
-                  <div 
-                    key={item.name} 
-                    className={`p-4 border rounded-2xl flex flex-col justify-between items-center text-center transition-all duration-300 ${
-                      isEarned 
-                        ? 'bg-[var(--color-bg-card)] border-[var(--color-accent)]/20 shadow-[0_10px_30px_-10px_rgba(16,185,129,0.08)] hover:-translate-y-0.5' 
-                        : 'bg-slate-50 border-slate-200/50 opacity-40 grayscale border-dashed shadow-none hover:translate-y-0'
-                    }`}
-                  >
-                    <div className="flex flex-col items-center">
-                      <BadgeIcon className="text-3xl mb-2.5 text-[var(--color-accent)] drop-shadow-sm" aria-hidden="true" />
-                      <h5 className="font-bold text-xs text-[var(--color-text-primary)]">{item.name}</h5>
-                      <p className="text-[10px] text-[var(--color-text-muted)] mt-1.5 leading-relaxed">{item.desc}</p>
-                    </div>
-                    <span className={`text-[8px] uppercase font-extrabold mt-4 px-2 py-0.5 rounded-full tracking-wider ${
-                      isEarned ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-500'
-                    }`}>
-                      {isEarned ? 'Unlocked' : 'Locked'}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
+             {badges.map((badge) => (
+               <div
+                 key={badge.id}
+                 className="flex justify-center scale-[0.88] origin-top"
+               >
+                 <BadgeCard
+                   badge={{
+                     ...badge,
+                     unlocked: earnedBadges.includes(badge.title),
+                   }}
+                 />
+               </div>
+             ))}
+           </div>
           </div>
         </div>
 
