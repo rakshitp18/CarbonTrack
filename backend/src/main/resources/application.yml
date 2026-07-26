@@ -30,7 +30,7 @@ spring:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
   cache:
-    type: redis
+    type: ${CACHE_TYPE:simple}
 
 
   # OAuth2 social login is disabled in dev mode.

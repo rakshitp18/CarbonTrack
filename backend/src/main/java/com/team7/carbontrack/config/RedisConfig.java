@@ -3,6 +3,7 @@ package com.team7.carbontrack.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team7.carbontrack.dto.DashboardSummary;
 import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -14,6 +15,7 @@ import java.time.Duration;
 import java.util.Map;
 
 @Configuration
+@ConditionalOnProperty(name = "spring.cache.type", havingValue = "redis")
 public class RedisConfig {
 
     @Bean

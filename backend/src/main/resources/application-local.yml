@@ -16,6 +16,9 @@ spring:
   flyway:
     enabled: false
 
+  cache:
+    type: simple
+
   sql:
     init:
       mode: always
