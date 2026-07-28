@@ -184,7 +184,7 @@ export default function Dashboard() {
 
   return (
 
-      <div className="space-y-8 fade-in">
+      <div className="max-w-7xl mx-auto space-y-8 fade-in">
 
       <section className="dashboard-hero overflow-hidden p-6 md:p-8">
         <video

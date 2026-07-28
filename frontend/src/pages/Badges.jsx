@@ -20,7 +20,7 @@ export default function Badges() {
       loadBadges();
     }, []);
   return (
-    <div className="space-y-8 fade-in">
+    <div className="max-w-7xl mx-auto space-y-8 fade-in">
 
       {/* Page Header */}
       <div className="glass-card p-6">

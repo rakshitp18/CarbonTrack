@@ -57,7 +57,7 @@ export default function Leaderboard() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 fade-in">
+    <div className="max-w-7xl mx-auto space-y-8 fade-in">
       <div className="glass-card p-6">
         <div className="flex items-center gap-2 mb-6">
           <FiAward className="text-2xl text-[var(--color-accent)]" />

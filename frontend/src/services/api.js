@@ -84,9 +84,55 @@ export const organisationService = {
   },
 };
 
+export const routeService = {
+  optimizeRoute: async (data) => {
+    const res = await api.post('/routes/optimize', data);
+    return res.data;
+  },
+  searchLocation: async (query) => {
+    if (!query || query.trim().length < 2) return [];
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=5`);
+      if (!res.ok) return [];
+      const data = await res.json();
+      return data.map(item => ({
+        display_name: item.display_name,
+        lat: parseFloat(item.lat),
+        lon: parseFloat(item.lon)
+      }));
+    } catch (e) {
+      console.warn("Geocoding service error", e);
+      return [];
+    }
+  },
+  fetchOSRMRoute: async (originCoords, destCoords, profile = 'driving') => {
+    if (!originCoords || !destCoords) return null;
+    try {
+      const url = `https://router.project-osrm.org/route/v1/${profile}/${originCoords.lon},${originCoords.lat};${destCoords.lon},${destCoords.lat}?overview=full&geometries=geojson`;
+      const res = await fetch(url);
+      if (!res.ok) return null;
+      const data = await res.json();
+      if (data.routes && data.routes.length > 0) {
+        const route = data.routes[0];
+        // Convert [lon, lat] from GeoJSON to [lat, lon] for Leaflet
+        const coordinates = route.geometry.coordinates.map(coord => [coord[1], coord[0]]);
+        const distanceKm = parseFloat((route.distance / 1000).toFixed(2));
+        const durationMins = Math.round(route.duration / 60);
+        return { coordinates, distanceKm, durationMins };
+      }
+      return null;
+    } catch (e) {
+      console.warn("OSRM routing error", e);
+      return null;
+    }
+  }
+};
+
 // Emission factors for real-time preview
 export const EMISSION_FACTORS = {
   TRANSPORT: {
+    WALKING:            { factor: 0.000, unit: 'KM', label: 'Walking' },
+    BICYCLE:            { factor: 0.000, unit: 'KM', label: 'Bicycle' },
     CAR_PETROL:         { factor: 0.192, unit: 'KM', label: 'Petrol Car' },
     CAR_DIESEL:         { factor: 0.171, unit: 'KM', label: 'Diesel Car' },
     CAR_ELECTRIC:       { factor: 0.053, unit: 'KM', label: 'Electric Car' },

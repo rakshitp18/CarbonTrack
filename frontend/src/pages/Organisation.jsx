@@ -71,7 +71,7 @@ export default function Organisation() {
   }
 
   return (
-    <div className="space-y-8 fade-in">
+    <div className="max-w-7xl mx-auto space-y-8 fade-in">
       {/* Top Banner */}
       <div className="glass-card p-6 flex items-center justify-between border-l-4 border-[var(--color-accent)]">
         <div>

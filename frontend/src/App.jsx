@@ -13,6 +13,7 @@ import LogActivity from './pages/LogActivity';
 import Goals from './pages/Goals';
 import Leaderboard from './pages/Leaderboard';
 import Badges from "./pages/Badges";
+import RouteOptimizer from './pages/RouteOptimizer';
 import Organisation from './pages/Organisation';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
@@ -36,6 +37,9 @@ export default function App() {
           <Route element={<PrivateRoute />}>
             <Route element={<DashboardLayout title="Dashboard" />}>
               <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
+            <Route element={<DashboardLayout title="Route & Eco-Commute Planner" />}>
+              <Route path="/route-optimizer" element={<RouteOptimizer />} />
             </Route>
             <Route element={<DashboardLayout title="Log Daily Activities" />}>
               <Route path="/log-activity" element={<LogActivity />} />

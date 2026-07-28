@@ -242,16 +242,16 @@ export default function LogActivity() {
         {/* Left Side: Logger Actions & Carousel */}
         <div className="lg:col-span-2 space-y-6">
           {/* Capsule Track Tab Navigation */}
-          <div className="flex p-1 bg-slate-100/80 border border-slate-200/40 rounded-full shadow-inner">
+          <div className="flex p-1 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-2xl shadow-inner">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`flex-1 py-2.5 text-xs font-bold rounded-full transition-all duration-300 cursor-pointer text-center capitalize ${
+                className={`flex-1 py-2.5 text-xs font-bold rounded-xl transition-all duration-300 cursor-pointer text-center capitalize border-none ${
                   activeCategory === cat 
-                    ? 'bg-white text-[var(--color-accent)] shadow-sm border border-slate-200/20' 
-                    : 'text-slate-500 hover:text-slate-800'
+                    ? 'bg-[var(--color-accent)] text-white shadow-sm font-outfit' 
+                    : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
                 }`}
               >
                 {cat.toLowerCase()}

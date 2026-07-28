@@ -66,7 +66,7 @@ export default function Goals() {
   }
 
   return (
-    <div className="space-y-8 fade-in">
+    <div className="max-w-7xl mx-auto space-y-8 fade-in">
       {/* Active Goal Summary Card */}
       <div className="glass-card p-8">
         <div className="flex items-center gap-3 mb-6 text-[var(--color-text-primary)]">

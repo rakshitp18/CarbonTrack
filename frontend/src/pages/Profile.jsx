@@ -193,7 +193,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto space-y-6 fade-in pb-12">
+    <div className="max-w-7xl mx-auto space-y-8 fade-in pb-12">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         {/* Left Column: Level and form */}

@@ -11,7 +11,8 @@ import {
   FiAward, 
   FiUser, 
   FiLogOut, 
-  FiShield 
+  FiShield,
+  FiCompass
 } from 'react-icons/fi';
 
 
@@ -54,6 +55,17 @@ export default function Sidebar({ isOpen }) {
           >
             <FiHome className="text-lg" />
             Dashboard
+          </NavLink>
+          <NavLink 
+            to="/route-optimizer" 
+            className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition duration-200 decoration-none cursor-pointer ${
+              isActive 
+                ? 'bg-[var(--color-bg-card)] text-[var(--color-accent)] border border-[var(--color-border)]' 
+                : 'text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-card-hover)] hover:text-[var(--color-text-primary)]'
+            }`}
+          >
+            <FiCompass className="text-lg" />
+            Route Planner
           </NavLink>
           <NavLink 
             to="/log-activity" 
