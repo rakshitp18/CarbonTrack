@@ -72,7 +72,7 @@ public class AuthService {
 
     private String nextJoinCode() {
         String code;
-        do { code = "CT-" + java.util.UUID.randomUUID().toString().replace("-", "").substring(0, 8).toUpperCase(); }
+        do { code = String.format("%08d", java.util.concurrent.ThreadLocalRandom.current().nextInt(10_000_000, 100_000_000)); }
         while (organisationRepository.findByJoinCode(code).isPresent());
         return code;
     }

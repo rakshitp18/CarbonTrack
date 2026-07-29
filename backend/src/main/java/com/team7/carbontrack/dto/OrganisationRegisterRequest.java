@@ -14,3 +14,4 @@ public record OrganisationRegisterRequest(
         @NotBlank @Size(max = 100) String department,
         @NotBlank @Size(max = 100) String designation
 ) {}
+npm

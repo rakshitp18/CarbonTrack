@@ -26,7 +26,7 @@ import {
 } from 'react-icons/fi';
 
 export default function Home() {
-  const { isAuthenticated, logout, login, register: signup } = useAuth();
+  const { isAuthenticated, isOrgAdmin, logout, login, register: signup } = useAuth();
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -66,7 +66,7 @@ export default function Home() {
       toast.success('Logged in successfully!', { toastId: 'login-success' });
       setAuthModal(null);
       resetLoginForm();
-      navigate('/dashboard');
+      navigate(data?.user?.role === 'ORG_ADMIN' ? '/organisation/dashboard' : '/dashboard');
     } catch (err) {
       if (!err.response) {
         toast.error('Server is starting up or unreachable. Please try again in a few seconds.');
