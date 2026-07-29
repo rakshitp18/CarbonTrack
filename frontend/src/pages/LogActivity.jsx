@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useState, useEffect } from 'react';
-import { activityService, EMISSION_FACTORS } from '../services/api';
+import { activityService, emissionFactorService, EMISSION_FACTORS } from '../services/api';
 import { toast } from 'react-toastify';
 import { FiLoader, FiCheckCircle, FiInfo, FiTrash2, FiRefreshCw } from 'react-icons/fi';
 
@@ -31,6 +31,7 @@ export default function LogActivity() {
   const [recentLogs, setRecentLogs] = useState([]);
   const [historyLoading, setHistoryLoading] = useState(true);
   const [deleteConfirmId, setDeleteConfirmId] = useState(null);
+  const [emissionFactors, setEmissionFactors] = useState(EMISSION_FACTORS);
 
   const { register, handleSubmit, watch, setValue, reset, formState: { errors } } = useForm({
     defaultValues: {
@@ -121,6 +122,19 @@ export default function LogActivity() {
     fetchLogsAndFrequents();
   }, []);
 
+  // The server owns the factor table. Keep the local values as an offline/loading fallback.
+  useEffect(() => {
+    emissionFactorService.getActiveFactors().then((factors) => {
+      const mapped = factors.reduce((categories, item) => {
+        const label = item.activityType.replace(/_/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
+        categories[item.category] ??= {};
+        categories[item.category][item.activityType] = { factor: Number(item.factor), unit: item.unit, label };
+        return categories;
+      }, {});
+      if (Object.keys(mapped).length) setEmissionFactors(mapped);
+    }).catch(() => {/* preview remains usable with the bundled fallback */});
+  }, []);
+
   const handleQuickLog = async (item, index) => {
     setQuickLoggingIndex(index);
     try {
@@ -181,24 +195,24 @@ export default function LogActivity() {
   useEffect(() => {
     setValue('category', activeCategory);
     // Reset activityType and unit to first option of new category
-    const options = Object.keys(EMISSION_FACTORS[activeCategory]);
+    const options = Object.keys(emissionFactors[activeCategory] || {});
     if (options.length > 0) {
       setValue('activityType', options[0]);
-      setValue('unit', EMISSION_FACTORS[activeCategory][options[0]].unit);
+      setValue('unit', emissionFactors[activeCategory][options[0]].unit);
     }
-  }, [activeCategory, setValue]);
+  }, [activeCategory, emissionFactors, setValue]);
 
   // Update unit label when selectedActivityType changes
   useEffect(() => {
-    if (selectedActivityType && EMISSION_FACTORS[activeCategory][selectedActivityType]) {
-      setValue('unit', EMISSION_FACTORS[activeCategory][selectedActivityType].unit);
+    if (selectedActivityType && emissionFactors[activeCategory]?.[selectedActivityType]) {
+      setValue('unit', emissionFactors[activeCategory][selectedActivityType].unit);
     }
-  }, [selectedActivityType, activeCategory, setValue]);
+  }, [selectedActivityType, activeCategory, emissionFactors, setValue]);
 
   // Compute real-time CO2e preview instantly
   useEffect(() => {
     if (selectedActivityType && quantityInput && !isNaN(quantityInput)) {
-      const entry = EMISSION_FACTORS[activeCategory][selectedActivityType];
+      const entry = emissionFactors[activeCategory]?.[selectedActivityType];
       if (entry) {
         const preview = Number(quantityInput) * entry.factor;
         setCo2ePreview(preview.toFixed(3));
@@ -206,7 +220,7 @@ export default function LogActivity() {
       }
     }
     setCo2ePreview(0);
-  }, [selectedActivityType, quantityInput, activeCategory]);
+  }, [selectedActivityType, quantityInput, activeCategory, emissionFactors]);
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -220,9 +234,9 @@ export default function LogActivity() {
       // Keep category and reset form
       reset({
         category: activeCategory,
-        activityType: Object.keys(EMISSION_FACTORS[activeCategory])[0] || '',
+        activityType: Object.keys(emissionFactors[activeCategory] || {})[0] || '',
         quantity: 0,
-        unit: EMISSION_FACTORS[activeCategory][Object.keys(EMISSION_FACTORS[activeCategory])[0]]?.unit || '',
+        unit: emissionFactors[activeCategory]?.[Object.keys(emissionFactors[activeCategory] || {})[0]]?.unit || '',
         logDate: getLocalDateString(),
         notes: '',
       });
@@ -308,7 +322,7 @@ export default function LogActivity() {
                     className="input-field"
                     {...register('activityType', { required: 'Activity type is required' })}
                   >
-                    {Object.entries(EMISSION_FACTORS[activeCategory]).map(([key, value]) => (
+                    {Object.entries(emissionFactors[activeCategory] || {}).map(([key, value]) => (
                       <option key={key} value={key} className="bg-[var(--color-bg-secondary)]">
                         {value.label}
                       </option>

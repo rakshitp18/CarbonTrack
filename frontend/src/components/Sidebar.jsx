@@ -115,7 +115,7 @@ export default function Sidebar({ isOpen }) {
           </NavLink>
           {isOrgAdmin && (
             <NavLink 
-              to="/organisation" 
+              to="/organisation/dashboard" 
               className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition duration-200 decoration-none cursor-pointer ${
                 isActive 
                   ? 'bg-[var(--color-bg-card)] text-[var(--color-accent)] border border-[var(--color-border)]' 

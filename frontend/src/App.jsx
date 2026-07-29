@@ -15,6 +15,12 @@ import Leaderboard from './pages/Leaderboard';
 import Badges from "./pages/Badges";
 import RouteOptimizer from './pages/RouteOptimizer';
 import Organisation from './pages/Organisation';
+import OrganisationAuth from './pages/OrganisationAuth';
+import OrganisationPortal from './pages/OrganisationPortal';
+import OrganisationLayout from './layouts/OrganisationLayout';
+import OrganisationAnalytics from './pages/OrganisationAnalytics';
+import OrganisationPeople from './pages/OrganisationPeople';
+import OrganisationReports from './pages/OrganisationReports';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 import DashboardLayout from './layouts/DashboardLayout';
@@ -29,6 +35,8 @@ export default function App() {
           <Route element={<GuestRoute />}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/organisation/login" element={<OrganisationAuth />} />
+            <Route path="/organisation/register" element={<OrganisationAuth mode="register" />} />
           </Route>
 
           <Route path="/oauth2/redirect" element={<OAuth2RedirectHandler />} />
@@ -60,6 +68,13 @@ export default function App() {
 
           {/* Org Admin Routes */}
           <Route element={<OrgAdminRoute />}>
+            <Route element={<OrganisationLayout />}>
+              <Route path="/organisation/dashboard" element={<OrganisationPortal />} />
+              <Route path="/organisation/activity" element={<LogActivity />} />
+              <Route path="/organisation/people" element={<OrganisationPeople />} />
+              <Route path="/organisation/analytics" element={<OrganisationAnalytics />} />
+              <Route path="/organisation/reports" element={<OrganisationReports />} />
+            </Route>
             <Route element={<DashboardLayout title="Corporate CSR Dashboard" />}>
               <Route path="/organisation" element={<Organisation />} />
             </Route>

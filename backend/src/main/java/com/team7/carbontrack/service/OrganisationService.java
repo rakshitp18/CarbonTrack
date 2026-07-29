@@ -110,6 +110,9 @@ public class OrganisationService {
             employeeList.add(new OrganisationDashboardSummary.EmployeeComparison(
                     emp.getId(),
                     emp.getUsername(),
+                    emp.getEmployeeId(),
+                    emp.getDepartment(),
+                    emp.getDesignation(),
                     totalCo2e,
                     activeGoalStatus,
                     lastLogDate
@@ -118,6 +121,7 @@ public class OrganisationService {
 
         return new OrganisationDashboardSummary(
                 org.getName(),
+                org.getJoinCode(),
                 completeBreakdown,
                 currentMonthEmissions,
                 previousMonthEmissions,

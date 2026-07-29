@@ -29,6 +29,21 @@ export function AuthProvider({ children }) {
     return data;
   }, []);
 
+  const registerOrganisation = useCallback(async (formData) => {
+    const data = await authService.registerOrganisation(formData);
+    localStorage.setItem('accessToken', data.accessToken);
+    localStorage.setItem('user', JSON.stringify(data.user));
+    setUser(data.user);
+    return data;
+  }, []);
+  const joinOrganisation = useCallback(async (formData) => {
+    const data = await authService.joinOrganisation(formData);
+    localStorage.setItem('accessToken', data.accessToken);
+    localStorage.setItem('user', JSON.stringify(data.user));
+    setUser(data.user);
+    return data;
+  }, []);
+
   const loginWithToken = useCallback((token, userProfile) => {
     localStorage.setItem('accessToken', token);
     localStorage.setItem('user', JSON.stringify(userProfile));
@@ -52,7 +67,7 @@ export function AuthProvider({ children }) {
   const isOrgAdmin = user?.role === 'ORG_ADMIN';
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, isAuthenticated, isAdmin, isOrgAdmin, loginWithToken, updateUser }}>
+    <AuthContext.Provider value={{ user, login, register, registerOrganisation, joinOrganisation, logout, isAuthenticated, isAdmin, isOrgAdmin, loginWithToken, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

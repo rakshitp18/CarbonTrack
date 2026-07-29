@@ -28,6 +28,9 @@ public class Organisation {
     @Column(name = "admin_user_id")
     private Long adminUserId;
 
+    @Column(name = "join_code", nullable = false, unique = true, length = 12)
+    private String joinCode;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
