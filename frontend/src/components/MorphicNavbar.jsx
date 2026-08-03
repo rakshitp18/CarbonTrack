@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, LayoutGroup } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { profileService } from '../services/api';
@@ -81,47 +81,49 @@ export default function MorphicNavbar({ title }) {
               </span>
             </div>
 
-            {/* Center: Morphic Navbar Pills Container with Framer Motion layoutId Morphing */}
+            {/* Center: Morphic Navbar Pills Container with Framer Motion LayoutGroup Morphing */}
             <nav className="flex-1 flex justify-center px-4 max-w-4xl">
-              <div className={`relative flex items-center p-1 rounded-2xl border transition-all duration-300 overflow-x-auto scrollbar-none ${
-                isDark 
-                  ? 'bg-slate-900/90 border-slate-700/70 shadow-inner' 
-                  : 'bg-slate-100/90 border-slate-200/80 shadow-inner'
-              }`}>
-                {navItems.map((item) => {
-                  const isActive = isActiveLink(item.path);
-                  const Icon = item.icon;
+              <LayoutGroup id="morphic-navbar">
+                <div className={`relative flex items-center p-1 rounded-2xl border transition-colors duration-200 overflow-x-auto scrollbar-none ${
+                  isDark 
+                    ? 'bg-slate-900/90 border-slate-700/70 shadow-inner' 
+                    : 'bg-slate-100/90 border-slate-200/80 shadow-inner'
+                }`}>
+                  {navItems.map((item) => {
+                    const isActive = isActiveLink(item.path);
+                    const Icon = item.icon;
 
-                  return (
-                    <NavLink
-                      key={item.path}
-                      to={item.path}
-                      className={`relative flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold whitespace-nowrap cursor-pointer transition-colors duration-200 ${
-                        isActive
-                          ? 'text-white'
-                          : isDark
-                          ? 'text-slate-300 hover:text-white'
-                          : 'text-slate-600 hover:text-slate-900'
-                      }`}
-                    >
-                      {/* Morphing Active Pill Background */}
-                      {isActive && (
-                        <motion.div
-                          layoutId="morphic-active-pill"
-                          className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 shadow-md shadow-emerald-500/25"
-                          transition={{ type: 'spring', stiffness: 420, damping: 33 }}
-                        />
-                      )}
+                    return (
+                      <NavLink
+                        key={item.path}
+                        to={item.path}
+                        className={`relative flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold whitespace-nowrap cursor-pointer transition-colors duration-150 ${
+                          isActive
+                            ? 'text-white'
+                            : isDark
+                            ? 'text-slate-300 hover:text-white'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        {/* Morphing Active Pill Background */}
+                        {isActive && (
+                          <motion.div
+                            layoutId="morphic-active-pill"
+                            className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 shadow-md shadow-emerald-500/25 transform-gpu pointer-events-none"
+                            transition={{ type: 'spring', stiffness: 500, damping: 38, mass: 0.5 }}
+                          />
+                        )}
 
-                      {/* Link Content */}
-                      <span className="relative z-10 flex items-center gap-1.5">
-                        <Icon className={`text-sm ${isActive ? 'text-white' : 'text-slate-400'}`} />
-                        <span className="hidden md:inline">{item.name}</span>
-                      </span>
-                    </NavLink>
-                  );
-                })}
-              </div>
+                        {/* Link Content */}
+                        <span className="relative z-10 flex items-center gap-1.5">
+                          <Icon className={`text-sm ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                          <span className="hidden md:inline">{item.name}</span>
+                        </span>
+                      </NavLink>
+                    );
+                  })}
+                </div>
+              </LayoutGroup>
             </nav>
 
             {/* Right Most: Unit Selector, Theme Toggle, Profile & Logout */}
