@@ -8,7 +8,7 @@ import { GiSprout } from 'react-icons/gi';
 import EcoPulse from '../components/EcoPulse';
 import BadgeCard from "../components/BadgeCard";
 import { badges } from "../data/badges";
-import AvatarPicker from '../components/AvatarPicker';
+import AvatarPicker, { AVATAR_PRESETS, convertSvgToDataUrl } from '../components/AvatarPicker';
 
 export default function Profile() {
   const [loading, setLoading] = useState(true);
@@ -299,14 +299,42 @@ export default function Profile() {
                 </div>
               </div>
               
-              <div className="flex items-center gap-2 mt-4">
-                <button
-                  type="button"
-                  onClick={() => setShowAvatarPicker(true)}
-                  className="text-[11px] font-bold text-emerald-500 hover:text-emerald-400 flex items-center gap-1 transition cursor-pointer"
-                >
-                  <FiSmile /> Choose Preset Avatar
-                </button>
+              {/* Preset Avatar Preview Row */}
+              <div className="mt-4 text-center w-full">
+                <div className="flex items-center justify-between mb-2 px-1">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-text-muted)] flex items-center gap-1">
+                    <FiSmile className="text-emerald-500" /> Preset Avatars
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setShowAvatarPicker(true)}
+                    className="text-[10px] font-bold text-emerald-500 hover:text-emerald-400 transition cursor-pointer"
+                  >
+                    View Stage &rarr;
+                  </button>
+                </div>
+
+                <div className="flex items-center justify-center gap-2 overflow-x-auto py-1.5 scrollbar-none">
+                  {AVATAR_PRESETS.map((av) => {
+                    const dataUrl = convertSvgToDataUrl(av.svg);
+                    const isSelected = profilePhoto === dataUrl;
+                    return (
+                      <button
+                        key={av.id}
+                        type="button"
+                        onClick={() => setProfilePhoto(dataUrl)}
+                        title={`Select ${av.alt}`}
+                        className={`relative w-9 h-9 rounded-full overflow-hidden border transition-all duration-200 cursor-pointer flex items-center justify-center ${
+                          isSelected
+                            ? 'border-emerald-500 ring-2 ring-emerald-500/80 ring-offset-2 ring-offset-[var(--color-bg-card)] scale-110'
+                            : 'border-[var(--color-border)] bg-[var(--color-bg-primary)] opacity-70 hover:opacity-100 hover:scale-105'
+                        }`}
+                      >
+                        <div className="scale-[1.5] transform">{av.svg}</div>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
 
               <input 

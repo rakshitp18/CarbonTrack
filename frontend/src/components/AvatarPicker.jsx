@@ -4,7 +4,7 @@ import { FiCheck, FiX, FiSmile } from 'react-icons/fi';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 // RGB values for the per-avatar color ring on the stage
-const AVATAR_RGB = {
+export const AVATAR_RGB = {
   1: '255, 0, 91',
   2: '255, 125, 16',
   3: '16, 185, 129',
@@ -13,7 +13,12 @@ const AVATAR_RGB = {
   6: '245, 158, 11',
 };
 
-const avatars = [
+export const convertSvgToDataUrl = (svgElement) => {
+  const svgString = renderToStaticMarkup(svgElement);
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svgString)}`;
+};
+
+export const AVATAR_PRESETS = [
   {
     id: 1,
     alt: 'Sunset Coral',
@@ -147,7 +152,7 @@ const thumbnailVariants = {
 };
 
 export default function AvatarPicker({ onSelectAvatar, onClose }) {
-  const [selectedAvatar, setSelectedAvatar] = useState(avatars[2]); // Default to Eco Emerald
+  const [selectedAvatar, setSelectedAvatar] = useState(AVATAR_PRESETS[2]); // Default to Eco Emerald
   const shouldReduceMotion = useReducedMotion();
 
   const handleAvatarSelect = (avatar) => {
@@ -157,8 +162,7 @@ export default function AvatarPicker({ onSelectAvatar, onClose }) {
 
   const handleApply = () => {
     // Convert React SVG component to base64 Data URL
-    const svgString = renderToStaticMarkup(selectedAvatar.svg);
-    const dataUrl = `data:image/svg+xml;utf8,${encodeURIComponent(svgString)}`;
+    const dataUrl = convertSvgToDataUrl(selectedAvatar.svg);
     if (onSelectAvatar) {
       onSelectAvatar(dataUrl);
     }
@@ -250,7 +254,7 @@ export default function AvatarPicker({ onSelectAvatar, onClose }) {
               initial="initial"
               variants={containerVariants}
             >
-              {avatars.map((avatar) => {
+              {AVATAR_PRESETS.map((avatar) => {
                 const isSelected = selectedAvatar.id === avatar.id;
                 return (
                   <motion.button
