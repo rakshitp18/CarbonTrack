@@ -3,19 +3,19 @@ import { useForm } from 'react-hook-form';
 import { profileService } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
-import { FiUser, FiEye, FiLoader, FiCamera, FiTrash2, FiAward, FiCopy, FiCheck } from 'react-icons/fi';
+import { FiUser, FiEye, FiLoader, FiCamera, FiTrash2, FiAward, FiCopy, FiCheck, FiSmile } from 'react-icons/fi';
 import { GiSprout } from 'react-icons/gi';
 import EcoPulse from '../components/EcoPulse';
 import BadgeCard from "../components/BadgeCard";
 import { badges } from "../data/badges";
-
-
+import AvatarPicker from '../components/AvatarPicker';
 
 export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [cameraActive, setCameraActive] = useState(false);
+  const [showAvatarPicker, setShowAvatarPicker] = useState(false);
   const [stream, setStream] = useState(null);
   const [earnedBadges, setEarnedBadges] = useState([]);
   const [copiedInvite, setCopiedInvite] = useState(false);
@@ -265,6 +265,16 @@ export default function Profile() {
 
                 {/* Floating Action Buttons */}
                 <div className="absolute bottom-0 right-0 flex gap-1 translate-x-2 translate-y-1">
+                  {/* Preset Avatar Chooser */}
+                  <button
+                    type="button"
+                    onClick={() => setShowAvatarPicker(true)}
+                    className="w-8 h-8 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-md border-2 border-white cursor-pointer transition duration-200"
+                    title="Choose preset avatar"
+                  >
+                    <FiSmile className="text-xs" />
+                  </button>
+
                   {/* Upload image */}
                   <button
                     type="button"
@@ -289,9 +299,15 @@ export default function Profile() {
                 </div>
               </div>
               
-              <p className="text-[10px] text-[var(--color-text-muted)] font-bold mt-4 tracking-wider uppercase">
-                Upload image or use camera
-              </p>
+              <div className="flex items-center gap-2 mt-4">
+                <button
+                  type="button"
+                  onClick={() => setShowAvatarPicker(true)}
+                  className="text-[11px] font-bold text-emerald-500 hover:text-emerald-400 flex items-center gap-1 transition cursor-pointer"
+                >
+                  <FiSmile /> Choose Preset Avatar
+                </button>
+              </div>
 
               <input 
                 type="file" 
@@ -429,6 +445,17 @@ export default function Profile() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Avatar Picker Modal */}
+      {showAvatarPicker && (
+        <AvatarPicker
+          onSelectAvatar={(dataUrl) => {
+            setProfilePhoto(dataUrl);
+            setShowAvatarPicker(false);
+          }}
+          onClose={() => setShowAvatarPicker(false)}
+        />
       )}
     </div>
   );
