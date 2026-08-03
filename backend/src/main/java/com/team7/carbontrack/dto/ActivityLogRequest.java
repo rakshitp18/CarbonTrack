@@ -31,7 +31,6 @@ public record ActivityLogRequest(
         String unit,
 
         @NotNull(message = "Log date is required")
-        @PastOrPresent(message = "Log date cannot be in the future")
         LocalDate logDate,
 
         @Size(max = 500, message = "Notes must be at most 500 characters")

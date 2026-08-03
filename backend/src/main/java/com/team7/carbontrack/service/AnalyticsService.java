@@ -56,17 +56,14 @@ public class AnalyticsService {
         //BigDecimal weeklyCo2e = sumEmissions(activityLogRepository.findByUserIdAndLogDateBetween(userId, sevenDaysAgo, today));
        // BigDecimal monthlyCo2e = sumEmissions(activityLogRepository.findByUserIdAndLogDateBetween(userId, thirtyDaysAgo, today));
         // 1. Current carbon sums using JPQL aggregation queries ( milestone 2)
-        BigDecimal todayCo2e = activityLogRepository
-                .getTotalEmissions(userId, today, today)
-                .setScale(2, RoundingMode.HALF_UP);
+        BigDecimal rawToday = activityLogRepository.getTotalEmissions(userId, today, today);
+        BigDecimal todayCo2e = (rawToday != null ? rawToday : BigDecimal.ZERO).setScale(2, RoundingMode.HALF_UP);
 
-        BigDecimal weeklyCo2e = activityLogRepository
-                .getTotalEmissions(userId, sevenDaysAgo, today)
-                .setScale(2, RoundingMode.HALF_UP);
+        BigDecimal rawWeekly = activityLogRepository.getTotalEmissions(userId, sevenDaysAgo, today);
+        BigDecimal weeklyCo2e = (rawWeekly != null ? rawWeekly : BigDecimal.ZERO).setScale(2, RoundingMode.HALF_UP);
 
-        BigDecimal monthlyCo2e = activityLogRepository
-                .getTotalEmissions(userId, thirtyDaysAgo, today)
-                .setScale(2, RoundingMode.HALF_UP);
+        BigDecimal rawMonthly = activityLogRepository.getTotalEmissions(userId, thirtyDaysAgo, today);
+        BigDecimal monthlyCo2e = (rawMonthly != null ? rawMonthly : BigDecimal.ZERO).setScale(2, RoundingMode.HALF_UP);
 
         // 2. Category-wise breakdown
         List<CategoryEmission> categoryBreakdown = activityLogRepository.getEmissionsByCategory(userId, thirtyDaysAgo, today);
@@ -75,8 +72,12 @@ public class AnalyticsService {
         for (ActivityCategory cat : ActivityCategory.values()) {
             breakdownMap.put(cat, BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP));
         }
-        for (CategoryEmission ce : categoryBreakdown) {
-            breakdownMap.put(ce.category(), ce.totalCo2e().setScale(2, RoundingMode.HALF_UP));
+        if (categoryBreakdown != null) {
+            for (CategoryEmission ce : categoryBreakdown) {
+                if (ce != null && ce.category() != null && ce.totalCo2e() != null) {
+                    breakdownMap.put(ce.category(), ce.totalCo2e().setScale(2, RoundingMode.HALF_UP));
+                }
+            }
         }
         List<CategoryEmission> completeBreakdown = breakdownMap.entrySet().stream()
                 .map(e -> new CategoryEmission(e.getKey(), e.getValue()))
@@ -103,25 +104,29 @@ public class AnalyticsService {
         // 5. Recommendations
         List<String> recommendations = recommendationService.getPersonalizedRecommendations(userId);
         List<RecommendationInsight> recommendationInsights = recommendationService.getRecommendationInsights(userId);
-        //List<String> recommendations = List.of();
-
 
         // 6. Peer Benchmarking Percentile
         List<Object[]> userTotals = activityLogRepository.getUserTotalEmissions(thirtyDaysAgo);
         double userEmission = 0.0;
         int worseCount = 0;
-        int totalActive = userTotals.size();
-        for (Object[] row : userTotals) {
-            Long uid = (Long) row[0];
-            double total = ((Number) row[1]).doubleValue();
-            if (uid.equals(userId)) {
-                userEmission = total;
+        int totalActive = userTotals != null ? userTotals.size() : 0;
+        if (userTotals != null) {
+            for (Object[] row : userTotals) {
+                if (row != null && row.length > 1 && row[0] != null && row[1] != null) {
+                    Long uid = (Long) row[0];
+                    double total = ((Number) row[1]).doubleValue();
+                    if (uid.equals(userId)) {
+                        userEmission = total;
+                    }
+                }
             }
-        }
-        for (Object[] row : userTotals) {
-            double total = ((Number) row[1]).doubleValue();
-            if (total > userEmission) {
-                worseCount++;
+            for (Object[] row : userTotals) {
+                if (row != null && row.length > 1 && row[1] != null) {
+                    double total = ((Number) row[1]).doubleValue();
+                    if (total > userEmission) {
+                        worseCount++;
+                    }
+                }
             }
         }
         double percentileRank = totalActive > 0 ? ((double) worseCount / totalActive) * 100.0 : 100.0;

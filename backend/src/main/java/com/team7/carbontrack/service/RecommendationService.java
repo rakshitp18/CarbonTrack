@@ -92,22 +92,26 @@ public class RecommendationService {
         );
 
         List<RecommendationInsight> insights = new ArrayList<>();
-        for (Object[] row : activities) {
-            String activityType = String.valueOf(row[0]);
-            BigDecimal impact = ((Number) row[1]).doubleValue() == 0
-                    ? BigDecimal.ZERO
-                    : BigDecimal.valueOf(((Number) row[1]).doubleValue()).setScale(1, RoundingMode.HALF_UP);
-            String tip = TIP_MAP.getOrDefault(activityType,
-                    "Choose one lower-impact alternative for this activity each week.");
-            BigDecimal saving = impact.multiply(BigDecimal.valueOf(0.15)).setScale(1, RoundingMode.HALF_UP);
-            insights.add(new RecommendationInsight(
-                    activityType,
-                    friendlyName(activityType),
-                    shortAction(activityType),
-                    tip,
-                    impact,
-                    saving
-            ));
+        if (activities != null) {
+            for (Object[] row : activities) {
+                if (row == null || row.length < 2 || row[0] == null) continue;
+                String activityType = String.valueOf(row[0]);
+                double rawVal = row[1] != null ? ((Number) row[1]).doubleValue() : 0.0;
+                BigDecimal impact = rawVal == 0
+                        ? BigDecimal.ZERO
+                        : BigDecimal.valueOf(rawVal).setScale(1, RoundingMode.HALF_UP);
+                String tip = TIP_MAP.getOrDefault(activityType,
+                        "Choose one lower-impact alternative for this activity each week.");
+                BigDecimal saving = impact.multiply(BigDecimal.valueOf(0.15)).setScale(1, RoundingMode.HALF_UP);
+                insights.add(new RecommendationInsight(
+                        activityType,
+                        friendlyName(activityType),
+                        shortAction(activityType),
+                        tip,
+                        impact,
+                        saving
+                ));
+            }
         }
 
         if (insights.isEmpty()) {

@@ -48,11 +48,14 @@ public class EmissionCalculationService {
     }
 
     private EmissionFactor findActiveFactor(ActivityCategory category, String activityType, String unit) {
+        String normUnit = unit != null ? unit.trim().toUpperCase() : "";
         return emissionFactorRepository
-                .findFirstByCategoryAndActivityTypeAndUnitAndActiveTrueOrderByEffectiveDateDesc(category, activityType, unit)
-                .orElseThrow(() -> new EmissionFactorNotFoundException(
-                        ("No active emission factor found for category=%s, activityType=%s, unit=%s. "
-                                + "Ask an admin to add one to emission_factors.")
-                                .formatted(category, activityType, unit)));
+                .findFirstByCategoryAndActivityTypeAndUnitAndActiveTrueOrderByEffectiveDateDesc(category, activityType, normUnit)
+                .orElseGet(() -> emissionFactorRepository
+                        .findFirstByCategoryAndActivityTypeAndUnitAndActiveTrueOrderByEffectiveDateDesc(category, activityType, unit)
+                        .orElseThrow(() -> new EmissionFactorNotFoundException(
+                                ("No active emission factor found for category=%s, activityType=%s, unit=%s. "
+                                        + "Ask an admin to add one to emission_factors.")
+                                        .formatted(category, activityType, unit))));
     }
 }

@@ -98,7 +98,6 @@ export default function OrganisationAnalytics() {
                   fill="#34d399"
                   radius={[8, 8, 0, 0]}
                 />
-                />
 
                               </BarChart>
 
