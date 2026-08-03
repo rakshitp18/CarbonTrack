@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { dashboardService, activityService } from '../services/api';
 import { toast } from 'react-toastify';
+import AppleActivityCard from '../components/AppleActivityCard';
 
 
 
@@ -300,41 +301,8 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Category breakdown Pie Chart */}
-        <div className="glass-card p-6">
-          <h3 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)] mb-4">Emissions by Category</h3>
-          <div className="h-64 flex items-center justify-center">
-            {pieData.length > 0 ? (
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={pieData}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={60}
-                    outerRadius={80}
-                    paddingAngle={4}
-                    dataKey="value"
-                  >
-                    {pieData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={CATEGORY_COLORS[entry.name] || '#16a34a'} />
-                    ))}
-                  </Pie>
-                  <Tooltip 
-                    contentStyle={{ backgroundColor: 'var(--color-bg-secondary)', borderColor: 'var(--color-border)', borderRadius: '8px' }}
-                    itemStyle={{ color: 'var(--color-text-primary)' }}
-                  />
-                  <Legend iconType="circle" />
-                </PieChart>
-              </ResponsiveContainer>
-            ) : (
-              <div className="text-center text-[var(--color-text-muted)] text-sm flex flex-col items-center justify-center">
-                <FiInfo className="text-2xl mb-2" />
-                No carbon activities logged in the last 30 days.
-              </div>
-            )}
-          </div>
-        </div>
+        {/* Category breakdown Apple Activity Card */}
+        <AppleActivityCard pieData={pieData} />
       </div>
 
       {/* Goal Widget, Benchmarking & Recommendations */}
