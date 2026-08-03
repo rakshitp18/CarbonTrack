@@ -183,3 +183,41 @@ body.dark .recharts-legend-item-text{
 
     color:#CBD5E1 !important;
 }
+
+/* ===========================
+   SMART WEEKLY PLAN / INSIGHTS
+=========================== */
+
+body.dark .insight-panel {
+    background: linear-gradient(180deg, #172033 0%, #111827 100%) !important;
+    border-color: #243244;
+}
+
+body.dark .insight-card {
+    background: rgba(17, 24, 39, 0.75) !important;
+    border-color: #233041 !important;
+    color: #f8fafc;
+}
+
+body.dark .insight-card:hover {
+    background: #1a2435 !important;
+    border-color: #22c55e !important;
+}
+
+body.dark .insight-card.is-complete {
+    background: rgba(34, 197, 94, 0.15) !important;
+    border-color: rgba(34, 197, 94, 0.4) !important;
+}
+
+body.dark .insight-saving {
+    background: rgba(34, 197, 94, 0.2) !important;
+    color: #4ade80 !important;
+}
+
+body.dark .insight-action {
+    color: #4ade80 !important;
+}
+
+body.dark .insight-action:hover {
+    background: rgba(34, 197, 94, 0.15) !important;
+}

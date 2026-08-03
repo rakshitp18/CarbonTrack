@@ -444,7 +444,7 @@ export default function Dashboard() {
           <div>
             <div className="mb-5 flex items-start justify-between gap-3">
               <div>
-                <p className="mb-1 flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.16em] text-emerald-700"><FiCpu /> Smart weekly plan</p>
+                <p className="mb-1 flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.16em] text-emerald-700 dark:text-emerald-400"><FiCpu /> Smart weekly plan</p>
                 <h3 className="text-base font-bold font-outfit text-[var(--color-text-primary)]">Your highest-impact moves</h3>
               </div>
               <FiTrendingDown className="text-2xl text-emerald-500" />
@@ -455,7 +455,7 @@ export default function Dashboard() {
                   <div className="flex items-start justify-between gap-2">
                     <div>
                       <p className="text-xs font-bold text-[var(--color-text-primary)]">{insight.title}</p>
-                      <p className="mt-1 text-[10px] font-semibold text-emerald-700">{insight.action}</p>
+                      <p className="mt-1 text-[10px] font-semibold text-emerald-700 dark:text-emerald-400">{insight.action}</p>
                     </div>
                     {insight.potentialMonthlySaving > 0 && <span className="insight-saving">−{insight.potentialMonthlySaving} kg</span>}
                   </div>
