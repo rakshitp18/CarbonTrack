@@ -4,6 +4,7 @@ import { profileService } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { FiUser, FiEye, FiLoader, FiCamera, FiTrash2, FiAward, FiCopy, FiCheck } from 'react-icons/fi';
+import { GiSprout } from 'react-icons/gi';
 import EcoPulse from '../components/EcoPulse';
 import BadgeCard from "../components/BadgeCard";
 import { badges } from "../data/badges";
@@ -356,7 +357,9 @@ export default function Profile() {
         {/* Right Column: Badges Grid */}
         <div className="md:col-span-2 self-start">
           <div className="glass-card p-5 mb-6 overflow-hidden relative flex flex-col sm:flex-row items-center gap-4 shadow-[0_10px_30px_-10px_rgba(16,185,129,0.10)]">
-            <EcoPulse className="h-24 w-24 shrink-0" />
+            <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 shrink-0 shadow-sm">
+              <GiSprout className="text-4xl" />
+            </div>
             <div className="flex-1 text-center sm:text-left">
               <p className="text-xs font-extrabold uppercase tracking-wider text-[var(--color-accent)]">Grow the community</p>
               <h4 className="font-outfit text-lg font-bold text-[var(--color-text-primary)] mt-1">Invite a friend to track their footprint</h4>
