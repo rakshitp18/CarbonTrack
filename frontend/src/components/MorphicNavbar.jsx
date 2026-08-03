@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { profileService } from '../services/api';
@@ -58,15 +59,15 @@ export default function MorphicNavbar({ title }) {
   return (
     <>
       <header className="sticky top-0 z-40 w-full border-b backdrop-blur-xl transition-colors duration-300 bg-[var(--color-bg-secondary)]/85 border-[var(--color-border)]/60 text-[var(--color-text-primary)] shadow-sm">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-10">
           <div className="flex h-16 items-center justify-between gap-4">
             
-            {/* Brand Logo & Title */}
+            {/* Left Far: Brand Logo & Title */}
             <div 
               onClick={() => navigate('/dashboard')}
               className="flex items-center gap-2.5 cursor-pointer shrink-0"
             >
-              <svg viewBox="0 0 100 100" className="w-7 h-7 flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 100 100" className="w-8 h-8 flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M 50,14 A 36,36 0 1,1 30,22" stroke="var(--color-text-primary)" strokeWidth="7" strokeLinecap="round" />
                 <path d="M 41,6 L 54,14 L 41,22 Z" fill="var(--color-accent)" />
                 <path d="M 28,34 C 20,48 24,66 38,74 C 30,64 28,50 34,36 C 35,34 32,32 28,34 Z" fill="var(--color-accent-blue)" opacity="0.8" />
@@ -75,60 +76,59 @@ export default function MorphicNavbar({ title }) {
                 <path d="M 49,75 C 56,62 58,48 57,36 C 68,40 73,53 69,67 C 66,73 58,76 49,75 Z" fill="var(--color-bg-card)" />
                 <path d="M 49,75 C 53,62 55,48 57,36" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
-              <span className="font-outfit font-extrabold text-lg tracking-tight hidden sm:inline-block text-[var(--color-text-primary)]">
+              <span className="font-outfit font-extrabold text-xl tracking-tight hidden sm:inline-block text-[var(--color-text-primary)]">
                 CarbonTrack
               </span>
             </div>
 
-            {/* Morphic Navbar Pills Container */}
-            <nav className="flex-1 max-w-3xl px-2">
-              <div className="flex items-center justify-center">
-                <div className={`flex items-center justify-between p-1 rounded-2xl border transition-all duration-300 overflow-x-auto scrollbar-none ${
-                  isDark 
-                    ? 'bg-slate-900/90 border-slate-700/70 shadow-inner' 
-                    : 'bg-slate-100/90 border-slate-200/80 shadow-inner'
-                }`}>
-                  {navItems.map((item, index, array) => {
-                    const isActive = isActiveLink(item.path);
-                    const isFirst = index === 0;
-                    const isLast = index === array.length - 1;
-                    const prevItem = index > 0 ? array[index - 1] : null;
-                    const nextItem = index < array.length - 1 ? array[index + 1] : null;
+            {/* Center: Morphic Navbar Pills Container with Framer Motion layoutId Morphing */}
+            <nav className="flex-1 flex justify-center px-4 max-w-4xl">
+              <div className={`relative flex items-center p-1 rounded-2xl border transition-all duration-300 overflow-x-auto scrollbar-none ${
+                isDark 
+                  ? 'bg-slate-900/90 border-slate-700/70 shadow-inner' 
+                  : 'bg-slate-100/90 border-slate-200/80 shadow-inner'
+              }`}>
+                {navItems.map((item) => {
+                  const isActive = isActiveLink(item.path);
+                  const Icon = item.icon;
 
-                    const Icon = item.icon;
+                  return (
+                    <NavLink
+                      key={item.path}
+                      to={item.path}
+                      className={`relative flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold whitespace-nowrap cursor-pointer transition-colors duration-200 ${
+                        isActive
+                          ? 'text-white'
+                          : isDark
+                          ? 'text-slate-300 hover:text-white'
+                          : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      {/* Morphing Active Pill Background */}
+                      {isActive && (
+                        <motion.div
+                          layoutId="morphic-active-pill"
+                          className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 shadow-md shadow-emerald-500/25"
+                          transition={{ type: 'spring', stiffness: 420, damping: 33 }}
+                        />
+                      )}
 
-                    return (
-                      <NavLink
-                        key={item.path}
-                        to={item.path}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer ${
-                          isActive
-                            ? 'mx-1 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-md shadow-emerald-500/25 scale-[1.03]'
-                            : `${
-                                isDark
-                                  ? 'text-slate-300 hover:text-white hover:bg-slate-800/60'
-                                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
-                              } ${
-                                (isActiveLink(prevItem?.path || '') || isFirst) ? 'rounded-l-xl' : ''
-                              } ${
-                                (isActiveLink(nextItem?.path || '') || isLast) ? 'rounded-r-xl' : ''
-                              }`
-                        }`}
-                      >
+                      {/* Link Content */}
+                      <span className="relative z-10 flex items-center gap-1.5">
                         <Icon className={`text-sm ${isActive ? 'text-white' : 'text-slate-400'}`} />
                         <span className="hidden md:inline">{item.name}</span>
-                      </NavLink>
-                    );
-                  })}
-                </div>
+                      </span>
+                    </NavLink>
+                  );
+                })}
               </div>
             </nav>
 
-            {/* Right Actions: Unit, Theme, Profile & Logout */}
-            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* Right Most: Unit Selector, Theme Toggle, Profile & Logout */}
+            <div className="flex items-center gap-2.5 sm:gap-3.5 shrink-0">
               
               {/* Unit System Dropdown */}
-              <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)] text-xs text-[var(--color-text-secondary)] font-semibold">
+              <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)] text-xs text-[var(--color-text-secondary)] font-semibold shadow-sm">
                 <FiGlobe className="text-[var(--color-accent-blue)]" />
                 <select
                   value={user?.preferredUnitSystem || 'METRIC'}
@@ -144,7 +144,7 @@ export default function MorphicNavbar({ title }) {
               <button
                 onClick={toggleTheme}
                 title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-                className="w-9 h-9 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-card)] hover:bg-[var(--color-bg-card-hover)] flex items-center justify-center transition duration-300 cursor-pointer"
+                className="w-9 h-9 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-card)] hover:bg-[var(--color-bg-card-hover)] flex items-center justify-center transition duration-300 cursor-pointer shadow-sm"
               >
                 {theme === 'light' ? (
                   <FiMoon className="text-base text-[var(--color-text-primary)]" />
@@ -156,7 +156,7 @@ export default function MorphicNavbar({ title }) {
               {/* Profile Avatar Capsule */}
               <div 
                 onClick={() => navigate('/profile')}
-                className="flex items-center gap-2 pl-1.5 py-1 pr-2.5 hover:bg-[var(--color-bg-card-hover)] border border-[var(--color-border)] rounded-full cursor-pointer transition duration-200 shadow-sm"
+                className="flex items-center gap-2 pl-1.5 py-1 pr-3 hover:bg-[var(--color-bg-card-hover)] border border-[var(--color-border)] rounded-full cursor-pointer transition duration-200 shadow-sm"
                 title="View Profile"
               >
                 {user?.profilePhoto ? (
@@ -173,7 +173,7 @@ export default function MorphicNavbar({ title }) {
               <button
                 onClick={() => setShowConfirmLogout(true)}
                 title="Log Out"
-                className="w-9 h-9 rounded-full border border-[var(--color-border)] hover:border-red-500/40 bg-[var(--color-bg-card)] hover:bg-red-500/10 text-slate-400 hover:text-red-500 flex items-center justify-center transition cursor-pointer"
+                className="w-9 h-9 rounded-full border border-[var(--color-border)] hover:border-red-500/40 bg-[var(--color-bg-card)] hover:bg-red-500/10 text-slate-400 hover:text-red-500 flex items-center justify-center transition cursor-pointer shadow-sm"
               >
                 <FiLogOut className="text-base" />
               </button>
