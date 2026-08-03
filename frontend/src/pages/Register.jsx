@@ -129,6 +129,9 @@ export default function Register() {
               Log In
             </Link>
           </p>
+          <Link to="/organisation/register" className="mt-3 inline-block text-xs font-semibold text-[var(--color-accent)] hover:underline">
+            Creating a company workspace? Register your organisation
+          </Link>
         </div>
       </div>
     </div>

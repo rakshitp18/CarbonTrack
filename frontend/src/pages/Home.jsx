@@ -26,7 +26,7 @@ import {
 } from 'react-icons/fi';
 
 export default function Home() {
-  const { isAuthenticated, logout, login, register: signup } = useAuth();
+  const { isAuthenticated, isOrgAdmin, logout, login, register: signup } = useAuth();
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -66,7 +66,7 @@ export default function Home() {
       toast.success('Logged in successfully!', { toastId: 'login-success' });
       setAuthModal(null);
       resetLoginForm();
-      navigate('/dashboard');
+      navigate(data?.user?.role === 'ORG_ADMIN' ? '/organisation/dashboard' : '/dashboard');
     } catch (err) {
       if (!err.response) {
         toast.error('Server is starting up or unreachable. Please try again in a few seconds.');
@@ -256,6 +256,9 @@ export default function Home() {
             >
               FAQs
             </button>
+            <Link to="/organisation/login" className="text-emerald-700 font-semibold hover:text-emerald-900 transition-colors decoration-none">
+              For Organisations
+            </Link>
           </nav>
 
           {/* Auth Action Buttons */}
@@ -326,6 +329,13 @@ export default function Home() {
             >
               FAQs
             </button>
+            <Link
+              to="/organisation/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-left text-emerald-700 font-bold text-base py-1.5 decoration-none"
+            >
+              For Organisations
+            </Link>
 
             <hr className="border-emerald-100/60 my-1" />
 
@@ -420,6 +430,12 @@ export default function Home() {
                   >
                     Start Tracking <FiArrowRight />
                   </button>
+                  <Link
+                    to="/organisation/register"
+                    className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white font-bold text-sm border border-slate-700 transition flex items-center justify-center gap-2 decoration-none"
+                  >
+                    Organisation workspace <FiUsers />
+                  </Link>
                   <button 
                     onClick={() => handleScrollTo('features')}
                     className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white/80 hover:bg-emerald-50 text-emerald-800 font-bold text-base border border-emerald-250 transition cursor-pointer shadow-sm"

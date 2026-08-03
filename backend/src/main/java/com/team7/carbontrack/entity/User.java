@@ -40,6 +40,15 @@ public class User {
     @Column(name = "org_id")
     private Long orgId;
 
+    @Column(name = "employee_id", length = 50)
+    private String employeeId;
+
+    @Column(length = 100)
+    private String department;
+
+    @Column(length = 100)
+    private String designation;
+
     /** The CarbonTrack member whose invite link was used at registration. */
     @Column(name = "referred_by_user_id")
     private Long referredByUserId;

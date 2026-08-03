@@ -3,6 +3,8 @@ package com.team7.carbontrack.controller;
 import com.team7.carbontrack.dto.AuthResponse;
 import com.team7.carbontrack.dto.LoginRequest;
 import com.team7.carbontrack.dto.RegisterRequest;
+import com.team7.carbontrack.dto.OrganisationRegisterRequest;
+import com.team7.carbontrack.dto.OrganisationMemberRegisterRequest;
 import com.team7.carbontrack.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -28,6 +30,15 @@ public class AuthController {
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
         AuthResponse response = authService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PostMapping("/organisation/register")
+    public ResponseEntity<AuthResponse> registerOrganisation(@Valid @RequestBody OrganisationRegisterRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(authService.registerOrganisation(request));
+    }
+    @PostMapping("/organisation/join")
+    public ResponseEntity<AuthResponse> joinOrganisation(@Valid @RequestBody OrganisationMemberRegisterRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(authService.registerOrganisationMember(request));
     }
 
     @PostMapping("/login")

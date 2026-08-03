@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { organisationService } from '../services/api';
 import { toast } from 'react-toastify';
 import { ResponsiveContainer, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import { FiShield, FiTrendingUp, FiTrendingDown, FiActivity, FiUsers, FiInfo } from 'react-icons/fi';
+import { FiShield, FiTrendingUp, FiTrendingDown, FiActivity, FiUsers, FiInfo, FiDownload } from 'react-icons/fi';
 
 const CATEGORY_COLORS = {
   TRANSPORT: '#10b981',
@@ -14,6 +14,21 @@ const CATEGORY_COLORS = {
 export default function Organisation() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const exportCsrReport = () => {
+    const escape = (value) => `"${String(value ?? '').replaceAll('"', '""')}"`;
+    const rows = [
+      ['Employee', '30 day emissions (kg CO2e)', 'Goal status', 'Last log date'],
+      ...data.employees.map((employee) => [employee.username, employee.totalCo2e, employee.activeGoalStatus, employee.lastLogDate]),
+    ];
+    const csv = rows.map((row) => row.map(escape).join(',')).join('\n');
+    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${data.organisationName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-csr-report.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
 
   useEffect(() => {
     async function fetchOrgDashboard() {
@@ -144,7 +159,12 @@ export default function Organisation() {
 
       {/* Employees CSR comparison table */}
       <div className="glass-card p-6">
-        <h3 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)] mb-6">Employee Sustainability Comparison (CSR)</h3>
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+          <h3 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)]">Employee Sustainability Comparison (CSR)</h3>
+          <button onClick={exportCsrReport} className="btn-secondary inline-flex items-center gap-2 text-xs">
+            <FiDownload /> Export CSV
+          </button>
+        </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>

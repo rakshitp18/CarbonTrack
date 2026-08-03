@@ -9,6 +9,14 @@ export const authService = {
     const res = await api.post('/auth/register', data);
     return res.data;
   },
+  registerOrganisation: async (data) => {
+    const res = await api.post('/auth/organisation/register', data);
+    return res.data;
+  },
+  joinOrganisation: async (data) => {
+    const res = await api.post('/auth/organisation/join', data);
+    return res.data;
+  },
   logout: () => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('user');
@@ -37,6 +45,13 @@ export const activityService = {
   },
   deleteActivity: async (id) => {
     const res = await api.delete(`/activities/${id}`);
+    return res.data;
+  },
+};
+
+export const emissionFactorService = {
+  getActiveFactors: async () => {
+    const res = await api.get('/emission-factors');
     return res.data;
   },
 };

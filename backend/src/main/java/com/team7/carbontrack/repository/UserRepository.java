@@ -26,4 +26,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByProviderIdAndAuthProvider(String providerId, com.team7.carbontrack.entity.AuthProvider authProvider);
 
     java.util.List<User> findByOrgId(Long orgId);
+    boolean existsByOrgIdAndEmployeeId(Long orgId, String employeeId);
 }

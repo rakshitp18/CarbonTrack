@@ -5,6 +5,7 @@ import java.util.List;
 
 public record OrganisationDashboardSummary(
     String organisationName,
+    String joinCode,
     List<CategoryEmission> categoryBreakdown,
     BigDecimal currentMonthEmissions,
     BigDecimal previousMonthEmissions,
@@ -13,6 +14,9 @@ public record OrganisationDashboardSummary(
     public record EmployeeComparison(
         Long id,
         String username,
+        String employeeId,
+        String department,
+        String designation,
         BigDecimal totalCo2e,
         String activeGoalStatus, // "ON_TRACK", "OFF_TRACK", "NO_ACTIVE_GOAL"
         String lastLogDate

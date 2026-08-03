@@ -133,6 +133,9 @@ export default function Login() {
               Register Here
             </Link>
           </p>
+          <Link to="/organisation/login" className="mt-3 inline-block text-xs font-semibold text-[var(--color-accent)] hover:underline">
+            Organisation administrator? Sign in to your workspace
+          </Link>
         </div>
       </div>
     </div>
