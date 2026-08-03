@@ -8,14 +8,13 @@ import { GiSprout } from 'react-icons/gi';
 import EcoPulse from '../components/EcoPulse';
 import BadgeCard from "../components/BadgeCard";
 import { badges } from "../data/badges";
-import AvatarPicker, { AVATAR_PRESETS, convertSvgToDataUrl } from '../components/AvatarPicker';
+import { AVATAR_PRESETS, convertSvgToDataUrl } from '../components/AvatarPicker';
 
 export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [cameraActive, setCameraActive] = useState(false);
-  const [showAvatarPicker, setShowAvatarPicker] = useState(false);
   const [stream, setStream] = useState(null);
   const [earnedBadges, setEarnedBadges] = useState([]);
   const [copiedInvite, setCopiedInvite] = useState(false);
@@ -265,16 +264,6 @@ export default function Profile() {
 
                 {/* Floating Action Buttons */}
                 <div className="absolute bottom-0 right-0 flex gap-1 translate-x-2 translate-y-1">
-                  {/* Preset Avatar Chooser */}
-                  <button
-                    type="button"
-                    onClick={() => setShowAvatarPicker(true)}
-                    className="w-8 h-8 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-md border-2 border-white cursor-pointer transition duration-200"
-                    title="Choose preset avatar"
-                  >
-                    <FiSmile className="text-xs" />
-                  </button>
-
                   {/* Upload image */}
                   <button
                     type="button"
@@ -299,19 +288,12 @@ export default function Profile() {
                 </div>
               </div>
               
-              {/* Preset Avatar Preview Row */}
+              {/* Preset Avatar Selection Row */}
               <div className="mt-4 text-center w-full">
-                <div className="flex items-center justify-between mb-2 px-1">
+                <div className="flex items-center justify-center mb-2 px-1">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-text-muted)] flex items-center gap-1">
                     <FiSmile className="text-emerald-500" /> Preset Avatars
                   </span>
-                  <button
-                    type="button"
-                    onClick={() => setShowAvatarPicker(true)}
-                    className="text-[10px] font-bold text-emerald-500 hover:text-emerald-400 transition cursor-pointer"
-                  >
-                    View Stage &rarr;
-                  </button>
                 </div>
 
                 <div className="flex items-center justify-center gap-2 overflow-x-auto py-1.5 scrollbar-none">
@@ -475,16 +457,6 @@ export default function Profile() {
         </div>
       )}
 
-      {/* Avatar Picker Modal */}
-      {showAvatarPicker && (
-        <AvatarPicker
-          onSelectAvatar={(dataUrl) => {
-            setProfilePhoto(dataUrl);
-            setShowAvatarPicker(false);
-          }}
-          onClose={() => setShowAvatarPicker(false)}
-        />
-      )}
     </div>
   );
 }
