@@ -1,0 +1,273 @@
+{
+  "dashboard": "డ్యాష్‌బోర్డ్",
+  "routePlanner": "మార్గ ప్రణాళిక",
+  "logActivity": "కార్యకలాపాన్ని నమోదు చేయండి",
+  "goals": "లక్ష్యాలు",
+  "leaderboard": "లీడర్‌బోర్డ్",
+  "badges": "బ్యాడ్జ్‌లు",
+  "organizationManager": "సంస్థ నిర్వాహకుడు",
+
+  "confirmLogout": "లాగ్ అవుట్‌ను నిర్ధారించండి",
+  "confirmLogoutMessage": "మీరు నిజంగా మీ సెషన్ నుండి లాగ్ అవుట్ కావాలనుకుంటున్నారా?",
+  "cancel": "రద్దు చేయండి",
+
+  "yourCarbonPulse": "మీ కార్బన్ కార్యకలాపాలు",
+  "heroTitle": "చిన్న నిర్ణయాలు, పెద్ద ప్రభావం.",
+  "heroDescription": "గత 30 రోజుల్లో మీరు {{value}} kg CO₂e నమోదు చేశారు. మీ కార్బన్ ఫుట్‌ప్రింట్‌ను మరింత స్పష్టంగా అర్థం చేసుకోండి.",
+  "logAnActivity": "కార్యకలాపాన్ని నమోదు చేయండి",
+
+  "dayStreak": "రోజుల స్ట్రీక్",
+  "peerRank": "సహచరుల ర్యాంక్",
+  "nextActions": "తదుపరి చర్యలు",
+
+  "todaysFootprint": "ఈరోజు కార్బన్ ఫుట్‌ప్రింట్",
+  "weeklyFootprint": "వారపు కార్బన్ ఫుట్‌ప్రింట్",
+  "monthlyFootprint": "నెలవారీ కార్బన్ ఫుట్‌ప్రింట్",
+  "currentStreak": "ప్రస్తుత స్ట్రీక్",
+
+  "kgCo2e": "కిలోగ్రా CO₂e",
+  "emissionsLoggedToday": "ఈరోజు నమోదు చేసిన ఉద్గారాలు",
+  "last7DaysCumulative": "గత 7 రోజుల మొత్తం",
+  "last30DaysCumulative": "గత 30 రోజుల మొత్తం",
+
+  "daysCount": "రోజులు",
+  "bestStreak": "అత్యుత్తమ స్ట్రీక్",
+
+  "weeklyEmissionTrend": "వారపు ఉద్గార ధోరణి",
+  "thisWeek": "ఈ వారం",
+  "lastWeek": "గత వారం",
+
+  "days": {
+    "Sun": "ఆది",
+    "Mon": "సోమ",
+    "Tue": "మంగళ",
+    "Wed": "బుధ",
+    "Thu": "గురు",
+    "Fri": "శుక్ర",
+    "Sat": "శని"
+  },
+
+  "carbonReductionGoal": "కార్బన్ తగ్గింపు లక్ష్యం",
+  "baseline": "ప్రాథమిక స్థాయి",
+  "target": "లక్ష్యం",
+  "loggedProgress": "నమోదైన పురోగతి",
+
+  "dailyBudget": "రోజువారీ పరిమితి",
+  "dailyAverage": "రోజువారీ సగటు",
+  "redRequired": "అవసరమైన తగ్గింపు",
+
+  "kgUnit": "కిలోగ్రా",
+  "kgPerDay": "కిలోగ్రా/రోజు",
+
+  "footprintProjectionTimeline": "కార్బన్ ఫుట్‌ప్రింట్ అంచనా కాలక్రమం",
+
+  "timelineStart": "ప్రారంభం",
+  "timelineToday": "ఈరోజు",
+  "timelineEndGoal": "లక్ష్యం",
+
+  "targetBound": "లక్ష్య పరిమితి",
+  "targetLimit": "లక్ష్య సరిహద్దు",
+  "actualFootprint": "వాస్తవ కార్బన్ ఫుట్‌ప్రింట్",
+  "projected": "అంచనా",
+  "projectedPath": "అంచనా మార్గం",
+
+  "noActiveGoal": "ప్రస్తుతం ఎలాంటి సక్రియ లక్ష్యం లేదు.",
+
+  "peerBenchmarking": "సహచరులతో పోలిక",
+  "betterThanPeers": "సహచరుల కంటే మెరుగైనది",
+  "peerBenchmarkDescription": "మీ కార్బన్ ఫుట్‌ప్రింట్‌ను ఇతర సమాన వినియోగదారులతో పోల్చండి.",
+
+  "smartWeeklyPlan": "స్మార్ట్ వారపు ప్రణాళిక",
+  "highestImpactMoves": "అత్యధిక ప్రభావం చూపే సూచనలు",
+  "addedToPlan": "ప్రణాళికలో చేర్చబడింది",
+  "addToPlan": "ప్రణాళికలో చేర్చండి",
+
+  "recentActivities": "ఇటీవలి కార్యకలాపాలు",
+
+  "thDate": "తేదీ",
+  "thCategory": "వర్గం",
+  "thActivityType": "కార్యకలాప రకం",
+  "thQty": "పరిమాణం",
+  "thCo2Emission": "CO₂ ఉద్గారం",
+
+  "logThisAgain": "మళ్లీ నమోదు చేయండి",
+  "deleteActivityLog": "కార్యకలాపాన్ని తొలగించండి",
+  "noActivitiesLogged": "ఇప్పటివరకు ఎలాంటి కార్యకలాపాలు నమోదు కాలేదు.",
+
+  "deleteActivityLogTitle": "కార్యకలాపాన్ని తొలగించండి",
+  "deleteActivityLogConfirm": "ఈ కార్యకలాపాన్ని నిజంగా తొలగించాలనుకుంటున్నారా?",
+
+  "delete": "తొలగించండి",
+
+  "gatheringInsights": "మీ స్థిరత్వ సమాచారాన్ని సేకరిస్తున్నాము...",
+  "failedToLoadDashboard": "డ్యాష్‌బోర్డ్‌ను లోడ్ చేయడం విఫలమైంది.",
+  "failedToDeleteActivity": "కార్యకలాపాన్ని తొలగించడం విఫలమైంది.",
+  "activityDeletedSuccess": "కార్యకలాపం విజయవంతంగా తొలగించబడింది.",
+  "loggedAgainNote": "కార్యకలాపం మళ్లీ నమోదు చేయబడింది.",
+  "loggedAgainSuccess": "కార్యకలాపం విజయవంతంగా నమోదు చేయబడింది.",
+  "failedToLogAgain": "కార్యకలాపాన్ని మళ్లీ నమోదు చేయడం విఫలమైంది.",
+
+  "noDataAvailable": "డేటా అందుబాటులో లేదు.",
+  "startByLogging": "మీ కార్బన్ కార్యకలాపాలను నమోదు చేసి ప్రారంభించండి.",
+
+  "category": {
+    "TRANSPORT": "రవాణా",
+    "ELECTRICITY": "విద్యుత్",
+    "FOOD": "ఆహారం",
+    "SHOPPING": "షాపింగ్"
+  },
+
+  "activity": {
+    "GRID_ELECTRICITY": "గ్రిడ్ విద్యుత్",
+    "SOLAR_POWER": "సౌర శక్తి",
+    "CAR_PETROL": "పెట్రోల్ కారు",
+    "CAR_DIESEL": "డీజిల్ కారు",
+    "CAR_EV": "ఎలక్ట్రిక్ కారు",
+    "BIKE": "మోటార్ సైకిల్",
+    "BUS": "బస్సు",
+    "TRAIN": "రైలు",
+    "METRO": "మెట్రో",
+    "FLIGHT": "విమాన ప్రయాణం",
+    "WALK": "నడక",
+    "BICYCLE": "సైకిల్",
+    "VEGETARIAN_MEAL": "శాకాహార భోజనం",
+    "NON_VEGETARIAN_MEAL": "మాంసాహార భోజనం",
+    "VEGAN_MEAL": "వీగన్ భోజనం",
+    "ONLINE_SHOPPING": "ఆన్‌లైన్ షాపింగ్",
+    "OFFLINE_SHOPPING": "ఆఫ్‌లైన్ షాపింగ్"
+  },
+
+  "goalStatus": {
+    "ON_TRACK": "సరైన దారిలో",
+    "OFF_TRACK": "లక్ష్యం నుండి వెనుకబడి ఉంది",
+    "AT_RISK": "ప్రమాదంలో ఉంది"
+  },
+
+
+  "categories": {
+    "transport": "రవాణా",
+    "electricity": "విద్యుత్",
+    "food": "ఆహారం",
+    "shopping": "షాపింగ్"
+  },
+
+  "logActivityTitle": "{{category}} కార్యకలాపాన్ని నమోదు చేయండి",
+
+  "frequentlyLoggedQuickLog": "తరచుగా నమోదు చేసే కార్యకలాపాలు (త్వరిత నమోదు)",
+
+  "activityTypeLabel": "కార్యకలాప రకం",
+  "quantityLabel": "పరిమాణం",
+  "dateLabel": "తేదీ",
+  "notesOptionalLabel": "గమనికలు (ఐచ్చికం)",
+
+  "notesPlaceholder": "ఉదా: రోజువారీ ప్రయాణం, వ్యాపార విమాన ప్రయాణం",
+
+  "co2FootprintPreview": "CO₂ ఉద్గారాల ప్రివ్యూ",
+
+  "saveActivityLog": "కార్యకలాపాన్ని సేవ్ చేయండి",
+
+  "recentActivityLogs": "ఇటీవలి కార్యకలాపాలు",
+
+  "loggedCount": "{{count}} కార్యకలాపాలు నమోదు అయ్యాయి",
+
+  "logThisAgain": "మళ్లీ నమోదు చేయండి",
+
+  "deleteLog": "రికార్డ్ తొలగించండి",
+
+  "deleteActivityLogTitle": "కార్యకలాపాన్ని తొలగించండి",
+
+  "deleteActivityLogConfirm": "మీరు ఈ కార్యకలాపాన్ని నిజంగా తొలగించాలనుకుంటున్నారా? ఈ చర్యను తిరిగి పొందలేరు.",
+
+  "activityTypeRequired": "కార్యకలాప రకం తప్పనిసరి",
+
+  "quantityRequired": "పరిమాణం తప్పనిసరి",
+
+  "quantityCannotBeNegative": "పరిమాణం ప్రతికూలంగా ఉండకూడదు",
+
+  "dateRequired": "తేదీ తప్పనిసరి",
+
+  "activityLoggedSuccess": "కార్యకలాపం విజయవంతంగా నమోదు చేయబడింది!",
+
+  "failedToLogActivity": "కార్యకలాపాన్ని నమోదు చేయడంలో విఫలమైంది.",
+
+  "failedToDeleteActivity": "కార్యకలాపాన్ని తొలగించడంలో విఫలమైంది.",
+
+  "activityDeletedSuccess": "కార్యకలాపం విజయవంతంగా తొలగించబడింది!",
+
+  "failedToLogAgain": "కార్యకలాపాన్ని మళ్లీ నమోదు చేయడంలో విఫలమైంది.",
+
+  "noLoggedActivitiesFound": "ఎటువంటి కార్యకలాపాలు నమోదు కాలేదు.",
+
+  "quickLogPrefix": "త్వరిత నమోదు",
+
+  "loggedAgainPrefix": "మళ్లీ నమోదు చేయబడింది",
+
+  "quickLogSuccessToast": "{{title}} కోసం {{quantity}} {{unit}} విజయవంతంగా నమోదు చేయబడింది!",
+
+  "loggedAgainSuccess": "{{quantity}} {{unit}} మళ్లీ విజయవంతంగా నమోదు చేయబడింది!",
+
+  "quickLogPetrolCar": "పెట్రోల్ కారు",
+
+  "quickLogDieselCar": "డీజిల్ కారు",
+
+  "quickLogElectricCar": "ఎలక్ట్రిక్ కారు",
+
+  "quickLogShortHaulFlight": "చిన్న దూర విమాన ప్రయాణం",
+
+  "quickLogLongHaulFlight": "దీర్ఘ దూర విమాన ప్రయాణం",
+
+  "quickLogBusCommute": "బస్సు ప్రయాణం",
+
+  "quickLogTrainTravel": "రైలు ప్రయాణం",
+
+  "quickLogHomePower": "ఇంటి విద్యుత్",
+
+  "quickLogRenewablePower": "పునరుత్పాదక విద్యుత్",
+
+  "quickLogBeefMeal": "బీఫ్ భోజనం",
+
+  "quickLogChickenMeal": "చికెన్ భోజనం",
+
+  "quickLogVeggieMeal": "శాకాహార భోజనం",
+
+  "quickLogVeganMeal": "వీగన్ భోజనం",
+
+  "quickLogNewClothes": "కొత్త బట్టలు",
+
+  "quickLogElectronics": "ఎలక్ట్రానిక్ వస్తువులు",
+
+  "quickLogGeneralShopping": "సాధారణ షాపింగ్",
+
+  "activityTypes": {
+    "CAR_PETROL": "పెట్రోల్ కారు",
+    "CAR_DIESEL": "డీజిల్ కారు",
+    "CAR_ELECTRIC": "ఎలక్ట్రిక్ కారు",
+
+    "PUBLIC_TRANSIT_BUS": "బస్సు",
+
+    "PUBLIC_TRANSIT_RAIL": "రైలు",
+
+    "FLIGHT_SHORT_HAUL": "చిన్న దూర విమాన ప్రయాణం",
+
+    "FLIGHT_LONG_HAUL": "దీర్ఘ దూర విమాన ప్రయాణం",
+
+    "GRID_ELECTRICITY": "గ్రిడ్ విద్యుత్",
+
+    "RENEWABLE_ELECTRICITY": "పునరుత్పాదక విద్యుత్",
+
+    "BEEF_MEAL": "బీఫ్ భోజనం",
+
+    "CHICKEN_MEAL": "చికెన్ భోజనం",
+
+    "VEGETARIAN_MEAL": "శాకాహార భోజనం",
+
+    "VEGAN_MEAL": "వీగన్ భోజనం",
+
+    "CLOTHING": "దుస్తులు",
+
+    "ELECTRONICS": "ఎలక్ట్రానిక్ వస్తువులు",
+
+    "GENERAL_RETAIL": "సాధారణ షాపింగ్"
+  }
+
+}

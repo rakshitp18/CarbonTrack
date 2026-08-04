@@ -1,0 +1,273 @@
+{
+  "dashboard": "டாஷ்போர்டு",
+  "routePlanner": "பாதை திட்டமிடுபவர்",
+  "logActivity": "செயல்பாட்டைப் பதிவு செய்",
+  "goals": "இலக்குகள்",
+  "leaderboard": "தரவரிசை",
+  "badges": "பேட்ஜ்கள்",
+  "organizationManager": "நிறுவன மேலாளர்",
+
+  "confirmLogout": "வெளியேறுவதை உறுதிப்படுத்தவும்",
+  "confirmLogoutMessage": "நீங்கள் உண்மையாகவே உங்கள் அமர்விலிருந்து வெளியேற விரும்புகிறீர்களா?",
+  "cancel": "ரத்து செய்",
+
+  "yourCarbonPulse": "உங்கள் கார்பன் செயல்பாடு",
+  "heroTitle": "சிறிய செயல்கள், பெரிய மாற்றம்.",
+  "heroDescription": "கடந்த 30 நாட்களில் நீங்கள் {{value}} kg CO₂e பதிவு செய்துள்ளீர்கள். உங்கள் கார்பன் தடத்தை மேலும் தெளிவாகப் புரிந்துகொள்ளுங்கள்.",
+  "logAnActivity": "செயல்பாட்டைப் பதிவு செய்",
+
+  "dayStreak": "தொடர்ச்சியான நாட்கள்",
+  "peerRank": "சக பயனர் தரவரிசை",
+  "nextActions": "அடுத்த நடவடிக்கைகள்",
+
+  "todaysFootprint": "இன்றைய கார்பன் தடம்",
+  "weeklyFootprint": "வாராந்திர கார்பன் தடம்",
+  "monthlyFootprint": "மாதாந்திர கார்பன் தடம்",
+  "currentStreak": "தற்போதைய தொடர்",
+
+  "kgCo2e": "கி.கி CO₂e",
+  "emissionsLoggedToday": "இன்று பதிவு செய்யப்பட்ட உமிழ்வு",
+  "last7DaysCumulative": "கடந்த 7 நாட்களின் மொத்தம்",
+  "last30DaysCumulative": "கடந்த 30 நாட்களின் மொத்தம்",
+
+  "daysCount": "நாட்கள்",
+  "bestStreak": "சிறந்த தொடர்",
+
+  "weeklyEmissionTrend": "வாராந்திர உமிழ்வு போக்கு",
+  "thisWeek": "இந்த வாரம்",
+  "lastWeek": "கடந்த வாரம்",
+
+  "days": {
+    "Sun": "ஞாயி",
+    "Mon": "திங்கள்",
+    "Tue": "செவ்வாய்",
+    "Wed": "புதன்",
+    "Thu": "வியாழன்",
+    "Fri": "வெள்ளி",
+    "Sat": "சனி"
+  },
+
+  "carbonReductionGoal": "கார்பன் குறைப்பு இலக்கு",
+  "baseline": "அடிப்படை அளவு",
+  "target": "இலக்கு",
+  "loggedProgress": "பதிவு செய்யப்பட்ட முன்னேற்றம்",
+
+  "dailyBudget": "தினசரி வரம்பு",
+  "dailyAverage": "தினசரி சராசரி",
+  "redRequired": "தேவையான குறைப்பு",
+
+  "kgUnit": "கி.கி",
+  "kgPerDay": "கி.கி/நாள்",
+
+  "footprintProjectionTimeline": "கார்பன் தட கணிப்பு காலவரிசை",
+
+  "timelineStart": "தொடக்கம்",
+  "timelineToday": "இன்று",
+  "timelineEndGoal": "இலக்கு",
+
+  "targetBound": "இலக்கு வரம்பு",
+  "targetLimit": "இலக்கு எல்லை",
+  "actualFootprint": "உண்மையான கார்பன் தடம்",
+  "projected": "கணிக்கப்பட்டது",
+  "projectedPath": "கணிக்கப்பட்ட பாதை",
+
+  "noActiveGoal": "செயலில் உள்ள இலக்கு எதுவும் இல்லை.",
+
+  "peerBenchmarking": "சக பயனர் ஒப்பீடு",
+  "betterThanPeers": "சக பயனர்களைவிட சிறந்தது",
+  "peerBenchmarkDescription": "ஒத்த பயனர்களுடன் உங்கள் கார்பன் தடத்தை ஒப்பிடுங்கள்.",
+
+  "smartWeeklyPlan": "ஸ்மார்ட் வாராந்திர திட்டம்",
+  "highestImpactMoves": "அதிக தாக்கம் உள்ள பரிந்துரைகள்",
+  "addedToPlan": "திட்டத்தில் சேர்க்கப்பட்டது",
+  "addToPlan": "திட்டத்தில் சேர்க்கவும்",
+
+  "recentActivities": "சமீபத்திய செயல்பாடுகள்",
+
+  "thDate": "தேதி",
+  "thCategory": "வகை",
+  "thActivityType": "செயல்பாட்டு வகை",
+  "thQty": "அளவு",
+  "thCo2Emission": "CO₂ உமிழ்வு",
+
+  "logThisAgain": "மீண்டும் பதிவு செய்",
+  "deleteActivityLog": "செயல்பாட்டை நீக்கு",
+  "noActivitiesLogged": "இதுவரை எந்த செயல்பாடும் பதிவு செய்யப்படவில்லை.",
+
+  "deleteActivityLogTitle": "செயல்பாட்டை நீக்கு",
+  "deleteActivityLogConfirm": "இந்த செயல்பாட்டை நீக்க விரும்புகிறீர்களா?",
+
+  "delete": "நீக்கு",
+
+  "gatheringInsights": "உங்கள் நிலைத்தன்மை தகவல்கள் சேகரிக்கப்படுகின்றன...",
+  "failedToLoadDashboard": "டாஷ்போர்டை ஏற்ற முடியவில்லை.",
+  "failedToDeleteActivity": "செயல்பாட்டை நீக்க முடியவில்லை.",
+  "activityDeletedSuccess": "செயல்பாடு வெற்றிகரமாக நீக்கப்பட்டது.",
+  "loggedAgainNote": "செயல்பாடு மீண்டும் பதிவு செய்யப்பட்டது.",
+  "loggedAgainSuccess": "செயல்பாடு வெற்றிகரமாக பதிவு செய்யப்பட்டது.",
+  "failedToLogAgain": "செயல்பாட்டை மீண்டும் பதிவு செய்ய முடியவில்லை.",
+
+  "noDataAvailable": "தரவு கிடைக்கவில்லை.",
+  "startByLogging": "உங்கள் கார்பன் செயல்பாடுகளை பதிவு செய்து தொடங்குங்கள்.",
+
+  "category": {
+    "TRANSPORT": "போக்குவரத்து",
+    "ELECTRICITY": "மின்சாரம்",
+    "FOOD": "உணவு",
+    "SHOPPING": "கொள்முதல்"
+  },
+
+  "activity": {
+    "GRID_ELECTRICITY": "கிரிட் மின்சாரம்",
+    "SOLAR_POWER": "சூரிய ஆற்றல்",
+    "CAR_PETROL": "பெட்ரோல் கார்",
+    "CAR_DIESEL": "டீசல் கார்",
+    "CAR_EV": "மின்சார கார்",
+    "BIKE": "மோட்டார் சைக்கிள்",
+    "BUS": "பேருந்து",
+    "TRAIN": "ரயில்",
+    "METRO": "மெட்ரோ",
+    "FLIGHT": "விமானப் பயணம்",
+    "WALK": "நடப்பு",
+    "BICYCLE": "மிதிவண்டி",
+    "VEGETARIAN_MEAL": "சைவ உணவு",
+    "NON_VEGETARIAN_MEAL": "அசைவ உணவு",
+    "VEGAN_MEAL": "வீகன் உணவு",
+    "ONLINE_SHOPPING": "ஆன்லைன் கொள்முதல்",
+    "OFFLINE_SHOPPING": "நேரடி கொள்முதல்"
+  },
+
+  "goalStatus": {
+    "ON_TRACK": "சரியான பாதையில்",
+    "OFF_TRACK": "இலக்கிலிருந்து பின்தங்கியுள்ளது",
+    "AT_RISK": "அபாயத்தில்"
+  },
+
+
+  "categories": {
+    "transport": "போக்குவரத்து",
+    "electricity": "மின்சாரம்",
+    "food": "உணவு",
+    "shopping": "கொள்முதல்"
+  },
+
+  "logActivityTitle": "{{category}} செயல்பாட்டைப் பதிவு செய்",
+
+  "frequentlyLoggedQuickLog": "அடிக்கடி பதிவு செய்யப்படும் செயல்கள் (விரைவு பதிவு)",
+
+  "activityTypeLabel": "செயல்பாட்டு வகை",
+  "quantityLabel": "அளவு",
+  "dateLabel": "தேதி",
+  "notesOptionalLabel": "குறிப்புகள் (விருப்பமானது)",
+
+  "notesPlaceholder": "எ.கா.: தினசரி பயணம், வணிக விமானப் பயணம்",
+
+  "co2FootprintPreview": "CO₂ உமிழ்வு முன்னோட்டம்",
+
+  "saveActivityLog": "செயல்பாட்டைப் சேமி",
+
+  "recentActivityLogs": "சமீபத்திய செயல்பாடுகள்",
+
+  "loggedCount": "{{count}} செயல்கள் பதிவு செய்யப்பட்டுள்ளன",
+
+  "logThisAgain": "மீண்டும் பதிவு செய்",
+
+  "deleteLog": "பதிவை நீக்கு",
+
+  "deleteActivityLogTitle": "செயல்பாட்டை நீக்கு",
+
+  "deleteActivityLogConfirm": "இந்த செயல்பாட்டை நீக்க விரும்புகிறீர்களா? இந்த செயலை மீட்டெடுக்க முடியாது.",
+
+  "activityTypeRequired": "செயல்பாட்டு வகை அவசியம்",
+
+  "quantityRequired": "அளவு அவசியம்",
+
+  "quantityCannotBeNegative": "அளவு எதிர்மறையாக இருக்க முடியாது",
+
+  "dateRequired": "தேதி அவசியம்",
+
+  "activityLoggedSuccess": "செயல்பாடு வெற்றிகரமாக பதிவு செய்யப்பட்டது!",
+
+  "failedToLogActivity": "செயல்பாட்டைப் பதிவு செய்ய முடியவில்லை.",
+
+  "failedToDeleteActivity": "செயல்பாட்டை நீக்க முடியவில்லை.",
+
+  "activityDeletedSuccess": "செயல்பாடு வெற்றிகரமாக நீக்கப்பட்டது!",
+
+  "failedToLogAgain": "செயல்பாட்டை மீண்டும் பதிவு செய்ய முடியவில்லை.",
+
+  "noLoggedActivitiesFound": "பதிவு செய்யப்பட்ட செயல்கள் எதுவும் இல்லை.",
+
+  "quickLogPrefix": "விரைவு பதிவு",
+
+  "loggedAgainPrefix": "மீண்டும் பதிவு செய்யப்பட்டது",
+
+  "quickLogSuccessToast": "{{title}} க்காக {{quantity}} {{unit}} வெற்றிகரமாக பதிவு செய்யப்பட்டது!",
+
+  "loggedAgainSuccess": "{{quantity}} {{unit}} மீண்டும் வெற்றிகரமாக பதிவு செய்யப்பட்டது!",
+
+  "quickLogPetrolCar": "பெட்ரோல் கார்",
+
+  "quickLogDieselCar": "டீசல் கார்",
+
+  "quickLogElectricCar": "மின்சார கார்",
+
+  "quickLogShortHaulFlight": "குறுகிய தூர விமானப் பயணம்",
+
+  "quickLogLongHaulFlight": "நீண்ட தூர விமானப் பயணம்",
+
+  "quickLogBusCommute": "பேருந்து பயணம்",
+
+  "quickLogTrainTravel": "ரயில் பயணம்",
+
+  "quickLogHomePower": "வீட்டு மின்சாரம்",
+
+  "quickLogRenewablePower": "புதுப்பிக்கத்தக்க மின்சாரம்",
+
+  "quickLogBeefMeal": "மாட்டிறைச்சி உணவு",
+
+  "quickLogChickenMeal": "கோழி உணவு",
+
+  "quickLogVeggieMeal": "சைவ உணவு",
+
+  "quickLogVeganMeal": "வீகன் உணவு",
+
+  "quickLogNewClothes": "புதிய ஆடைகள்",
+
+  "quickLogElectronics": "மின்னணு பொருட்கள்",
+
+  "quickLogGeneralShopping": "பொது கொள்முதல்",
+
+  "activityTypes": {
+    "CAR_PETROL": "பெட்ரோல் கார்",
+    "CAR_DIESEL": "டீசல் கார்",
+    "CAR_ELECTRIC": "மின்சார கார்",
+
+    "PUBLIC_TRANSIT_BUS": "பேருந்து",
+
+    "PUBLIC_TRANSIT_RAIL": "ரயில்",
+
+    "FLIGHT_SHORT_HAUL": "குறுகிய தூர விமானப் பயணம்",
+
+    "FLIGHT_LONG_HAUL": "நீண்ட தூர விமானப் பயணம்",
+
+    "GRID_ELECTRICITY": "கிரிட் மின்சாரம்",
+
+    "RENEWABLE_ELECTRICITY": "புதுப்பிக்கத்தக்க மின்சாரம்",
+
+    "BEEF_MEAL": "மாட்டிறைச்சி உணவு",
+
+    "CHICKEN_MEAL": "கோழி உணவு",
+
+    "VEGETARIAN_MEAL": "சைவ உணவு",
+
+    "VEGAN_MEAL": "வீகன் உணவு",
+
+    "CLOTHING": "ஆடைகள்",
+
+    "ELECTRONICS": "மின்னணு பொருட்கள்",
+
+    "GENERAL_RETAIL": "பொது கொள்முதல்"
+  }
+
+}

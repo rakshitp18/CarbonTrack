@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, LayoutGroup } from 'framer-motion';
+import LanguageSelector from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { profileService } from '../services/api';
@@ -22,6 +24,7 @@ import { RiMedalLine } from 'react-icons/ri';
 export default function MorphicNavbar({ title }) {
   const { user, updateUser, logout, isOrgAdmin } = useAuth();
   const { theme, toggleTheme } = useTheme();
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -30,13 +33,15 @@ export default function MorphicNavbar({ title }) {
   const isDark = theme === 'dark';
 
   const navItems = [
-    { path: '/dashboard', name: 'Dashboard', icon: FiHome },
-    { path: '/route-optimizer', name: 'Route Planner', icon: FiCompass },
-    { path: '/log-activity', name: 'Log Activity', icon: FiPlusCircle },
-    { path: '/goals', name: 'Goals', icon: FiTarget },
-    { path: '/leaderboard', name: 'Leaderboard', icon: FiAward },
-    { path: '/badges', name: 'Badges', icon: RiMedalLine },
-    ...(isOrgAdmin ? [{ path: '/organisation/dashboard', name: 'Org Admin', icon: FiShield }] : []),
+    { path: "/dashboard", name: t("dashboard"), icon: FiHome },
+    { path: "/route-optimizer", name: t("routePlanner"), icon: FiCompass },
+    { path: "/log-activity", name: t("logActivity"), icon: FiPlusCircle },
+    { path: "/goals", name: t("goals"), icon: FiTarget },
+    { path: "/leaderboard", name: t("leaderboard"), icon: FiAward },
+    { path: "/badges", name: t("badges"), icon: RiMedalLine },
+    ...(isOrgAdmin
+      ? [{ path: "/organisation/dashboard", name: t("orgAdmin"), icon: FiShield }]
+      : []),
   ];
 
   const handleUnitSystemChange = async (e) => {
@@ -142,6 +147,9 @@ export default function MorphicNavbar({ title }) {
                 </select>
               </div>
 
+              {/* Language Selector */}
+              <LanguageSelector />
+
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
@@ -189,9 +197,9 @@ export default function MorphicNavbar({ title }) {
       {showConfirmLogout && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center p-4">
           <div className="glass-card max-w-sm w-full p-6 flex flex-col items-center bg-[var(--color-bg-secondary)] border-[var(--color-border)] shadow-2xl animate-fade-in text-[var(--color-text-primary)]">
-            <h4 className="text-base font-bold mb-2 font-outfit">Confirm Logout</h4>
+            <h4 className="text-base font-bold mb-2 font-outfit"> {t("confirmLogout")}</h4>
             <p className="text-xs text-[var(--color-text-secondary)] text-center mb-6 leading-relaxed">
-              Are you sure you want to log out of your session?
+              {t("confirmLogoutMessage")}
             </p>
             <div className="flex gap-3 w-full">
               <button
@@ -199,7 +207,7 @@ export default function MorphicNavbar({ title }) {
                 onClick={() => setShowConfirmLogout(false)}
                 className="flex-1 btn-ghost py-2 text-xs font-semibold rounded-xl cursor-pointer"
               >
-                Cancel
+                {t("cancel")}
               </button>
               <button
                 type="button"
@@ -209,7 +217,7 @@ export default function MorphicNavbar({ title }) {
                 }}
                 className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-2 text-xs rounded-xl flex items-center justify-center gap-1.5 transition cursor-pointer border-none shadow-md shadow-red-900/30"
               >
-                Log Out
+                {t("logout")}
               </button>
             </div>
           </div>

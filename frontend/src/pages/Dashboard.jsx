@@ -3,30 +3,29 @@ import { Link } from 'react-router-dom';
 import { dashboardService, activityService } from '../services/api';
 import { toast } from 'react-toastify';
 import AppleActivityCard from '../components/AppleActivityCard';
+import { useTranslation } from "react-i18next";
 
-
-
-import { 
-  ResponsiveContainer, 
-  PieChart, 
-  Pie, 
-  Cell, 
-  Tooltip, 
-  Legend, 
-  LineChart, 
-  Line, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid 
+import {
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid
 } from 'recharts';
-import { 
-  FiActivity, 
-  FiAlertCircle, 
-  FiCalendar, 
-  FiCheckCircle, 
+import {
+  FiActivity,
+  FiAlertCircle,
+  FiCalendar,
+  FiCheckCircle,
   FiCompass,
   FiZap,
-  FiInfo, 
+  FiInfo,
   FiSmile,
   FiCpu,
   FiCheck,
@@ -54,28 +53,25 @@ const getLocalDateString = (date = new Date()) => {
 };
 
 export default function Dashboard() {
+  const { t } = useTranslation();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [deleteConfirmId, setDeleteConfirmId] = useState(null);
   const [completedTips, setCompletedTips] = useState([]);
-
 
   const fetchDashboard = async () => {
     try {
       const summary = await dashboardService.getDashboard();
       setData(summary);
     } catch (err) {
-      toast.error('Failed to load dashboard statistics');
+      toast.error(t('failedToLoadDashboard'));
     } finally {
       setLoading(false);
     }
   };
 
-
-
   useEffect(() => {
-      fetchDashboard();
-
+    fetchDashboard();
   }, []);
 
   const handleDeleteActivity = (id) => {
@@ -85,10 +81,10 @@ export default function Dashboard() {
   const executeDelete = async (id) => {
     try {
       await activityService.deleteActivity(id);
-      toast.success('Activity log deleted successfully!');
+      toast.success(t('activityDeletedSuccess'));
       fetchDashboard();
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed to delete activity log');
+      toast.error(err.response?.data?.message || t('failedToDeleteActivity'));
     }
   };
 
@@ -100,13 +96,13 @@ export default function Dashboard() {
         quantity: Number(act.quantity),
         unit: act.unit,
         logDate: getLocalDateString(),
-        notes: `Logged again from Dashboard`
+        notes: t('loggedAgainNote')
       };
       await activityService.logActivity(payload);
-      toast.success(`Logged ${act.quantity} ${act.unit.toLowerCase()} again!`);
+      toast.success(t('loggedAgainSuccess', { quantity: act.quantity, unit: act.unit.toLowerCase() }));
       fetchDashboard();
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed to log activity again');
+      toast.error(err.response?.data?.message || t('failedToLogAgain'));
     }
   };
 
@@ -115,18 +111,18 @@ export default function Dashboard() {
       <div className="space-y-6">
         <div className="flex flex-col items-center justify-center py-4 text-center">
           <EcoPulse className="h-20 w-20" />
-          <p className="-mt-2 text-xs font-medium text-[var(--color-text-muted)]">Gathering your sustainability insights…</p>
+          <p className="-mt-2 text-xs font-medium text-[var(--color-text-muted)]">{t('gatheringInsights')}</p>
         </div>
         <div className="animate-pulse space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="h-32 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl"></div>
-          ))}
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="h-80 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl"></div>
-          <div className="h-80 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl"></div>
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-32 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl"></div>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="h-80 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl"></div>
+            <div className="h-80 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl"></div>
+          </div>
         </div>
       </div>
     );
@@ -136,8 +132,8 @@ export default function Dashboard() {
     return (
       <div className="glass-card p-12 text-center flex flex-col items-center justify-center">
         <EcoPulse className="h-24 w-24" />
-        <h3 className="text-lg font-semibold">No data available</h3>
-        <p className="text-sm text-[var(--color-text-secondary)] mt-1">Start by logging your carbon activities.</p>
+        <h3 className="text-lg font-semibold">{t('noDataAvailable')}</h3>
+        <p className="text-sm text-[var(--color-text-secondary)] mt-1">{t('startByLogging')}</p>
       </div>
     );
   }
@@ -153,11 +149,11 @@ export default function Dashboard() {
   // Parse trend data (this week vs last week)
   const trendData = data.thisWeekTrend.map((item, idx) => {
     const d = new Date(item.logDate);
-    const dayLabel = DAYS[d.getDay()];
+    const dayLabel = t(`days.${DAYS[d.getDay()]}`);
     return {
       name: dayLabel,
-      'This Week': Number(item.totalCo2e),
-      'Last Week': data.lastWeekTrend[idx] ? Number(data.lastWeekTrend[idx].totalCo2e) : 0,
+      [t('thisWeek')]: Number(item.totalCo2e),
+      [t('lastWeek')]: data.lastWeekTrend[idx] ? Number(data.lastWeekTrend[idx].totalCo2e) : 0,
     };
   });
 
@@ -171,22 +167,20 @@ export default function Dashboard() {
     const start = new Date(goal.startDate);
     const today = new Date();
     const daysElapsed = Math.max(1, Math.ceil((today - start) / (1000 * 60 * 60 * 24)));
-    
+
     dailyAllowed = (goal.targetCo2e / goal.periodDays);
     currentDailyAvg = (goal.currentCo2e / daysElapsed);
     requiredDailyReduction = Math.max(0, currentDailyAvg - dailyAllowed);
 
     projectionData = [
-      { name: 'Start', 'Target Limit': 0, 'Actual Footprint': 0, 'Projected': 0 },
-      { name: 'Today', 'Target Limit': Math.round(dailyAllowed * daysElapsed), 'Actual Footprint': goal.currentCo2e, 'Projected': goal.currentCo2e },
-      { name: 'End Goal', 'Target Limit': goal.targetCo2e, 'Actual Footprint': null, 'Projected': Math.round(currentDailyAvg * goal.periodDays) }
+      { name: t('timelineStart'), [t('targetLimit')]: 0, [t('actualFootprint')]: 0, [t('projected')]: 0 },
+      { name: t('timelineToday'), [t('targetLimit')]: Math.round(dailyAllowed * daysElapsed), [t('actualFootprint')]: goal.currentCo2e, [t('projected')]: goal.currentCo2e },
+      { name: t('timelineEndGoal'), [t('targetLimit')]: goal.targetCo2e, [t('actualFootprint')]: null, [t('projected')]: Math.round(currentDailyAvg * goal.periodDays) }
     ];
   }
 
   return (
-
-      <div className="max-w-7xl mx-auto space-y-8 fade-in">
-
+    <div className="max-w-7xl mx-auto space-y-8 fade-in">
       <section className="dashboard-hero overflow-hidden p-6 md:p-8">
         <video
           className="dashboard-hero-video"
@@ -200,22 +194,22 @@ export default function Dashboard() {
         <div className="dashboard-hero-shade" aria-hidden="true" />
         <div className="relative z-10 max-w-2xl">
           <p className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-emerald-100">
-            <span className="pulse-dot bg-emerald-200" /> Your carbon pulse
+            <span className="pulse-dot bg-emerald-200" /> {t('yourCarbonPulse')}
           </p>
           <h1 className="font-outfit text-2xl font-extrabold tracking-tight text-white md:text-3xl">
-            Small choices, measurable impact.
+            {t('heroTitle')}
           </h1>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-emerald-50/90">
-            You have logged {data.monthlyCo2e} kg CO₂e in the last 30 days. Keep building a clearer picture of your footprint.
+            {t('heroDescription', { monthlyCo2e: data.monthlyCo2e })}
           </p>
           <Link to="/log-activity" className="hero-action mt-5 inline-flex items-center gap-2">
-            Log an activity <FiArrowRight />
+            {t('logAnActivity')} <FiArrowRight />
           </Link>
         </div>
         <div className="relative z-10 mt-6 grid max-w-xl grid-cols-3 gap-2 text-center md:absolute md:bottom-7 md:right-36 md:mt-0">
-          <div className="dashboard-mini-stat"><strong>{data.currentStreak}</strong><span>day streak</span></div>
-          <div className="dashboard-mini-stat"><strong>{data.percentileRank}%</strong><span>peer rank</span></div>
-          <div className="dashboard-mini-stat"><strong>{data.recommendationInsights?.length || 0}</strong><span>next actions</span></div>
+          <div className="dashboard-mini-stat"><strong>{data.currentStreak}</strong><span>{t('dayStreak')}</span></div>
+          <div className="dashboard-mini-stat"><strong>{data.percentileRank}%</strong><span>{t('peerRank')}</span></div>
+          <div className="dashboard-mini-stat"><strong>{data.recommendationInsights?.length || 0}</strong><span>{t('nextActions')}</span></div>
         </div>
         <EcoPulse className="dashboard-pulse absolute -right-3 -bottom-9 h-44 w-44 opacity-80 md:right-8" />
       </section>
@@ -226,35 +220,34 @@ export default function Dashboard() {
           <div className="absolute top-4 right-4 p-2 bg-[var(--color-accent-dim)] rounded-lg text-[var(--color-accent)]">
             <FiActivity className="text-lg" />
           </div>
-          <h4 className="text-xs text-[var(--color-text-muted)] font-bold uppercase tracking-wider">Today's Footprint</h4>
+          <h4 className="text-xs text-[var(--color-text-muted)] font-bold uppercase tracking-wider">{t('todaysFootprint')}</h4>
           <h2 className="text-3xl font-bold font-outfit mt-2 text-[var(--color-text-primary)]">
-            {data.todayCo2e} <span className="text-sm font-medium text-[var(--color-text-secondary)]">kg CO₂e</span>
+            {data.todayCo2e} <span className="text-sm font-medium text-[var(--color-text-secondary)]">{t('kgCo2e')}</span>
           </h2>
-          <p className="text-xs text-[var(--color-text-secondary)] mt-2">Emissions logged today</p>
+          <p className="text-xs text-[var(--color-text-secondary)] mt-2">{t('emissionsLoggedToday')}</p>
         </div>
 
         <div className="stat-card relative overflow-hidden">
           <div className="absolute top-4 right-4 p-2 bg-[rgba(6,182,212,0.1)] border border-[rgba(6,182,212,0.2)] rounded-lg text-[var(--color-accent-blue)]">
             <FiCalendar className="text-lg" />
           </div>
-          <h4 className="text-xs text-[var(--color-text-muted)] font-bold uppercase tracking-wider">Weekly Footprint</h4>
+          <h4 className="text-xs text-[var(--color-text-muted)] font-bold uppercase tracking-wider">{t('weeklyFootprint')}</h4>
           <h2 className="text-3xl font-bold font-outfit mt-2 text-[var(--color-text-primary)]">
-            {data.weeklyCo2e} <span className="text-sm font-medium text-[var(--color-text-secondary)]">kg CO₂e</span>
+            {data.weeklyCo2e} <span className="text-sm font-medium text-[var(--color-text-secondary)]">{t('kgCo2e')}</span>
           </h2>
-          <p className="text-xs text-[var(--color-text-secondary)] mt-2">Last 7 days cumulative</p>
+          <p className="text-xs text-[var(--color-text-secondary)] mt-2">{t('last7DaysCumulative')}</p>
         </div>
 
         <div className="stat-card relative overflow-hidden">
           <div className="absolute top-4 right-4 p-2 bg-[rgba(245,158,11,0.1)] border border-[rgba(245,158,11,0.2)] rounded-lg text-[var(--color-warning)]">
             <FiCompass className="text-lg" />
           </div>
-          <h4 className="text-xs text-[var(--color-text-muted)] font-bold uppercase tracking-wider">Monthly Footprint</h4>
+          <h4 className="text-xs text-[var(--color-text-muted)] font-bold uppercase tracking-wider">{t('monthlyFootprint')}</h4>
           <h2 className="text-3xl font-bold font-outfit mt-2 text-[var(--color-text-primary)]">
-            {data.monthlyCo2e} <span className="text-sm font-medium text-[var(--color-text-secondary)]">kg CO₂e</span>
+            {data.monthlyCo2e} <span className="text-sm font-medium text-[var(--color-text-secondary)]">{t('kgCo2e')}</span>
           </h2>
-          <p className="text-xs text-[var(--color-text-secondary)] mt-2">Last 30 days cumulative</p>
+          <p className="text-xs text-[var(--color-text-secondary)] mt-2">{t('last30DaysCumulative')}</p>
         </div>
-
 
         <div className="stat-card relative overflow-hidden">
           <div className="absolute top-4 right-4 p-2 rounded-lg border border-[rgba(249,115,22,.25)] bg-[rgba(249,115,22,.12)] text-orange-400">
@@ -262,18 +255,18 @@ export default function Dashboard() {
           </div>
 
           <h4 className="text-xs text-[var(--color-text-muted)] font-bold uppercase tracking-wider">
-            Current Streak
+            {t('currentStreak')}
           </h4>
 
           <h2 className="text-3xl font-bold font-outfit mt-2 text-orange-500">
             🔥 {data.currentStreak}
             <span className="text-sm font-medium text-[var(--color-text-secondary)]">
-              {" "}Days
+              {" "}{t('daysCount')}
             </span>
           </h2>
 
           <p className="text-xs text-[var(--color-text-secondary)] mt-2">
-            Best Streak: {data.longestStreak} Days
+            {t('bestStreak', { count: data.longestStreak })}
           </p>
         </div>
       </div>
@@ -282,20 +275,20 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Weekly Trend Line Chart */}
         <div className="glass-card p-6">
-          <h3 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)] mb-4">Weekly Emission Trend</h3>
+          <h3 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)] mb-4">{t('weeklyEmissionTrend')}</h3>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={trendData}>
                 <CartesianGrid stroke="var(--color-border)" vertical={false} />
                 <XAxis dataKey="name" stroke="var(--color-text-muted)" fontSize={11} />
                 <YAxis stroke="var(--color-text-muted)" fontSize={11} />
-                <Tooltip 
+                <Tooltip
                   contentStyle={{ backgroundColor: 'var(--color-bg-secondary)', borderColor: 'var(--color-border)', borderRadius: '8px' }}
                   labelStyle={{ color: 'var(--color-text-primary)' }}
                 />
                 <Legend />
-                <Line type="monotone" dataKey="This Week" stroke="var(--color-accent)" strokeWidth={2.5} dot={{ r: 4 }} activeDot={{ r: 6 }} />
-                <Line type="monotone" dataKey="Last Week" stroke="var(--color-text-muted)" strokeDasharray="5 5" strokeWidth={1.5} dot={{ r: 2 }} />
+                <Line type="monotone" dataKey={t('thisWeek')} stroke="var(--color-accent)" strokeWidth={2.5} dot={{ r: 4 }} activeDot={{ r: 6 }} />
+                <Line type="monotone" dataKey={t('lastWeek')} stroke="var(--color-text-muted)" strokeDasharray="5 5" strokeWidth={1.5} dot={{ r: 2 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -310,23 +303,23 @@ export default function Dashboard() {
         {/* Active Goal Widget */}
         <div className="glass-card p-6 lg:col-span-2 flex flex-col justify-between">
           <div>
-            <h3 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)] mb-4">Carbon Reduction Goal</h3>
+            <h3 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)] mb-4">{t('carbonReductionGoal')}</h3>
             {data.activeGoal ? (
               <div className="space-y-4">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="font-semibold text-[var(--color-text-secondary)]">Baseline: {data.activeGoal.baselineCo2e} kg</span>
-                  <span className="text-[var(--color-accent)] font-bold">Target: {data.activeGoal.targetCo2e} kg</span>
+                  <span className="font-semibold text-[var(--color-text-secondary)]">{t('baseline', { amount: data.activeGoal.baselineCo2e })}</span>
+                  <span className="text-[var(--color-accent)] font-bold">{t('target', { amount: data.activeGoal.targetCo2e })}</span>
                 </div>
-                
+
                 <div className="progress-bar-bg mt-1">
-                  <div 
-                    className="progress-bar-fill" 
+                  <div
+                    className="progress-bar-fill"
                     style={{ width: `${Math.min(Number(data.activeGoal.progressPct), 100)}%` }}
                   ></div>
                 </div>
 
                 <div className="flex justify-between text-xs mt-1">
-                  <span className="text-[var(--color-text-muted)]">Logged: {data.activeGoal.currentCo2e} kg ({data.activeGoal.progressPct}%)</span>
+                  <span className="text-[var(--color-text-muted)]">{t('loggedProgress', { amount: data.activeGoal.currentCo2e, pct: data.activeGoal.progressPct })}</span>
                   <span className={`badge ${data.activeGoal.trajectoryStatus === 'ON_TRACK' ? 'badge-green' : 'badge-red'}`}>
                     {data.activeGoal.trajectoryStatus}
                   </span>
@@ -335,24 +328,24 @@ export default function Dashboard() {
                 {/* Calculations Row */}
                 <div className="grid grid-cols-3 gap-2 py-3 border-t border-b border-[var(--color-border)]/50 text-[10px]">
                   <div>
-                    <span className="text-[var(--color-text-muted)] block uppercase font-bold tracking-wider">Daily Budget</span>
-                    <span className="font-bold text-xs text-[var(--color-text-primary)]">{dailyAllowed.toFixed(1)} kg</span>
+                    <span className="text-[var(--color-text-muted)] block uppercase font-bold tracking-wider">{t('dailyBudget')}</span>
+                    <span className="font-bold text-xs text-[var(--color-text-primary)]">{dailyAllowed.toFixed(1)} {t('kgUnit')}</span>
                   </div>
                   <div>
-                    <span className="text-[var(--color-text-muted)] block uppercase font-bold tracking-wider">Daily Average</span>
-                    <span className="font-bold text-xs text-[var(--color-text-primary)]">{currentDailyAvg.toFixed(1)} kg</span>
+                    <span className="text-[var(--color-text-muted)] block uppercase font-bold tracking-wider">{t('dailyAverage')}</span>
+                    <span className="font-bold text-xs text-[var(--color-text-primary)]">{currentDailyAvg.toFixed(1)} {t('kgUnit')}</span>
                   </div>
                   <div>
-                    <span className="text-[var(--color-text-muted)] block uppercase font-bold tracking-wider">Red. Required</span>
+                    <span className="text-[var(--color-text-muted)] block uppercase font-bold tracking-wider">{t('redRequired')}</span>
                     <span className={`font-bold text-xs ${requiredDailyReduction > 0 ? 'text-[var(--color-danger)]' : 'text-[var(--color-accent)]'}`}>
-                      {requiredDailyReduction > 0 ? `${requiredDailyReduction.toFixed(1)} kg/d` : '0 kg/d'}
+                      {requiredDailyReduction > 0 ? `${requiredDailyReduction.toFixed(1)} ${t('kgPerDay')}` : `0 ${t('kgPerDay')}`}
                     </span>
                   </div>
                 </div>
 
                 {/* Timeline Projection Chart */}
                 <div className="pt-2">
-                  <h4 className="text-[9px] uppercase font-bold tracking-wider text-[var(--color-text-muted)] mb-2">Footprint Projection Timeline</h4>
+                  <h4 className="text-[9px] uppercase font-bold tracking-wider text-[var(--color-text-muted)] mb-2">{t('footprintProjectionTimeline')}</h4>
                   <div className="h-40 bg-[var(--color-bg-primary)]/50 border border-[var(--color-border)]/50 rounded-xl p-2">
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={projectionData}>
@@ -361,16 +354,16 @@ export default function Dashboard() {
                         <YAxis fontSize={9} stroke="var(--color-text-muted)" />
                         <Tooltip />
                         <Legend wrapperStyle={{ fontSize: 9 }} />
-                        <Line name="Target Bound" type="monotone" dataKey="Target Limit" stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="3 3" dot={{ r: 2 }} />
-                        <Line name="Actual Footprint" type="monotone" dataKey="Actual Footprint" stroke="var(--color-accent)" strokeWidth={2.5} dot={{ r: 3 }} />
-                        <Line name="Projected Path" type="monotone" dataKey="Projected" stroke={requiredDailyReduction > 0 ? "var(--color-danger)" : "var(--color-accent-blue)"} strokeWidth={1.5} strokeDasharray="5 5" dot={{ r: 2 }} />
+                        <Line name={t('targetBound')} type="monotone" dataKey={t('targetLimit')} stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="3 3" dot={{ r: 2 }} />
+                        <Line name={t('actualFootprint')} type="monotone" dataKey={t('actualFootprint')} stroke="var(--color-accent)" strokeWidth={2.5} dot={{ r: 3 }} />
+                        <Line name={t('projectedPath')} type="monotone" dataKey={t('projected')} stroke={requiredDailyReduction > 0 ? "var(--color-danger)" : "var(--color-accent-blue)"} strokeWidth={1.5} strokeDasharray="5 5" dot={{ r: 2 }} />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
                 </div>
 
                 <div className="p-3 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-lg flex gap-2.5 items-start mt-2">
-                  {data.activeGoal.trajectoryStatus === 'ON_TRACK' 
+                  {data.activeGoal.trajectoryStatus === 'ON_TRACK'
                     ? <FiCheckCircle className="text-emerald-400 mt-0.5 shrink-0" />
                     : <FiAlertCircle className="text-red-400 mt-0.5 shrink-0" />
                   }
@@ -382,7 +375,7 @@ export default function Dashboard() {
             ) : (
               <div className="text-center py-6 text-sm text-[var(--color-text-muted)]">
                 <FiInfo className="text-xl mx-auto mb-2" />
-                No active reduction goal. Set one in the Goals page!
+                {t('noActiveGoal')}
               </div>
             )}
           </div>
@@ -391,14 +384,14 @@ export default function Dashboard() {
         {/* Peer Benchmarking Card */}
         <div className="glass-card p-6 flex flex-col justify-between">
           <div>
-            <h3 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)] mb-4">Peer Benchmarking</h3>
+            <h3 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)] mb-4">{t('peerBenchmarking')}</h3>
             <div className="text-center py-4">
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[var(--color-accent-dim)] border border-[var(--color-border)] text-3xl font-extrabold font-outfit text-[var(--color-accent)] mb-3 glow-green">
                 {data.percentileRank}%
               </div>
-              <h4 className="text-sm font-bold text-[var(--color-text-primary)]">Better than {data.percentileRank}% of users</h4>
+              <h4 className="text-sm font-bold text-[var(--color-text-primary)]">{t('betterThanPeers', { rank: data.percentileRank })}</h4>
               <p className="text-[11px] text-[var(--color-text-muted)] mt-1.5 leading-relaxed">
-                Based on your daily emissions in the last 30 days compared anonymously to other platform users.
+                {t('peerBenchmarkDescription')}
               </p>
             </div>
           </div>
@@ -412,8 +405,8 @@ export default function Dashboard() {
           <div>
             <div className="mb-5 flex items-start justify-between gap-3">
               <div>
-                <p className="mb-1 flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.16em] text-emerald-700 dark:text-emerald-400"><FiCpu /> Smart weekly plan</p>
-                <h3 className="text-base font-bold font-outfit text-[var(--color-text-primary)]">Your highest-impact moves</h3>
+                <p className="mb-1 flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.16em] text-emerald-700 dark:text-emerald-400"><FiCpu /> {t('smartWeeklyPlan')}</p>
+                <h3 className="text-base font-bold font-outfit text-[var(--color-text-primary)]">{t('highestImpactMoves')}</h3>
               </div>
               <FiTrendingDown className="text-2xl text-emerald-500" />
             </div>
@@ -425,11 +418,11 @@ export default function Dashboard() {
                       <p className="text-xs font-bold text-[var(--color-text-primary)]">{insight.title}</p>
                       <p className="mt-1 text-[10px] font-semibold text-emerald-700 dark:text-emerald-400">{insight.action}</p>
                     </div>
-                    {insight.potentialMonthlySaving > 0 && <span className="insight-saving">−{insight.potentialMonthlySaving} kg</span>}
+                    {insight.potentialMonthlySaving > 0 && <span className="insight-saving">−{insight.potentialMonthlySaving} {t('kgUnit')}</span>}
                   </div>
                   <p className="mt-2 text-[11px] leading-relaxed text-[var(--color-text-secondary)]">{insight.rationale}</p>
                   <button onClick={() => setCompletedTips((items) => items.includes(idx) ? items.filter((item) => item !== idx) : [...items, idx])} className="insight-action">
-                    <FiCheck /> {completedTips.includes(idx) ? 'Added to your plan' : 'Add to my plan'}
+                    <FiCheck /> {completedTips.includes(idx) ? t('addedToPlan') : t('addToPlan')}
                   </button>
                 </div>
               ))}
@@ -439,16 +432,16 @@ export default function Dashboard() {
 
         {/* Recent Activities list */}
         <div className="glass-card p-6 lg:col-span-2">
-          <h3 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)] mb-4">Recent Activities</h3>
+          <h3 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)] mb-4">{t('recentActivities')}</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
                 <tr className="border-b border-[var(--color-border)] text-[var(--color-text-muted)] uppercase tracking-wider font-bold">
-                  <th className="py-2.5">Date</th>
-                  <th className="py-2.5">Category</th>
-                  <th className="py-2.5">Activity Type</th>
-                  <th className="py-2.5">Qty</th>
-                  <th className="py-2.5 text-right">CO₂ Emission</th>
+                  <th className="py-2.5">{t('thDate')}</th>
+                  <th className="py-2.5">{t('thCategory')}</th>
+                  <th className="py-2.5">{t('thActivityType')}</th>
+                  <th className="py-2.5">{t('thQty')}</th>
+                  <th className="py-2.5 text-right">{t('thCo2Emission')}</th>
                   <th className="py-2.5 text-center w-10"></th>
                 </tr>
               </thead>
@@ -462,20 +455,20 @@ export default function Dashboard() {
                       </td>
                       <td className="py-3 text-[var(--color-text-secondary)] font-semibold">{act.activityType}</td>
                       <td className="py-3 text-[var(--color-text-secondary)]">{act.quantity} {act.unit}</td>
-                      <td className="py-3 text-right text-[var(--color-accent-muted)] font-bold">{act.co2eKg} kg</td>
+                      <td className="py-3 text-right text-[var(--color-accent-muted)] font-bold">{act.co2eKg} {t('kgUnit')}</td>
                       <td className="py-3 text-center">
                         <div className="flex justify-center gap-1.5">
                           <button
                             onClick={() => handleLogAgain(act)}
                             className="text-slate-400 hover:text-[var(--color-accent)] opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer bg-transparent border-none p-1 flex items-center justify-center"
-                            title="Log this again"
+                            title={t('logThisAgain')}
                           >
                             <FiRefreshCw className="text-[10px]" />
                           </button>
                           <button
                             onClick={() => handleDeleteActivity(act.id)}
                             className="text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer bg-transparent border-none p-1 flex items-center justify-center"
-                            title="Delete activity log"
+                            title={t('deleteActivityLog')}
                           >
                             <FiTrash2 className="text-xs" />
                           </button>
@@ -486,7 +479,7 @@ export default function Dashboard() {
                 ) : (
                   <tr>
                     <td colSpan="6" className="py-6 text-center text-[var(--color-text-muted)]">
-                      No activities logged recently.
+                      {t('noActivitiesLogged')}
                     </td>
                   </tr>
                 )}
@@ -503,16 +496,16 @@ export default function Dashboard() {
             <div className="w-12 h-12 rounded-full bg-red-50 text-red-500 flex items-center justify-center mb-4 text-xl">
               <FiTrash2 />
             </div>
-            <h4 className="font-bold text-base text-[var(--color-text-primary)] mb-2 font-outfit">Delete Activity Log</h4>
+            <h4 className="font-bold text-base text-[var(--color-text-primary)] mb-2 font-outfit">{t('deleteActivityLogTitle')}</h4>
             <p className="text-xs text-[var(--color-text-muted)] leading-relaxed mb-6">
-              Are you sure you want to delete this activity log? This action cannot be undone.
+              {t('deleteActivityLogConfirm')}
             </p>
             <div className="flex gap-3 w-full">
               <button
                 onClick={() => setDeleteConfirmId(null)}
                 className="flex-grow py-2.5 bg-[var(--color-bg-card-hover)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] rounded-xl text-xs font-bold transition cursor-pointer"
               >
-                Cancel
+                {t('cancel')}
               </button>
               <button
                 onClick={() => {
@@ -521,13 +514,12 @@ export default function Dashboard() {
                 }}
                 className="flex-grow py-2.5 bg-red-500 hover:bg-red-600 text-white rounded-xl text-xs font-bold transition shadow-md shadow-red-500/10 cursor-pointer"
               >
-                Delete
+                {t('delete')}
               </button>
             </div>
           </div>
         </div>
       )}
-     </div>
-
+    </div>
   );
 }

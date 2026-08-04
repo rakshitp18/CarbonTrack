@@ -1,0 +1,273 @@
+{
+  "dashboard": "ડેશબોર્ડ",
+  "routePlanner": "રૂટ પ્લાનર",
+  "logActivity": "પ્રવૃત્તિ નોંધો",
+  "goals": "લક્ષ્યો",
+  "leaderboard": "લીડરબોર્ડ",
+  "badges": "બેજ",
+  "organizationManager": "સંસ્થા મેનેજર",
+
+  "confirmLogout": "લૉગ આઉટની પુષ્ટિ કરો",
+  "confirmLogoutMessage": "શું તમે ખરેખર તમારા સેશનમાંથી લૉગ આઉટ થવા માંગો છો?",
+  "cancel": "રદ કરો",
+
+  "yourCarbonPulse": "તમારી કાર્બન પ્રવૃત્તિ",
+  "heroTitle": "નાના પગલાં, મોટો પ્રભાવ.",
+  "heroDescription": "છેલ્લા 30 દિવસમાં તમે {{value}} kg CO₂e નોંધ્યું છે. તમારા કાર્બન ફૂટપ્રિન્ટને વધુ સારી રીતે સમજો.",
+  "logAnActivity": "પ્રવૃત્તિ નોંધો",
+
+  "dayStreak": "દિવસોની સ્ટ્રીક",
+  "peerRank": "સાથી ક્રમ",
+  "nextActions": "આગામી પગલાં",
+
+  "todaysFootprint": "આજનો કાર્બન ફૂટપ્રિન્ટ",
+  "weeklyFootprint": "સાપ્તાહિક કાર્બન ફૂટપ્રિન્ટ",
+  "monthlyFootprint": "માસિક કાર્બન ફૂટપ્રિન્ટ",
+  "currentStreak": "વર્તમાન સ્ટ્રીક",
+
+  "kgCo2e": "કિ.ગ્રા. CO₂e",
+  "emissionsLoggedToday": "આજે નોંધાયેલ ઉત્સર્જન",
+  "last7DaysCumulative": "છેલ્લા 7 દિવસનું કુલ",
+  "last30DaysCumulative": "છેલ્લા 30 દિવસનું કુલ",
+
+  "daysCount": "દિવસ",
+  "bestStreak": "શ્રેષ્ઠ સ્ટ્રીક",
+
+  "weeklyEmissionTrend": "સાપ્તાહિક ઉત્સર્જન પ્રવૃત્તિ",
+  "thisWeek": "આ અઠવાડિયે",
+  "lastWeek": "ગયા અઠવાડિયે",
+
+  "days": {
+    "Sun": "રવિ",
+    "Mon": "સોમ",
+    "Tue": "મંગળ",
+    "Wed": "બુધ",
+    "Thu": "ગુરુ",
+    "Fri": "શુક્ર",
+    "Sat": "શનિ"
+  },
+
+  "carbonReductionGoal": "કાર્બન ઘટાડવાનો લક્ષ્ય",
+  "baseline": "આધાર સ્તર",
+  "target": "લક્ષ્ય",
+  "loggedProgress": "નોંધાયેલ પ્રગતિ",
+
+  "dailyBudget": "દૈનિક મર્યાદા",
+  "dailyAverage": "દૈનિક સરેરાશ",
+  "redRequired": "જરૂરી ઘટાડો",
+
+  "kgUnit": "કિ.ગ્રા.",
+  "kgPerDay": "કિ.ગ્રા./દિવસ",
+
+  "footprintProjectionTimeline": "કાર્બન ફૂટપ્રિન્ટ અનુમાન સમયરેખા",
+
+  "timelineStart": "શરૂઆત",
+  "timelineToday": "આજે",
+  "timelineEndGoal": "લક્ષ્ય",
+
+  "targetBound": "લક્ષ્ય મર્યાદા",
+  "targetLimit": "લક્ષ્ય સીમા",
+  "actualFootprint": "વાસ્તવિક કાર્બન ફૂટપ્રિન્ટ",
+  "projected": "અનુમાનિત",
+  "projectedPath": "અનુમાનિત માર્ગ",
+
+  "noActiveGoal": "કોઈ સક્રિય લક્ષ્ય ઉપલબ્ધ નથી.",
+
+  "peerBenchmarking": "સાથીઓ સાથે સરખામણી",
+  "betterThanPeers": "સાથીઓ કરતાં વધુ સારું",
+  "peerBenchmarkDescription": "સમાન વપરાશકર્તાઓ સાથે તમારા કાર્બન ફૂટપ્રિન્ટની તુલના કરો.",
+
+  "smartWeeklyPlan": "સ્માર્ટ સાપ્તાહિક યોજના",
+  "highestImpactMoves": "સૌથી વધુ અસરકારક સૂચનો",
+  "addedToPlan": "યોજનામાં ઉમેરાયું",
+  "addToPlan": "યોજનામાં ઉમેરો",
+
+  "recentActivities": "તાજેતરની પ્રવૃત્તિઓ",
+
+  "thDate": "તારીખ",
+  "thCategory": "શ્રેણી",
+  "thActivityType": "પ્રવૃત્તિ પ્રકાર",
+  "thQty": "જથ્થો",
+  "thCo2Emission": "CO₂ ઉત્સર્જન",
+
+  "logThisAgain": "ફરી નોંધો",
+  "deleteActivityLog": "પ્રવૃત્તિ કાઢી નાખો",
+  "noActivitiesLogged": "હજુ સુધી કોઈ પ્રવૃત્તિ નોંધાઈ નથી.",
+
+  "deleteActivityLogTitle": "પ્રવૃત્તિ કાઢી નાખો",
+  "deleteActivityLogConfirm": "શું તમે ખરેખર આ પ્રવૃત્તિ કાઢી નાખવા માંગો છો?",
+
+  "delete": "કાઢી નાખો",
+
+  "gatheringInsights": "તમારી સ્થિરતા સંબંધિત માહિતી એકત્રિત થઈ રહી છે...",
+  "failedToLoadDashboard": "ડેશબોર્ડ લોડ કરવામાં નિષ્ફળ.",
+  "failedToDeleteActivity": "પ્રવૃત્તિ કાઢી શકાઈ નથી.",
+  "activityDeletedSuccess": "પ્રવૃત્તિ સફળતાપૂર્વક કાઢી નાખવામાં આવી.",
+  "loggedAgainNote": "પ્રવૃત્તિ ફરી નોંધાઈ.",
+  "loggedAgainSuccess": "પ્રવૃત્તિ સફળતાપૂર્વક નોંધાઈ.",
+  "failedToLogAgain": "પ્રવૃત્તિ ફરી નોંધવામાં નિષ્ફળ.",
+
+  "noDataAvailable": "કોઈ માહિતી ઉપલબ્ધ નથી.",
+  "startByLogging": "તમારી કાર્બન પ્રવૃત્તિઓ નોંધવાથી શરૂઆત કરો.",
+
+  "category": {
+    "TRANSPORT": "પરિવહન",
+    "ELECTRICITY": "વીજળી",
+    "FOOD": "ખોરાક",
+    "SHOPPING": "ખરીદી"
+  },
+
+  "activity": {
+    "GRID_ELECTRICITY": "ગ્રીડ વીજળી",
+    "SOLAR_POWER": "સૌર ઊર્જા",
+    "CAR_PETROL": "પેટ્રોલ કાર",
+    "CAR_DIESEL": "ડીઝલ કાર",
+    "CAR_EV": "ઇલેક્ટ્રિક કાર",
+    "BIKE": "મોટરસાયકલ",
+    "BUS": "બસ",
+    "TRAIN": "ટ્રેન",
+    "METRO": "મેટ્રો",
+    "FLIGHT": "વિમાન યાત્રા",
+    "WALK": "ચાલવું",
+    "BICYCLE": "સાયકલ",
+    "VEGETARIAN_MEAL": "શાકાહારી ભોજન",
+    "NON_VEGETARIAN_MEAL": "માંસાહારી ભોજન",
+    "VEGAN_MEAL": "વીગન ભોજન",
+    "ONLINE_SHOPPING": "ઓનલાઇન ખરીદી",
+    "OFFLINE_SHOPPING": "ઓફલાઇન ખરીદી"
+  },
+
+  "goalStatus": {
+    "ON_TRACK": "યોગ્ય માર્ગ પર",
+    "OFF_TRACK": "લક્ષ્યથી પાછળ",
+    "AT_RISK": "જોખમમાં"
+  },
+
+
+  "categories": {
+    "transport": "પરિવહન",
+    "electricity": "વીજળી",
+    "food": "ખોરાક",
+    "shopping": "ખરીદી"
+  },
+
+  "logActivityTitle": "{{category}} પ્રવૃત્તિ નોંધો",
+
+  "frequentlyLoggedQuickLog": "વારંવાર નોંધાતી પ્રવૃત્તિઓ (ઝડપી નોંધ)",
+
+  "activityTypeLabel": "પ્રવૃત્તિનો પ્રકાર",
+  "quantityLabel": "જથ્થો",
+  "dateLabel": "તારીખ",
+  "notesOptionalLabel": "નોંધ (વૈકલ્પિક)",
+
+  "notesPlaceholder": "ઉદાહરણ: દૈનિક મુસાફરી, વ્યવસાયિક વિમાન મુસાફરી",
+
+  "co2FootprintPreview": "CO₂ ઉત્સર્જન પૂર્વાવલોકન",
+
+  "saveActivityLog": "પ્રવૃત્તિ સાચવો",
+
+  "recentActivityLogs": "તાજેતરની પ્રવૃત્તિઓ",
+
+  "loggedCount": "{{count}} પ્રવૃત્તિઓ નોંધાઈ",
+
+  "logThisAgain": "ફરી નોંધો",
+
+  "deleteLog": "લોગ કાઢી નાખો",
+
+  "deleteActivityLogTitle": "પ્રવૃત્તિ કાઢી નાખો",
+
+  "deleteActivityLogConfirm": "શું તમે ખરેખર આ પ્રવૃત્તિ કાઢી નાખવા માંગો છો? આ ક્રિયા પાછી લાવી શકાશે નહીં.",
+
+  "activityTypeRequired": "પ્રવૃત્તિનો પ્રકાર ફરજિયાત છે",
+
+  "quantityRequired": "જથ્થો ફરજિયાત છે",
+
+  "quantityCannotBeNegative": "જથ્થો નકારાત્મક હોઈ શકતો નથી",
+
+  "dateRequired": "તારીખ ફરજિયાત છે",
+
+  "activityLoggedSuccess": "પ્રવૃત્તિ સફળતાપૂર્વક નોંધાઈ!",
+
+  "failedToLogActivity": "પ્રવૃત્તિ નોંધવામાં નિષ્ફળ.",
+
+  "failedToDeleteActivity": "પ્રવૃત્તિ કાઢવામાં નિષ્ફળ.",
+
+  "activityDeletedSuccess": "પ્રવૃત્તિ સફળતાપૂર્વક કાઢી નાખવામાં આવી!",
+
+  "failedToLogAgain": "પ્રવૃત્તિ ફરી નોંધવામાં નિષ્ફળ.",
+
+  "noLoggedActivitiesFound": "કોઈ નોંધાયેલ પ્રવૃત્તિ મળી નથી.",
+
+  "quickLogPrefix": "ઝડપી નોંધ",
+
+  "loggedAgainPrefix": "ફરી નોંધાઈ",
+
+  "quickLogSuccessToast": "{{title}} માટે {{quantity}} {{unit}} સફળતાપૂર્વક નોંધાયું!",
+
+  "loggedAgainSuccess": "{{quantity}} {{unit}} ફરી સફળતાપૂર્વક નોંધાયું!",
+
+  "quickLogPetrolCar": "પેટ્રોલ કાર",
+
+  "quickLogDieselCar": "ડીઝલ કાર",
+
+  "quickLogElectricCar": "ઇલેક્ટ્રિક કાર",
+
+  "quickLogShortHaulFlight": "ટૂંકા અંતરની વિમાન મુસાફરી",
+
+  "quickLogLongHaulFlight": "લાંબા અંતરની વિમાન મુસાફરી",
+
+  "quickLogBusCommute": "બસ મુસાફરી",
+
+  "quickLogTrainTravel": "ટ્રેન મુસાફરી",
+
+  "quickLogHomePower": "ઘરેલું વીજ વપરાશ",
+
+  "quickLogRenewablePower": "નવીનીકરણીય વીજળી",
+
+  "quickLogBeefMeal": "બીફ ભોજન",
+
+  "quickLogChickenMeal": "ચિકન ભોજન",
+
+  "quickLogVeggieMeal": "શાકાહારી ભોજન",
+
+  "quickLogVeganMeal": "વીગન ભોજન",
+
+  "quickLogNewClothes": "નવા કપડાં",
+
+  "quickLogElectronics": "ઇલેક્ટ્રોનિક્સ ખરીદી",
+
+  "quickLogGeneralShopping": "સામાન્ય ખરીદી",
+
+  "activityTypes": {
+    "CAR_PETROL": "પેટ્રોલ કાર",
+    "CAR_DIESEL": "ડીઝલ કાર",
+    "CAR_ELECTRIC": "ઇલેક્ટ્રિક કાર",
+
+    "PUBLIC_TRANSIT_BUS": "બસ",
+
+    "PUBLIC_TRANSIT_RAIL": "ટ્રેન",
+
+    "FLIGHT_SHORT_HAUL": "ટૂંકા અંતરની વિમાન મુસાફરી",
+
+    "FLIGHT_LONG_HAUL": "લાંબા અંતરની વિમાન મુસાફરી",
+
+    "GRID_ELECTRICITY": "ગ્રીડ વીજળી",
+
+    "RENEWABLE_ELECTRICITY": "નવીનીકરણીય વીજળી",
+
+    "BEEF_MEAL": "બીફ ભોજન",
+
+    "CHICKEN_MEAL": "ચિકન ભોજન",
+
+    "VEGETARIAN_MEAL": "શાકાહારી ભોજન",
+
+    "VEGAN_MEAL": "વીગન ભોજન",
+
+    "CLOTHING": "કપડાં",
+
+    "ELECTRONICS": "ઇલેક્ટ્રોનિક્સ",
+
+    "GENERAL_RETAIL": "સામાન્ય ખરીદી"
+  }
+
+}

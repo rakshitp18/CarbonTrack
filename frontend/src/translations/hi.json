@@ -1,0 +1,273 @@
+{
+  "dashboard": "डैशबोर्ड",
+  "routePlanner": "रूट प्लानर",
+  "logActivity": "गतिविधि दर्ज करें",
+  "goals": "लक्ष्य",
+  "leaderboard": "लीडरबोर्ड",
+  "badges": "बैज",
+  "organizationManager": "संगठन प्रबंधक",
+
+  "confirmLogout": "लॉग आउट की पुष्टि करें",
+  "confirmLogoutMessage": "क्या आप वाकई अपने सत्र से लॉग आउट करना चाहते हैं?",
+  "cancel": "रद्द करें",
+
+  "yourCarbonPulse": "आपकी कार्बन गतिविधि",
+  "heroTitle": "छोटे कदम, बड़ा प्रभाव।",
+  "heroDescription": "पिछले 30 दिनों में आपने {{value}} kg CO₂e दर्ज किया है। अपने कार्बन फुटप्रिंट को और बेहतर बनाने के लिए इसी तरह प्रयास जारी रखें।",
+  "logAnActivity": "गतिविधि दर्ज करें",
+
+  "dayStreak": "लगातार दिन",
+  "peerRank": "सहकर्मी रैंक",
+  "nextActions": "अगले कदम",
+
+  "todaysFootprint": "आज का कार्बन फुटप्रिंट",
+  "weeklyFootprint": "साप्ताहिक कार्बन फुटप्रिंट",
+  "monthlyFootprint": "मासिक कार्बन फुटप्रिंट",
+  "currentStreak": "वर्तमान स्ट्रीक",
+
+  "kgCo2e": "किग्रा CO₂e",
+  "emissionsLoggedToday": "आज दर्ज किया गया उत्सर्जन",
+  "last7DaysCumulative": "पिछले 7 दिनों का कुल",
+  "last30DaysCumulative": "पिछले 30 दिनों का कुल",
+
+  "daysCount": "दिन",
+  "bestStreak": "सर्वश्रेष्ठ स्ट्रीक",
+
+  "weeklyEmissionTrend": "साप्ताहिक उत्सर्जन प्रवृत्ति",
+  "thisWeek": "इस सप्ताह",
+  "lastWeek": "पिछले सप्ताह",
+
+  "days": {
+    "Sun": "रवि",
+    "Mon": "सोम",
+    "Tue": "मंगल",
+    "Wed": "बुध",
+    "Thu": "गुरु",
+    "Fri": "शुक्र",
+    "Sat": "शनि"
+  },
+
+  "carbonReductionGoal": "कार्बन कमी लक्ष्य",
+  "baseline": "आधार स्तर",
+  "target": "लक्ष्य",
+  "loggedProgress": "दर्ज प्रगति",
+
+  "dailyBudget": "दैनिक सीमा",
+  "dailyAverage": "दैनिक औसत",
+  "redRequired": "आवश्यक कमी",
+
+  "kgUnit": "किग्रा",
+  "kgPerDay": "किग्रा/दिन",
+
+  "footprintProjectionTimeline": "कार्बन फुटप्रिंट अनुमान समयरेखा",
+
+  "timelineStart": "शुरुआत",
+  "timelineToday": "आज",
+  "timelineEndGoal": "लक्ष्य",
+
+  "targetBound": "लक्ष्य सीमा",
+  "targetLimit": "लक्ष्य सीमा",
+  "actualFootprint": "वास्तविक कार्बन फुटप्रिंट",
+  "projected": "अनुमानित",
+  "projectedPath": "अनुमानित मार्ग",
+
+  "noActiveGoal": "कोई सक्रिय लक्ष्य उपलब्ध नहीं है।",
+
+  "peerBenchmarking": "सहकर्मी तुलना",
+  "betterThanPeers": "सहकर्मियों से बेहतर",
+  "peerBenchmarkDescription": "समान उपयोगकर्ताओं की तुलना में अपना कार्बन फुटप्रिंट देखें।",
+
+  "smartWeeklyPlan": "स्मार्ट साप्ताहिक योजना",
+  "highestImpactMoves": "सबसे प्रभावशाली सुझाव",
+  "addedToPlan": "योजना में जोड़ा गया",
+  "addToPlan": "योजना में जोड़ें",
+
+  "recentActivities": "हाल की गतिविधियाँ",
+
+  "thDate": "तारीख",
+  "thCategory": "श्रेणी",
+  "thActivityType": "गतिविधि प्रकार",
+  "thQty": "मात्रा",
+  "thCo2Emission": "CO₂ उत्सर्जन",
+
+  "logThisAgain": "फिर से दर्ज करें",
+  "deleteActivityLog": "गतिविधि हटाएँ",
+  "noActivitiesLogged": "अभी तक कोई गतिविधि दर्ज नहीं की गई है।",
+
+  "deleteActivityLogTitle": "गतिविधि हटाएँ",
+  "deleteActivityLogConfirm": "क्या आप इस गतिविधि को हटाना चाहते हैं?",
+
+  "delete": "हटाएँ",
+
+  "gatheringInsights": "आपकी स्थिरता संबंधी जानकारी एकत्र की जा रही है...",
+  "failedToLoadDashboard": "डैशबोर्ड लोड नहीं हो सका।",
+  "failedToDeleteActivity": "गतिविधि हटाने में विफल।",
+  "activityDeletedSuccess": "गतिविधि सफलतापूर्वक हटाई गई।",
+  "loggedAgainNote": "गतिविधि फिर से दर्ज की गई।",
+  "loggedAgainSuccess": "गतिविधि सफलतापूर्वक दर्ज की गई।",
+  "failedToLogAgain": "गतिविधि फिर से दर्ज नहीं की जा सकी।",
+
+  "noDataAvailable": "कोई डेटा उपलब्ध नहीं है।",
+  "startByLogging": "अपने कार्बन गतिविधियों को दर्ज करके शुरुआत करें।",
+
+  "category": {
+    "TRANSPORT": "परिवहन",
+    "ELECTRICITY": "बिजली",
+    "FOOD": "भोजन",
+    "SHOPPING": "खरीदारी"
+  },
+
+  "activity": {
+    "GRID_ELECTRICITY": "ग्रिड बिजली",
+    "SOLAR_POWER": "सौर ऊर्जा",
+    "CAR_PETROL": "पेट्रोल कार",
+    "CAR_DIESEL": "डीजल कार",
+    "CAR_EV": "इलेक्ट्रिक कार",
+    "BIKE": "मोटरसाइकिल",
+    "BUS": "बस",
+    "TRAIN": "ट्रेन",
+    "METRO": "मेट्रो",
+    "FLIGHT": "हवाई यात्रा",
+    "WALK": "पैदल चलना",
+    "BICYCLE": "साइकिल",
+    "VEGETARIAN_MEAL": "शाकाहारी भोजन",
+    "NON_VEGETARIAN_MEAL": "मांसाहारी भोजन",
+    "VEGAN_MEAL": "वीगन भोजन",
+    "ONLINE_SHOPPING": "ऑनलाइन खरीदारी",
+    "OFFLINE_SHOPPING": "ऑफलाइन खरीदारी"
+  },
+
+  "goalStatus": {
+    "ON_TRACK": "सही दिशा में",
+    "OFF_TRACK": "लक्ष्य से पीछे",
+    "AT_RISK": "जोखिम में"
+  },
+
+
+  "categories": {
+    "transport": "परिवहन",
+    "electricity": "बिजली",
+    "food": "भोजन",
+    "shopping": "खरीदारी"
+  },
+
+  "logActivityTitle": "{{category}} गतिविधि दर्ज करें",
+
+  "frequentlyLoggedQuickLog": "अक्सर दर्ज की जाने वाली गतिविधियाँ (त्वरित लॉग)",
+
+  "activityTypeLabel": "गतिविधि का प्रकार",
+  "quantityLabel": "मात्रा",
+  "dateLabel": "तारीख",
+  "notesOptionalLabel": "टिप्पणी (वैकल्पिक)",
+
+  "notesPlaceholder": "उदाहरण: दैनिक यात्रा, व्यावसायिक उड़ान",
+
+  "co2FootprintPreview": "CO₂ उत्सर्जन पूर्वावलोकन",
+
+  "saveActivityLog": "गतिविधि सहेजें",
+
+  "recentActivityLogs": "हाल की गतिविधियाँ",
+
+  "loggedCount": "{{count}} गतिविधियाँ दर्ज",
+
+  "logThisAgain": "फिर से दर्ज करें",
+
+  "deleteLog": "लॉग हटाएँ",
+
+  "deleteActivityLogTitle": "गतिविधि हटाएँ",
+
+  "deleteActivityLogConfirm": "क्या आप वाकई इस गतिविधि को हटाना चाहते हैं? यह प्रक्रिया वापस नहीं की जा सकती।",
+
+  "activityTypeRequired": "गतिविधि का प्रकार आवश्यक है",
+
+  "quantityRequired": "मात्रा आवश्यक है",
+
+  "quantityCannotBeNegative": "मात्रा ऋणात्मक नहीं हो सकती",
+
+  "dateRequired": "तारीख आवश्यक है",
+
+  "activityLoggedSuccess": "गतिविधि सफलतापूर्वक दर्ज की गई!",
+
+  "failedToLogActivity": "गतिविधि दर्ज नहीं हो सकी।",
+
+  "failedToDeleteActivity": "गतिविधि हटाई नहीं जा सकी।",
+
+  "activityDeletedSuccess": "गतिविधि सफलतापूर्वक हटाई गई!",
+
+  "failedToLogAgain": "गतिविधि दोबारा दर्ज नहीं हो सकी।",
+
+  "noLoggedActivitiesFound": "कोई गतिविधि उपलब्ध नहीं है।",
+
+  "quickLogPrefix": "त्वरित लॉग",
+
+  "loggedAgainPrefix": "फिर से दर्ज किया गया",
+
+  "quickLogSuccessToast": "{{title}} के लिए {{quantity}} {{unit}} सफलतापूर्वक दर्ज किया गया!",
+
+  "loggedAgainSuccess": "{{quantity}} {{unit}} फिर से सफलतापूर्वक दर्ज किया गया!",
+
+  "quickLogPetrolCar": "पेट्रोल कार",
+
+  "quickLogDieselCar": "डीजल कार",
+
+  "quickLogElectricCar": "इलेक्ट्रिक कार",
+
+  "quickLogShortHaulFlight": "छोटी दूरी की उड़ान",
+
+  "quickLogLongHaulFlight": "लंबी दूरी की उड़ान",
+
+  "quickLogBusCommute": "बस यात्रा",
+
+  "quickLogTrainTravel": "रेल यात्रा",
+
+  "quickLogHomePower": "घरेलू बिजली",
+
+  "quickLogRenewablePower": "नवीकरणीय बिजली",
+
+  "quickLogBeefMeal": "बीफ़ भोजन",
+
+  "quickLogChickenMeal": "चिकन भोजन",
+
+  "quickLogVeggieMeal": "शाकाहारी भोजन",
+
+  "quickLogVeganMeal": "वीगन भोजन",
+
+  "quickLogNewClothes": "नए कपड़े",
+
+  "quickLogElectronics": "इलेक्ट्रॉनिक सामान",
+
+  "quickLogGeneralShopping": "सामान्य खरीदारी",
+
+  "activityTypes": {
+    "CAR_PETROL": "पेट्रोल कार",
+    "CAR_DIESEL": "डीजल कार",
+    "CAR_ELECTRIC": "इलेक्ट्रिक कार",
+
+    "PUBLIC_TRANSIT_BUS": "बस",
+
+    "PUBLIC_TRANSIT_RAIL": "रेल",
+
+    "FLIGHT_SHORT_HAUL": "छोटी दूरी की उड़ान",
+
+    "FLIGHT_LONG_HAUL": "लंबी दूरी की उड़ान",
+
+    "GRID_ELECTRICITY": "ग्रिड बिजली",
+
+    "RENEWABLE_ELECTRICITY": "नवीकरणीय बिजली",
+
+    "BEEF_MEAL": "बीफ़ भोजन",
+
+    "CHICKEN_MEAL": "चिकन भोजन",
+
+    "VEGETARIAN_MEAL": "शाकाहारी भोजन",
+
+    "VEGAN_MEAL": "वीगन भोजन",
+
+    "CLOTHING": "कपड़े",
+
+    "ELECTRONICS": "इलेक्ट्रॉनिक्स",
+
+    "GENERAL_RETAIL": "सामान्य खरीदारी"
+  }
+
+}

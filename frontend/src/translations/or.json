@@ -1,0 +1,272 @@
+{
+  "dashboard": "ଡ୍ୟାଶବୋର୍ଡ",
+  "routePlanner": "ରୁଟ୍ ପ୍ଲାନର",
+  "logActivity": "କାର୍ଯ୍ୟକଳାପ ଲଗ୍ କରନ୍ତୁ",
+  "goals": "ଲକ୍ଷ୍ୟ",
+  "leaderboard": "ଲିଡରବୋର୍ଡ",
+  "badges": "ବ୍ୟାଜ୍",
+  "organizationManager": "ସଂସ୍ଥା ପରିଚାଳକ",
+
+  "confirmLogout": "ଲଗ୍ ଆଉଟ୍ ନିଶ୍ଚିତ କରନ୍ତୁ",
+  "confirmLogoutMessage": "ଆପଣ ନିଶ୍ଚିତ କି ଯେ ଆପଣ ନିଜ ସେସନରୁ ଲଗ୍ ଆଉଟ୍ ହେବାକୁ ଚାହୁଁଛନ୍ତି?",
+  "cancel": "ବାତିଲ୍ କରନ୍ତୁ",
+
+  "yourCarbonPulse": "ଆପଣଙ୍କ କାର୍ବନ କାର୍ଯ୍ୟକଳାପ",
+  "heroTitle": "ଛୋଟ ପଦକ୍ଷେପ, ବଡ଼ ପ୍ରଭାବ।",
+  "heroDescription": "ଗତ ୩୦ ଦିନ ମଧ୍ୟରେ ଆପଣ {{value}} kg CO₂e ରେକର୍ଡ କରିଛନ୍ତି। ନିଜ କାର୍ବନ ଫୁଟପ୍ରିଣ୍ଟକୁ ଆହୁରି ସ୍ପଷ୍ଟ ଭାବରେ ବୁଝନ୍ତୁ।",
+  "logAnActivity": "କାର୍ଯ୍ୟକଳାପ ଲଗ୍ କରନ୍ତୁ",
+
+  "dayStreak": "ଦିନର ଷ୍ଟ୍ରିକ୍",
+  "peerRank": "ସହଭାଗୀ ର୍ୟାଙ୍କ",
+  "nextActions": "ପରବର୍ତ୍ତୀ କାର୍ଯ୍ୟ",
+
+  "todaysFootprint": "ଆଜିର କାର୍ବନ ଫୁଟପ୍ରିଣ୍ଟ",
+  "weeklyFootprint": "ସାପ୍ତାହିକ କାର୍ବନ ଫୁଟପ୍ରିଣ୍ଟ",
+  "monthlyFootprint": "ମାସିକ କାର୍ବନ ଫୁଟପ୍ରିଣ୍ଟ",
+  "currentStreak": "ବର୍ତ୍ତମାନର ଷ୍ଟ୍ରିକ୍",
+
+  "kgCo2e": "କି.ଗ୍ରା. CO₂e",
+  "emissionsLoggedToday": "ଆଜି ରେକର୍ଡ ହୋଇଥିବା ଉତ୍ସର୍ଜନ",
+  "last7DaysCumulative": "ଗତ ୭ ଦିନର ମୋଟ",
+  "last30DaysCumulative": "ଗତ ୩୦ ଦିନର ମୋଟ",
+
+  "daysCount": "ଦିନ",
+  "bestStreak": "ସର୍ବୋତ୍ତମ ଷ୍ଟ୍ରିକ୍",
+
+  "weeklyEmissionTrend": "ସାପ୍ତାହିକ ଉତ୍ସର୍ଜନ ପ୍ରବୃତ୍ତି",
+  "thisWeek": "ଏହି ସପ୍ତାହ",
+  "lastWeek": "ଗତ ସପ୍ତାହ",
+
+  "days": {
+    "Sun": "ରବି",
+    "Mon": "ସୋମ",
+    "Tue": "ମଙ୍ଗଳ",
+    "Wed": "ବୁଧ",
+    "Thu": "ଗୁରୁ",
+    "Fri": "ଶୁକ୍ର",
+    "Sat": "ଶନି"
+  },
+
+  "carbonReductionGoal": "କାର୍ବନ ହ୍ରାସ ଲକ୍ଷ୍ୟ",
+  "baseline": "ଆଧାର ସ୍ତର",
+  "target": "ଲକ୍ଷ୍ୟ",
+  "loggedProgress": "ଲଗ୍ ହୋଇଥିବା ପ୍ରଗତି",
+
+  "dailyBudget": "ଦୈନିକ ସୀମା",
+  "dailyAverage": "ଦୈନିକ ହାର",
+  "redRequired": "ଆବଶ୍ୟକ ହ୍ରାସ",
+
+  "kgUnit": "କି.ଗ୍ରା.",
+  "kgPerDay": "କି.ଗ୍ରା./ଦିନ",
+
+  "footprintProjectionTimeline": "କାର୍ବନ ଫୁଟପ୍ରିଣ୍ଟ ଅନୁମାନ ସମୟରେଖା",
+
+  "timelineStart": "ଆରମ୍ଭ",
+  "timelineToday": "ଆଜି",
+  "timelineEndGoal": "ଲକ୍ଷ୍ୟ",
+
+  "targetBound": "ଲକ୍ଷ୍ୟ ସୀମା",
+  "targetLimit": "ଲକ୍ଷ୍ୟ ସୀମା",
+  "actualFootprint": "ପ୍ରକୃତ କାର୍ବନ ଫୁଟପ୍ରିଣ୍ଟ",
+  "projected": "ଅନୁମାନିତ",
+  "projectedPath": "ଅନୁମାନିତ ପଥ",
+
+  "noActiveGoal": "କୌଣସି ସକ୍ରିୟ ଲକ୍ଷ୍ୟ ମିଳିଲା ନାହିଁ।",
+
+  "peerBenchmarking": "ସହଭାଗୀ ତୁଳନା",
+  "betterThanPeers": "ସହଭାଗୀମାନଙ୍କଠାରୁ ଭଲ",
+  "peerBenchmarkDescription": "ସମାନ ବ୍ୟବହାରକାରୀଙ୍କ ସହ ଆପଣଙ୍କ କାର୍ବନ ଫୁଟପ୍ରିଣ୍ଟର ତୁଳନା କରନ୍ତୁ।",
+
+  "smartWeeklyPlan": "ସ୍ମାର୍ଟ ସାପ୍ତାହିକ ଯୋଜନା",
+  "highestImpactMoves": "ସର୍ବାଧିକ ପ୍ରଭାବଶାଳୀ ପରାମର୍ଶ",
+  "addedToPlan": "ଯୋଜନାରେ ଯୋଡ଼ାଗଲା",
+  "addToPlan": "ଯୋଜନାରେ ଯୋଡନ୍ତୁ",
+
+  "recentActivities": "ସମ୍ପ୍ରତି କାର୍ଯ୍ୟକଳାପ",
+
+  "thDate": "ତାରିଖ",
+  "thCategory": "ଶ୍ରେଣୀ",
+  "thActivityType": "କାର୍ଯ୍ୟକଳାପ ପ୍ରକାର",
+  "thQty": "ପରିମାଣ",
+  "thCo2Emission": "CO₂ ଉତ୍ସର୍ଜନ",
+
+  "logThisAgain": "ପୁଣିଥରେ ଲଗ୍ କରନ୍ତୁ",
+  "deleteActivityLog": "କାର୍ଯ୍ୟକଳାପ ବିଲୋପ କରନ୍ତୁ",
+  "noActivitiesLogged": "ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି କାର୍ଯ୍ୟକଳାପ ଲଗ୍ ହୋଇନାହିଁ।",
+
+  "deleteActivityLogTitle": "କାର୍ଯ୍ୟକଳାପ ବିଲୋପ କରନ୍ତୁ",
+  "deleteActivityLogConfirm": "ଆପଣ ନିଶ୍ଚିତ କି ଯେ ଏହି କାର୍ଯ୍ୟକଳାପକୁ ବିଲୋପ କରିବାକୁ ଚାହୁଁଛନ୍ତି?",
+
+  "delete": "ବିଲୋପ କରନ୍ତୁ",
+
+  "gatheringInsights": "ଆପଣଙ୍କ ସ୍ଥିରତା ସମ୍ବନ୍ଧୀୟ ସୂଚନା ସଂଗ୍ରହ କରାଯାଉଛି...",
+  "failedToLoadDashboard": "ଡ୍ୟାଶବୋର୍ଡ ଲୋଡ୍ କରିବାରେ ବିଫଳ।",
+  "failedToDeleteActivity": "କାର୍ଯ୍ୟକଳାପ ବିଲୋପ କରିବାରେ ବିଫଳ।",
+  "activityDeletedSuccess": "କାର୍ଯ୍ୟକଳାପ ସଫଳତାର ସହ ବିଲୋପ କରାଗଲା।",
+  "loggedAgainNote": "କାର୍ଯ୍ୟକଳାପ ପୁଣିଥରେ ଲଗ୍ କରାଗଲା।",
+  "loggedAgainSuccess": "କାର୍ଯ୍ୟକଳାପ ସଫଳତାର ସହ ଲଗ୍ ହୋଇଛି।",
+  "failedToLogAgain": "କାର୍ଯ୍ୟକଳାପ ପୁଣିଥରେ ଲଗ୍ କରିବାରେ ବିଫଳ।",
+
+  "noDataAvailable": "କୌଣସି ତଥ୍ୟ ଉପଲବ୍ଧ ନାହିଁ।",
+  "startByLogging": "ନିଜ କାର୍ବନ କାର୍ଯ୍ୟକଳାପ ଲଗ୍ କରି ଆରମ୍ଭ କରନ୍ତୁ।",
+
+  "category": {
+    "TRANSPORT": "ପରିବହନ",
+    "ELECTRICITY": "ବିଦ୍ୟୁତ",
+    "FOOD": "ଖାଦ୍ୟ",
+    "SHOPPING": "କିଣାକାଟା"
+  },
+
+  "activity": {
+    "GRID_ELECTRICITY": "ଗ୍ରିଡ୍ ବିଦ୍ୟୁତ",
+    "SOLAR_POWER": "ସୌର ଶକ୍ତି",
+    "CAR_PETROL": "ପେଟ୍ରୋଲ କାର",
+    "CAR_DIESEL": "ଡିଜେଲ କାର",
+    "CAR_EV": "ଇଲେକ୍ଟ୍ରିକ୍ କାର",
+    "BIKE": "ମୋଟରସାଇକେଲ",
+    "BUS": "ବସ",
+    "TRAIN": "ଟ୍ରେନ",
+    "METRO": "ମେଟ୍ରୋ",
+    "FLIGHT": "ବିମାନ ଯାତ୍ରା",
+    "WALK": "ପାଦେ ଚାଲିବା",
+    "BICYCLE": "ସାଇକେଲ",
+    "VEGETARIAN_MEAL": "ଶାକାହାରୀ ଭୋଜନ",
+    "NON_VEGETARIAN_MEAL": "ଆମିଷ ଭୋଜନ",
+    "VEGAN_MEAL": "ଭେଗାନ୍ ଭୋଜନ",
+    "ONLINE_SHOPPING": "ଅନଲାଇନ୍ କିଣାକାଟା",
+    "OFFLINE_SHOPPING": "ଅଫଲାଇନ୍ କିଣାକାଟା"
+  },
+
+  "goalStatus": {
+    "ON_TRACK": "ଠିକ୍ ପଥରେ",
+    "OFF_TRACK": "ଲକ୍ଷ୍ୟଠାରୁ ପଛରେ",
+    "AT_RISK": "ବିପଦରେ"
+  },
+
+  "categories": {
+    "transport": "ପରିବହନ",
+    "electricity": "ବିଦ୍ୟୁତ",
+    "food": "ଖାଦ୍ୟ",
+    "shopping": "କିଣାକାଟା"
+  },
+
+  "logActivityTitle": "{{category}} କାର୍ଯ୍ୟକଳାପ ଲଗ୍ କରନ୍ତୁ",
+
+  "frequentlyLoggedQuickLog": "ବାରମ୍ବାର ଲଗ୍ କରାଯାଉଥିବା କାର୍ଯ୍ୟକଳାପ (ଦ୍ରୁତ ଲଗ୍)",
+
+  "activityTypeLabel": "କାର୍ଯ୍ୟକଳାପର ପ୍ରକାର",
+  "quantityLabel": "ପରିମାଣ",
+  "dateLabel": "ତାରିଖ",
+  "notesOptionalLabel": "ଟିପ୍ପଣୀ (ଇଚ୍ଛାଧୀନ)",
+
+  "notesPlaceholder": "ଉଦାହରଣ: ପ୍ରତିଦିନର ଯାତ୍ରା, ବ୍ୟବସାୟିକ ବିମାନ ଯାତ୍ରା",
+
+  "co2FootprintPreview": "CO₂ ଉତ୍ସର୍ଜନ ପୂର୍ବାନୁମାନ",
+
+  "saveActivityLog": "କାର୍ଯ୍ୟକଳାପ ସଂରକ୍ଷଣ କରନ୍ତୁ",
+
+  "recentActivityLogs": "ସମ୍ପ୍ରତିର କାର୍ଯ୍ୟକଳାପ",
+
+  "loggedCount": "{{count}}ଟି କାର୍ଯ୍ୟକଳାପ ଲଗ୍ ହୋଇଛି",
+
+  "logThisAgain": "ପୁଣିଥରେ ଲଗ୍ କରନ୍ତୁ",
+
+  "deleteLog": "ଲଗ୍ ବିଲୋପ କରନ୍ତୁ",
+
+  "deleteActivityLogTitle": "କାର୍ଯ୍ୟକଳାପ ବିଲୋପ କରନ୍ତୁ",
+
+  "deleteActivityLogConfirm": "ଆପଣ ନିଶ୍ଚିତ କି ଯେ ଏହି କାର୍ଯ୍ୟକଳାପକୁ ବିଲୋପ କରିବାକୁ ଚାହୁଁଛନ୍ତି? ଏହି କାର୍ଯ୍ୟକୁ ପୁଣି ଫେରାଇ ପାରିବେ ନାହିଁ।",
+
+  "activityTypeRequired": "କାର୍ଯ୍ୟକଳାପର ପ୍ରକାର ଆବଶ୍ୟକ",
+
+  "quantityRequired": "ପରିମାଣ ଆବଶ୍ୟକ",
+
+  "quantityCannotBeNegative": "ପରିମାଣ ଋଣାତ୍ମକ ହୋଇପାରିବ ନାହିଁ",
+
+  "dateRequired": "ତାରିଖ ଆବଶ୍ୟକ",
+
+  "activityLoggedSuccess": "କାର୍ଯ୍ୟକଳାପ ସଫଳତାର ସହ ଲଗ୍ ହୋଇଛି!",
+
+  "failedToLogActivity": "କାର୍ଯ୍ୟକଳାପ ଲଗ୍ କରିବାରେ ବିଫଳ।",
+
+  "failedToDeleteActivity": "କାର୍ଯ୍ୟକଳାପ ବିଲୋପ କରିବାରେ ବିଫଳ।",
+
+  "activityDeletedSuccess": "କାର୍ଯ୍ୟକଳାପ ସଫଳତାର ସହ ବିଲୋପ ହୋଇଛି!",
+
+  "failedToLogAgain": "ପୁଣିଥରେ କାର୍ଯ୍ୟକଳାପ ଲଗ୍ କରିବାରେ ବିଫଳ।",
+
+  "noLoggedActivitiesFound": "କୌଣସି କାର୍ଯ୍ୟକଳାପ ମିଳିଲା ନାହିଁ।",
+
+  "quickLogPrefix": "ଦ୍ରୁତ ଲଗ୍",
+
+  "loggedAgainPrefix": "ପୁଣିଥରେ ଲଗ୍ କରାଗଲା",
+
+  "quickLogSuccessToast": "{{title}} ପାଇଁ {{quantity}} {{unit}} ସଫଳତାର ସହ ଲଗ୍ ହୋଇଛି!",
+
+  "loggedAgainSuccess": "{{quantity}} {{unit}} ପୁଣିଥରେ ସଫଳତାର ସହ ଲଗ୍ ହୋଇଛି!",
+
+  "quickLogPetrolCar": "ପେଟ୍ରୋଲ କାର",
+
+  "quickLogDieselCar": "ଡିଜେଲ କାର",
+
+  "quickLogElectricCar": "ଇଲେକ୍ଟ୍ରିକ୍ କାର",
+
+  "quickLogShortHaulFlight": "ସ୍ୱଳ୍ପ ଦୂରତା ବିମାନ ଯାତ୍ରା",
+
+  "quickLogLongHaulFlight": "ଦୀର୍ଘ ଦୂରତା ବିମାନ ଯାତ୍ରା",
+
+  "quickLogBusCommute": "ବସ୍ ଯାତ୍ରା",
+
+  "quickLogTrainTravel": "ଟ୍ରେନ୍ ଯାତ୍ରା",
+
+  "quickLogHomePower": "ଘରୋଇ ବିଦ୍ୟୁତ",
+
+  "quickLogRenewablePower": "ନବୀକରଣଯୋଗ୍ୟ ବିଦ୍ୟୁତ",
+
+  "quickLogBeefMeal": "ଗୋମାଂସ ଭୋଜନ",
+
+  "quickLogChickenMeal": "ଚିକେନ୍ ଭୋଜନ",
+
+  "quickLogVeggieMeal": "ଶାକାହାରୀ ଭୋଜନ",
+
+  "quickLogVeganMeal": "ଭେଗାନ୍ ଭୋଜନ",
+
+  "quickLogNewClothes": "ନୂତନ ପୋଷାକ",
+
+  "quickLogElectronics": "ଇଲେକ୍ଟ୍ରୋନିକ୍ ସାମଗ୍ରୀ",
+
+  "quickLogGeneralShopping": "ସାଧାରଣ କିଣାକାଟା",
+
+  "activityTypes": {
+    "CAR_PETROL": "ପେଟ୍ରୋଲ କାର",
+    "CAR_DIESEL": "ଡିଜେଲ କାର",
+    "CAR_ELECTRIC": "ଇଲେକ୍ଟ୍ରିକ୍ କାର",
+
+    "PUBLIC_TRANSIT_BUS": "ବସ୍",
+
+    "PUBLIC_TRANSIT_RAIL": "ଟ୍ରେନ୍",
+
+    "FLIGHT_SHORT_HAUL": "ସ୍ୱଳ୍ପ ଦୂରତା ବିମାନ ଯାତ୍ରା",
+
+    "FLIGHT_LONG_HAUL": "ଦୀର୍ଘ ଦୂରତା ବିମାନ ଯାତ୍ରା",
+
+    "GRID_ELECTRICITY": "ଗ୍ରିଡ୍ ବିଦ୍ୟୁତ",
+
+    "RENEWABLE_ELECTRICITY": "ନବୀକରଣଯୋଗ୍ୟ ବିଦ୍ୟୁତ",
+
+    "BEEF_MEAL": "ଗୋମାଂସ ଭୋଜନ",
+
+    "CHICKEN_MEAL": "ଚିକେନ୍ ଭୋଜନ",
+
+    "VEGETARIAN_MEAL": "ଶାକାହାରୀ ଭୋଜନ",
+
+    "VEGAN_MEAL": "ଭେଗାନ୍ ଭୋଜନ",
+
+    "CLOTHING": "ପୋଷାକ",
+
+    "ELECTRONICS": "ଇଲେକ୍ଟ୍ରୋନିକ୍ ସାମଗ୍ରୀ",
+
+    "GENERAL_RETAIL": "ସାଧାରଣ କିଣାକାଟା"
+  }
+
+}

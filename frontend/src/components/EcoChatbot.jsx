@@ -30,11 +30,6 @@ export default function EcoChatbot() {
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
-  // Hide Chatbot on Landing Page ('/')
-  if (location.pathname === '/') {
-    return null;
-  }
-
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -44,6 +39,11 @@ export default function EcoChatbot() {
       scrollToBottom();
     }
   }, [messages, isOpen, loading]);
+
+  // Hide Chatbot on Landing Page ('/')
+    if (location.pathname === '/') {
+      return null;
+    }
 
   const handleSend = async (textToSend) => {
     const query = textToSend || input;

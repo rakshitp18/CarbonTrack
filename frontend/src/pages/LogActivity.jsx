@@ -3,15 +3,16 @@ import { useState, useEffect } from 'react';
 import { activityService, emissionFactorService, EMISSION_FACTORS } from '../services/api';
 import { toast } from 'react-toastify';
 import { FiLoader, FiCheckCircle, FiInfo, FiTrash2, FiRefreshCw } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const CATEGORIES = ['TRANSPORT', 'ELECTRICITY', 'FOOD', 'SHOPPING'];
 
 const DEFAULT_QUICK_LOGS = [
-  { title: 'Petrol Car Ride', category: 'TRANSPORT', activityType: 'CAR_PETROL', quantity: 10, unit: 'KM', icon: '🚗' },
-  { title: 'Bus Commute', category: 'TRANSPORT', activityType: 'PUBLIC_TRANSIT_BUS', quantity: 15, unit: 'KM', icon: '🚌' },
-  { title: 'Train Travel', category: 'TRANSPORT', activityType: 'PUBLIC_TRANSIT_RAIL', quantity: 20, unit: 'KM', icon: '🚂' },
-  { title: 'Home Power', category: 'ELECTRICITY', activityType: 'GRID_ELECTRICITY', quantity: 10, unit: 'KWH', icon: '⚡' },
-  { title: 'Vegan Lunch', category: 'FOOD', activityType: 'VEGAN_MEAL', quantity: 1, unit: 'SERVING', icon: '🥗' },
+  { titleKey: 'quickLogPetrolCar', category: 'TRANSPORT', activityType: 'CAR_PETROL', quantity: 10, unit: 'KM', icon: '🚗' },
+  { titleKey: 'quickLogBusCommute', category: 'TRANSPORT', activityType: 'PUBLIC_TRANSIT_BUS', quantity: 15, unit: 'KM', icon: '🚌' },
+  { titleKey: 'quickLogTrainTravel', category: 'TRANSPORT', activityType: 'PUBLIC_TRANSIT_RAIL', quantity: 20, unit: 'KM', icon: '🚂' },
+  { titleKey: 'quickLogHomePower', category: 'ELECTRICITY', activityType: 'GRID_ELECTRICITY', quantity: 10, unit: 'KWH', icon: '⚡' },
+  { titleKey: 'quickLogVeganLunch', category: 'FOOD', activityType: 'VEGAN_MEAL', quantity: 1, unit: 'SERVING', icon: '🥗' },
 ];
 
 const getLocalDateString = (date = new Date()) => {
@@ -22,11 +23,12 @@ const getLocalDateString = (date = new Date()) => {
 };
 
 export default function LogActivity() {
+  const { t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState('TRANSPORT');
   const [loading, setLoading] = useState(false);
   const [co2ePreview, setCo2ePreview] = useState(0);
   const [quickLoggingIndex, setQuickLoggingIndex] = useState(null);
-  
+
   const [quickLogs, setQuickLogs] = useState([]);
   const [recentLogs, setRecentLogs] = useState([]);
   const [historyLoading, setHistoryLoading] = useState(true);
@@ -46,22 +48,22 @@ export default function LogActivity() {
 
   const getQuickLogDetails = (category, type) => {
     const mappings = {
-      CAR_PETROL: { title: 'Petrol Car Ride', icon: '🚗' },
-      CAR_DIESEL: { title: 'Diesel Car Ride', icon: '🚗' },
-      CAR_ELECTRIC: { title: 'Electric Car Ride', icon: '⚡🚗' },
-      FLIGHT_SHORT_HAUL: { title: 'Short-haul Flight', icon: '✈️' },
-      FLIGHT_LONG_HAUL: { title: 'Long-haul Flight', icon: '✈️' },
-      PUBLIC_TRANSIT_BUS: { title: 'Bus Commute', icon: '🚌' },
-      PUBLIC_TRANSIT_RAIL: { title: 'Train Travel', icon: '🚂' },
-      GRID_ELECTRICITY: { title: 'Home Power', icon: '⚡' },
-      RENEWABLE_ELECTRICITY: { title: 'Renewable Power', icon: '🌿⚡' },
-      BEEF_MEAL: { title: 'Beef Meal', icon: '🥩' },
-      CHICKEN_MEAL: { title: 'Chicken Meal', icon: '🍗' },
-      VEGETARIAN_MEAL: { title: 'Veggie Meal', icon: '🥗' },
-      VEGAN_MEAL: { title: 'Vegan Meal', icon: '🌱' },
-      CLOTHING: { title: 'New Clothes', icon: '👕' },
-      ELECTRONICS: { title: 'Electronics', icon: '💻' },
-      GENERAL_RETAIL: { title: 'General Shopping', icon: '🛍️' },
+      CAR_PETROL: { titleKey: 'quickLogPetrolCar', icon: '🚗' },
+      CAR_DIESEL: { titleKey: 'quickLogDieselCar', icon: '🚗' },
+      CAR_ELECTRIC: { titleKey: 'quickLogElectricCar', icon: '⚡🚗' },
+      FLIGHT_SHORT_HAUL: { titleKey: 'quickLogShortHaulFlight', icon: '✈️' },
+      FLIGHT_LONG_HAUL: { titleKey: 'quickLogLongHaulFlight', icon: '✈️' },
+      PUBLIC_TRANSIT_BUS: { titleKey: 'quickLogBusCommute', icon: '🚌' },
+      PUBLIC_TRANSIT_RAIL: { titleKey: 'quickLogTrainTravel', icon: '🚂' },
+      GRID_ELECTRICITY: { titleKey: 'quickLogHomePower', icon: '⚡' },
+      RENEWABLE_ELECTRICITY: { titleKey: 'quickLogRenewablePower', icon: '🌿⚡' },
+      BEEF_MEAL: { titleKey: 'quickLogBeefMeal', icon: '🥩' },
+      CHICKEN_MEAL: { titleKey: 'quickLogChickenMeal', icon: '🍗' },
+      VEGETARIAN_MEAL: { titleKey: 'quickLogVeggieMeal', icon: '🥗' },
+      VEGAN_MEAL: { titleKey: 'quickLogVeganMeal', icon: '🌱' },
+      CLOTHING: { titleKey: 'quickLogNewClothes', icon: '👕' },
+      ELECTRONICS: { titleKey: 'quickLogElectronics', icon: '💻' },
+      GENERAL_RETAIL: { titleKey: 'quickLogGeneralShopping', icon: '🛍️' },
     };
     return mappings[type] || { title: type.replace(/_/g, ' '), icon: '☘️' };
   };
@@ -71,7 +73,7 @@ export default function LogActivity() {
       const res = await activityService.getActivities(0, 50);
       const logs = res.content || [];
       setRecentLogs(logs.slice(0, 10));
-      
+
       if (logs.length === 0) {
         setQuickLogs(DEFAULT_QUICK_LOGS);
         return;
@@ -100,6 +102,7 @@ export default function LogActivity() {
       const mapped = sorted.map(item => {
         const details = getQuickLogDetails(item.category, item.activityType);
         return {
+          titleKey: details.titleKey,
           title: details.title,
           category: item.category,
           activityType: item.activityType,
@@ -137,6 +140,7 @@ export default function LogActivity() {
 
   const handleQuickLog = async (item, index) => {
     setQuickLoggingIndex(index);
+    const itemTitle = item.titleKey ? t(item.titleKey) : item.title;
     try {
       const payload = {
         category: item.category,
@@ -144,13 +148,13 @@ export default function LogActivity() {
         quantity: Number(item.quantity),
         unit: item.unit,
         logDate: getLocalDateString(),
-        notes: `Quick Log: ${item.title}`
+        notes: `${t('quickLogPrefix')}: ${itemTitle}`
       };
       await activityService.logActivity(payload);
-      toast.success(`Logged ${item.quantity} ${item.unit.toLowerCase()} for ${item.title.toLowerCase()}!`);
+      toast.success(t('quickLogSuccessToast', { quantity: item.quantity, unit: item.unit.toLowerCase(), title: itemTitle.toLowerCase() }));
       fetchLogsAndFrequents();
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed to log activity');
+      toast.error(err.response?.data?.message || t('failedToLogActivity'));
     } finally {
       setQuickLoggingIndex(null);
     }
@@ -163,14 +167,16 @@ export default function LogActivity() {
   const executeDelete = async (id) => {
     try {
       await activityService.deleteActivity(id);
-      toast.success('Activity log deleted successfully!');
+      toast.success(t('activityDeletedSuccess'));
       fetchLogsAndFrequents();
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed to delete activity log');
+      toast.error(err.response?.data?.message || t('failedToDeleteActivity'));
     }
   };
 
   const handleLogAgain = async (log) => {
+    const details = getQuickLogDetails(log.category, log.activityType);
+    const title = details.titleKey ? t(details.titleKey) : details.title;
     try {
       const payload = {
         category: log.category,
@@ -178,13 +184,13 @@ export default function LogActivity() {
         quantity: Number(log.quantity),
         unit: log.unit,
         logDate: getLocalDateString(),
-        notes: `Logged again: ${getQuickLogDetails(log.category, log.activityType).title}`
+        notes: `${t('loggedAgainPrefix')}: ${title}`
       };
       await activityService.logActivity(payload);
-      toast.success(`Logged ${log.quantity} ${log.unit.toLowerCase()} again!`);
+      toast.success(t('loggedAgainSuccess', { quantity: log.quantity, unit: log.unit.toLowerCase() }));
       fetchLogsAndFrequents();
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed to log activity again');
+      toast.error(err.response?.data?.message || t('failedToLogAgain'));
     }
   };
 
@@ -230,7 +236,7 @@ export default function LogActivity() {
         quantity: Number(data.quantity),
       };
       await activityService.logActivity(payload);
-      toast.success('Activity logged successfully!');
+      toast.success(t('activityLoggedSuccess'));
       // Keep category and reset form
       reset({
         category: activeCategory,
@@ -243,7 +249,7 @@ export default function LogActivity() {
       setCo2ePreview(0);
       fetchLogsAndFrequents();
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed to log activity');
+      toast.error(err.response?.data?.message || t('failedToLogActivity'));
     } finally {
       setLoading(false);
     }
@@ -252,7 +258,7 @@ export default function LogActivity() {
   return (
     <div className="max-w-6xl mx-auto fade-in pb-12">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
+
         {/* Left Side: Logger Actions & Carousel */}
         <div className="lg:col-span-2 space-y-6">
           {/* Capsule Track Tab Navigation */}
@@ -263,12 +269,12 @@ export default function LogActivity() {
                 type="button"
                 onClick={() => setActiveCategory(cat)}
                 className={`flex-1 py-2.5 text-xs font-bold rounded-xl transition-all duration-300 cursor-pointer text-center capitalize border-none ${
-                  activeCategory === cat 
-                    ? 'bg-[var(--color-accent)] text-white shadow-sm font-outfit' 
+                  activeCategory === cat
+                    ? 'bg-[var(--color-accent)] text-white shadow-sm font-outfit'
                     : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
                 }`}
               >
-                {cat.toLowerCase()}
+                {t(`categories.${cat.toLowerCase()}`)}
               </button>
             ))}
           </div>
@@ -276,7 +282,7 @@ export default function LogActivity() {
           {/* Quick-Log Carousel */}
           <div className="space-y-3">
             <h4 className="text-xs uppercase font-bold tracking-wider text-[var(--color-text-muted)] pl-1">
-              Frequently Logged (Quick Log)
+              {t('frequentlyLoggedQuickLog')}
             </h4>
             <div className="flex gap-4 overflow-x-auto pb-3 pt-1 scrollbar-none">
               {quickLogs.map((item, idx) => (
@@ -290,14 +296,16 @@ export default function LogActivity() {
                   <div className="flex justify-between items-start">
                     <span className="text-2xl">{item.icon}</span>
                     <span className="text-[9px] uppercase font-extrabold px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 tracking-wider">
-                      {item.category.toLowerCase()}
+                      {t(`categories.${item.category.toLowerCase()}`)}
                     </span>
                   </div>
                   <div className="mt-4">
-                    <h5 className="font-bold text-xs text-[var(--color-text-primary)] truncate">{item.title}</h5>
+                    <h5 className="font-bold text-xs text-[var(--color-text-primary)] truncate">
+                      {item.titleKey ? t(item.titleKey) : item.title}
+                    </h5>
                     <p className="text-[11px] text-[var(--color-text-secondary)] mt-0.5">{item.quantity} {item.unit.toLowerCase()}</p>
                   </div>
-                  
+
                   {quickLoggingIndex === idx && (
                     <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px] flex items-center justify-center">
                       <FiLoader className="animate-spin text-[var(--color-accent)]" />
@@ -311,29 +319,29 @@ export default function LogActivity() {
           {/* Log Form Card */}
           <div className="glass-card p-8 relative overflow-hidden">
             <h3 className="text-xl font-bold font-outfit mb-6 text-[var(--color-text-primary)] capitalize">
-              Log {activeCategory.toLowerCase()} Activity
+              {t('logActivityTitle', { category: t(`categories.${activeCategory.toLowerCase()}`) })}
             </h3>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                  <label className="label">Activity Type</label>
-                  <select 
+                  <label className="label">{t('activityTypeLabel')}</label>
+                  <select
                     className="input-field"
-                    {...register('activityType', { required: 'Activity type is required' })}
+                    {...register('activityType', { required: t('activityTypeRequired') })}
                   >
                     {Object.entries(emissionFactors[activeCategory] || {}).map(([key, value]) => (
                       <option key={key} value={key} className="bg-[var(--color-bg-secondary)]">
-                        {value.label}
+                        {t(`activityTypes.${key}`, { defaultValue: value.label })}
                       </option>
                     ))}
                   </select>
                 </div>
 
                 <div>
-                  <label className="label">Quantity</label>
+                  <label className="label">{t('quantityLabel')}</label>
                   <div className="relative">
-                    <input 
+                    <input
                       type="number"
                       min="0"
                       step="0.0001"
@@ -345,9 +353,9 @@ export default function LogActivity() {
                           event.preventDefault();
                         }
                       }}
-                      {...register('quantity', { 
-                        required: 'Quantity is required',
-                        min: { value: 0, message: 'Quantity cannot be negative' }
+                      {...register('quantity', {
+                        required: t('quantityRequired'),
+                        min: { value: 0, message: t('quantityCannotBeNegative') }
                       })}
                     />
                     <span className="absolute right-3 top-3 text-xs font-semibold text-[var(--color-text-secondary)]">
@@ -360,19 +368,19 @@ export default function LogActivity() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                  <label className="label">Date</label>
-                  <input 
-                    type="date" 
+                  <label className="label">{t('dateLabel')}</label>
+                  <input
+                    type="date"
                     className="input-field text-xs"
-                    {...register('logDate', { required: 'Date is required' })}
+                    {...register('logDate', { required: t('dateRequired') })}
                   />
                 </div>
 
                 <div>
-                  <label className="label">Notes (Optional)</label>
-                  <input 
-                    type="text" 
-                    placeholder="e.g. Daily commute, business flight" 
+                  <label className="label">{t('notesOptionalLabel')}</label>
+                  <input
+                    type="text"
+                    placeholder={t('notesPlaceholder')}
                     className="input-field"
                     {...register('notes')}
                   />
@@ -384,21 +392,21 @@ export default function LogActivity() {
                 <div className="p-4 bg-[var(--color-accent-dim)] border border-[var(--color-border)] rounded-xl flex items-center justify-between glow-green">
                   <div className="flex items-center gap-2">
                     <FiInfo className="text-[var(--color-accent)] text-sm shrink-0" />
-                    <span className="text-xs text-[var(--color-text-secondary)]">CO₂ footprint preview:</span>
+                    <span className="text-xs text-[var(--color-text-secondary)]">{t('co2FootprintPreview')}</span>
                   </div>
                   <span className="text-sm font-bold text-[var(--color-accent-muted)] flex items-center gap-1">
                     <FiCheckCircle />
-                    {co2ePreview} kg CO₂e
+                    {co2ePreview} {t('kgCo2e')}
                   </span>
                 </div>
               )}
 
-              <button 
-                type="submit" 
-                disabled={loading} 
+              <button
+                type="submit"
+                disabled={loading}
                 className="w-full btn-primary flex items-center justify-center gap-2"
               >
-                {loading ? <FiLoader className="animate-spin" /> : 'Save Activity Log'}
+                {loading ? <FiLoader className="animate-spin" /> : t('saveActivityLog')}
               </button>
             </form>
           </div>
@@ -408,10 +416,10 @@ export default function LogActivity() {
         <div className="lg:col-span-1">
           <div className="glass-card p-6 space-y-4 sticky top-24">
             <div className="flex justify-between items-center pb-2 border-b border-[var(--color-border)]/50">
-              <h3 className="text-xs font-bold tracking-wide uppercase text-[var(--color-text-secondary)]">Recent Activity Logs</h3>
-              <span className="text-[10px] text-[var(--color-text-muted)] font-bold">{recentLogs.length} Logged</span>
+              <h3 className="text-xs font-bold tracking-wide uppercase text-[var(--color-text-secondary)]">{t('recentActivityLogs')}</h3>
+              <span className="text-[10px] text-[var(--color-text-muted)] font-bold">{t('loggedCount', { count: recentLogs.length })}</span>
             </div>
-            
+
             {historyLoading ? (
               <div className="space-y-3 animate-pulse">
                 {[1, 2, 3, 4].map((i) => (
@@ -420,46 +428,49 @@ export default function LogActivity() {
               </div>
             ) : recentLogs.length > 0 ? (
               <div className="space-y-3 max-h-[580px] overflow-y-auto pr-1">
-                {recentLogs.map((log) => (
-                  <div key={log.id} className="p-3 bg-[var(--color-bg-primary)]/50 border border-[var(--color-border)] rounded-xl flex items-center justify-between group hover:border-[var(--color-accent)]/20 transition-all duration-300">
-                    <div className="flex items-center gap-3 overflow-hidden">
-                      <span className="text-xl shrink-0">
-                        {getQuickLogDetails(log.category, log.activityType).icon}
-                      </span>
-                      <div className="overflow-hidden">
-                        <h5 className="font-bold text-[11px] text-[var(--color-text-primary)] truncate">
-                          {getQuickLogDetails(log.category, log.activityType).title}
-                        </h5>
-                        <p className="text-[10px] text-[var(--color-text-muted)] truncate">
-                          {log.logDate} • {log.quantity} {log.unit.toLowerCase()}
-                        </p>
+                {recentLogs.map((log) => {
+                  const details = getQuickLogDetails(log.category, log.activityType);
+                  return (
+                    <div key={log.id} className="p-3 bg-[var(--color-bg-primary)]/50 border border-[var(--color-border)] rounded-xl flex items-center justify-between group hover:border-[var(--color-accent)]/20 transition-all duration-300">
+                      <div className="flex items-center gap-3 overflow-hidden">
+                        <span className="text-xl shrink-0">
+                          {details.icon}
+                        </span>
+                        <div className="overflow-hidden">
+                          <h5 className="font-bold text-[11px] text-[var(--color-text-primary)] truncate">
+                            {details.titleKey ? t(details.titleKey) : details.title}
+                          </h5>
+                          <p className="text-[10px] text-[var(--color-text-muted)] truncate">
+                            {log.logDate} • {log.quantity} {log.unit.toLowerCase()}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        <span className="text-[11px] font-bold text-[var(--color-accent-muted)]">{log.co2eKg} {t('kgUnit')}</span>
+                        <button
+                          onClick={() => handleLogAgain(log)}
+                          className="text-slate-400 hover:text-[var(--color-accent)] opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer bg-transparent border-none p-1 flex items-center justify-center"
+                          title={t('logThisAgain')}
+                        >
+                          <FiRefreshCw className="text-[10px]" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteActivity(log.id)}
+                          className="text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer bg-transparent border-none p-1 flex items-center justify-center"
+                          title={t('deleteLog')}
+                        >
+                          <FiTrash2 className="text-xs" />
+                        </button>
                       </div>
                     </div>
-                    
-                    <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-[11px] font-bold text-[var(--color-accent-muted)]">{log.co2eKg} kg</span>
-                      <button
-                        onClick={() => handleLogAgain(log)}
-                        className="text-slate-400 hover:text-[var(--color-accent)] opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer bg-transparent border-none p-1 flex items-center justify-center"
-                        title="Log this again"
-                      >
-                        <FiRefreshCw className="text-[10px]" />
-                      </button>
-                      <button
-                        onClick={() => handleDeleteActivity(log.id)}
-                        className="text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer bg-transparent border-none p-1 flex items-center justify-center"
-                        title="Delete log"
-                      >
-                        <FiTrash2 className="text-xs" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             ) : (
               <div className="text-center py-8 text-xs text-[var(--color-text-muted)] border border-dashed border-[var(--color-border)] rounded-2xl">
                 <FiInfo className="text-xl mx-auto mb-2 text-[var(--color-text-muted)]" />
-                No logged activities found.
+                {t('noLoggedActivitiesFound')}
               </div>
             )}
           </div>
@@ -474,16 +485,16 @@ export default function LogActivity() {
             <div className="w-12 h-12 rounded-full bg-red-50 text-red-500 flex items-center justify-center mb-4 text-xl">
               <FiTrash2 />
             </div>
-            <h4 className="font-bold text-base text-[var(--color-text-primary)] mb-2 font-outfit">Delete Activity Log</h4>
+            <h4 className="font-bold text-base text-[var(--color-text-primary)] mb-2 font-outfit">{t('deleteActivityLogTitle')}</h4>
             <p className="text-xs text-[var(--color-text-muted)] leading-relaxed mb-6">
-              Are you sure you want to delete this activity log? This action cannot be undone.
+              {t('deleteActivityLogConfirm')}
             </p>
             <div className="flex gap-3 w-full">
               <button
                 onClick={() => setDeleteConfirmId(null)}
                 className="flex-grow py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition cursor-pointer"
               >
-                Cancel
+                {t('cancel')}
               </button>
               <button
                 onClick={() => {
@@ -492,7 +503,7 @@ export default function LogActivity() {
                 }}
                 className="flex-grow py-2.5 bg-red-500 hover:bg-red-600 text-white rounded-xl text-xs font-bold transition shadow-md shadow-red-500/10 cursor-pointer"
               >
-                Delete
+                {t('delete')}
               </button>
             </div>
           </div>

@@ -5,6 +5,8 @@ import App from './App';
 import './index.css';
 import './styles/dark-theme.css';
 
+import "./i18n/index.js";
+
 // Import Theme Provider
 import { ThemeProvider } from './context/ThemeContext';
 

@@ -1,0 +1,273 @@
+{
+  "dashboard": "Dashboard",
+  "routePlanner": "Route Planner",
+  "logActivity": "Log Activity",
+  "goals": "Goals",
+  "leaderboard": "Leaderboard",
+  "badges": "Badges",
+  "organizationManager": "Organization Manager",
+
+  "confirmLogout": "Confirm Logout",
+  "confirmLogoutMessage": "Are you sure you want to log out of your session?",
+  "cancel": "Cancel",
+
+  "yourCarbonPulse": "YOUR CARBON PULSE",
+  "heroTitle": "Small choices, measurable impact.",
+  "heroDescription": "You have logged {{value}} kg CO₂e in the last 30 days. Keep building a clearer picture of your footprint.",
+  "logAnActivity": "Log an Activity",
+
+  "dayStreak": "Day Streak",
+  "peerRank": "Peer Rank",
+  "nextActions": "Next Actions",
+
+  "todaysFootprint": "Today's Footprint",
+  "weeklyFootprint": "Weekly Footprint",
+  "monthlyFootprint": "Monthly Footprint",
+  "currentStreak": "Current Streak",
+
+  "kgCo2e": "kg CO₂e",
+  "emissionsLoggedToday": "Emissions logged today",
+  "last7DaysCumulative": "Last 7 days cumulative",
+  "last30DaysCumulative": "Last 30 days cumulative",
+
+  "daysCount": "Days",
+  "bestStreak": "Best Streak",
+
+  "weeklyEmissionTrend": "Weekly Emission Trend",
+  "thisWeek": "This Week",
+  "lastWeek": "Last Week",
+
+  "days": {
+    "Sun": "Sun",
+    "Mon": "Mon",
+    "Tue": "Tue",
+    "Wed": "Wed",
+    "Thu": "Thu",
+    "Fri": "Fri",
+    "Sat": "Sat"
+  },
+
+  "carbonReductionGoal": "Carbon Reduction Goal",
+  "baseline": "Baseline",
+  "target": "Target",
+  "loggedProgress": "Logged Progress",
+
+  "dailyBudget": "Daily Budget",
+  "dailyAverage": "Daily Average",
+  "redRequired": "Reduction Required",
+
+  "kgUnit": "kg",
+  "kgPerDay": "kg/day",
+
+  "footprintProjectionTimeline": "Footprint Projection Timeline",
+
+  "timelineStart": "Start",
+  "timelineToday": "Today",
+  "timelineEndGoal": "Goal",
+
+  "targetBound": "Target Bound",
+  "targetLimit": "Target Limit",
+  "actualFootprint": "Actual Footprint",
+  "projected": "Projected",
+  "projectedPath": "Projected Path",
+
+  "noActiveGoal": "No active goal found.",
+
+  "peerBenchmarking": "Peer Benchmarking",
+  "betterThanPeers": "Better than Peers",
+  "peerBenchmarkDescription": "See how your carbon footprint compares with similar users.",
+
+  "smartWeeklyPlan": "Smart Weekly Plan",
+  "highestImpactMoves": "Highest Impact Moves",
+  "addedToPlan": "Added to Plan",
+  "addToPlan": "Add to Plan",
+
+  "recentActivities": "Recent Activities",
+
+  "thDate": "Date",
+  "thCategory": "Category",
+  "thActivityType": "Activity Type",
+  "thQty": "Quantity",
+  "thCo2Emission": "CO₂ Emission",
+
+  "logThisAgain": "Log This Again",
+  "deleteActivityLog": "Delete Activity Log",
+  "noActivitiesLogged": "No activities logged yet.",
+
+  "deleteActivityLogTitle": "Delete Activity",
+  "deleteActivityLogConfirm": "Are you sure you want to delete this activity?",
+
+  "delete": "Delete",
+
+  "gatheringInsights": "Gathering your sustainability insights...",
+  "failedToLoadDashboard": "Failed to load dashboard.",
+  "failedToDeleteActivity": "Failed to delete activity.",
+  "activityDeletedSuccess": "Activity deleted successfully.",
+  "loggedAgainNote": "Activity logged again.",
+  "loggedAgainSuccess": "Activity logged successfully.",
+  "failedToLogAgain": "Failed to log activity again.",
+
+  "noDataAvailable": "No data available.",
+  "startByLogging": "Start by logging your carbon activities.",
+
+  "category": {
+    "TRANSPORT": "Transport",
+    "ELECTRICITY": "Electricity",
+    "FOOD": "Food",
+    "SHOPPING": "Shopping"
+  },
+
+  "activity": {
+    "GRID_ELECTRICITY": "Grid Electricity",
+    "SOLAR_POWER": "Solar Power",
+    "CAR_PETROL": "Petrol Car",
+    "CAR_DIESEL": "Diesel Car",
+    "CAR_EV": "Electric Car",
+    "BIKE": "Bike",
+    "BUS": "Bus",
+    "TRAIN": "Train",
+    "METRO": "Metro",
+    "FLIGHT": "Flight",
+    "WALK": "Walking",
+    "BICYCLE": "Bicycle",
+    "VEGETARIAN_MEAL": "Vegetarian Meal",
+    "NON_VEGETARIAN_MEAL": "Non-Vegetarian Meal",
+    "VEGAN_MEAL": "Vegan Meal",
+    "ONLINE_SHOPPING": "Online Shopping",
+    "OFFLINE_SHOPPING": "Offline Shopping"
+  },
+
+  "goalStatus": {
+    "ON_TRACK": "On Track",
+    "OFF_TRACK": "Off Track",
+    "AT_RISK": "At Risk"
+  },
+
+
+  "categories": {
+    "transport": "Transport",
+    "electricity": "Electricity",
+    "food": "Food",
+    "shopping": "Shopping"
+  },
+
+  "logActivityTitle": "Log {{category}} Activity",
+
+  "frequentlyLoggedQuickLog": "Frequently Logged (Quick Log)",
+
+  "activityTypeLabel": "Activity Type",
+  "quantityLabel": "Quantity",
+  "dateLabel": "Date",
+  "notesOptionalLabel": "Notes (Optional)",
+
+  "notesPlaceholder": "e.g. Daily commute, business flight",
+
+  "co2FootprintPreview": "CO₂ Footprint Preview",
+
+  "saveActivityLog": "Save Activity Log",
+
+  "recentActivityLogs": "Recent Activity Logs",
+
+  "loggedCount": "{{count}} Logged",
+
+  "logThisAgain": "Log this again",
+
+  "deleteLog": "Delete Log",
+
+  "deleteActivityLogTitle": "Delete Activity Log",
+
+  "deleteActivityLogConfirm": "Are you sure you want to delete this activity log? This action cannot be undone.",
+
+  "activityTypeRequired": "Activity type is required",
+
+  "quantityRequired": "Quantity is required",
+
+  "quantityCannotBeNegative": "Quantity cannot be negative",
+
+  "dateRequired": "Date is required",
+
+  "activityLoggedSuccess": "Activity logged successfully!",
+
+  "failedToLogActivity": "Failed to log activity.",
+
+  "failedToDeleteActivity": "Failed to delete activity.",
+
+  "activityDeletedSuccess": "Activity deleted successfully!",
+
+  "failedToLogAgain": "Failed to log activity again.",
+
+  "noLoggedActivitiesFound": "No logged activities found.",
+
+  "quickLogPrefix": "Quick Log",
+
+  "loggedAgainPrefix": "Logged Again",
+
+  "quickLogSuccessToast": "Logged {{quantity}} {{unit}} for {{title}}!",
+
+  "loggedAgainSuccess": "Logged {{quantity}} {{unit}} again!",
+
+  "quickLogPetrolCar": "Petrol Car",
+
+  "quickLogDieselCar": "Diesel Car",
+
+  "quickLogElectricCar": "Electric Car",
+
+  "quickLogShortHaulFlight": "Short Haul Flight",
+
+  "quickLogLongHaulFlight": "Long Haul Flight",
+
+  "quickLogBusCommute": "Bus Commute",
+
+  "quickLogTrainTravel": "Train Travel",
+
+  "quickLogHomePower": "Home Electricity",
+
+  "quickLogRenewablePower": "Renewable Electricity",
+
+  "quickLogBeefMeal": "Beef Meal",
+
+  "quickLogChickenMeal": "Chicken Meal",
+
+  "quickLogVeggieMeal": "Vegetarian Meal",
+
+  "quickLogVeganMeal": "Vegan Meal",
+
+  "quickLogNewClothes": "New Clothes",
+
+  "quickLogElectronics": "Electronics Purchase",
+
+  "quickLogGeneralShopping": "General Shopping",
+
+  "activityTypes": {
+    "CAR_PETROL": "Petrol Car",
+    "CAR_DIESEL": "Diesel Car",
+    "CAR_ELECTRIC": "Electric Car",
+
+    "PUBLIC_TRANSIT_BUS": "Bus",
+
+    "PUBLIC_TRANSIT_RAIL": "Train",
+
+    "FLIGHT_SHORT_HAUL": "Short Haul Flight",
+
+    "FLIGHT_LONG_HAUL": "Long Haul Flight",
+
+    "GRID_ELECTRICITY": "Grid Electricity",
+
+    "RENEWABLE_ELECTRICITY": "Renewable Electricity",
+
+    "BEEF_MEAL": "Beef Meal",
+
+    "CHICKEN_MEAL": "Chicken Meal",
+
+    "VEGETARIAN_MEAL": "Vegetarian Meal",
+
+    "VEGAN_MEAL": "Vegan Meal",
+
+    "CLOTHING": "Clothing",
+
+    "ELECTRONICS": "Electronics",
+
+    "GENERAL_RETAIL": "General Shopping"
+  }
+
+}
