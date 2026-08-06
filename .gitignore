@@ -37,7 +37,10 @@ build/
 .env.local
 .env.*.local
 
-### Node Modules ###
+### Node Modules & Build Outputs ###
 node_modules/
 **/node_modules/
+dist/
+**/dist/
+frontend/dist/
 

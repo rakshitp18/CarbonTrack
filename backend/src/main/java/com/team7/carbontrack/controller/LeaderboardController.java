@@ -85,7 +85,8 @@ public class LeaderboardController {
                     badgeNames,
                     categoryStrength,
                     habits,
-                    u.getSelectedBadge()
+                    u.getSelectedBadge(),
+                    u.getProfilePhoto()
             ));
         }
 

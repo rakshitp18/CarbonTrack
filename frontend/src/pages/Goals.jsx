@@ -66,7 +66,7 @@ export default function Goals() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8 fade-in">
+    <div className="w-full space-y-8 fade-in flex-1 flex flex-col">
       {/* Active Goal Summary Card */}
       <div className="glass-card p-8">
         <div className="flex items-center gap-3 mb-6 text-[var(--color-text-primary)]">
@@ -129,12 +129,14 @@ export default function Goals() {
       </div>
 
       {/* Action Forms Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1">
         {/* Set Goal Form */}
-        <div className="glass-card p-6 md:col-span-1">
-          <div className="flex items-center gap-2 mb-6 text-[var(--color-text-primary)]">
-            <FiPlusCircle className="text-lg text-[var(--color-accent)]" />
-            <h3 className="text-sm font-bold tracking-wide uppercase">Set New Goal</h3>
+        <div className="glass-card p-6 lg:col-span-4 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center gap-2 mb-6 text-[var(--color-text-primary)]">
+              <FiPlusCircle className="text-lg text-[var(--color-accent)]" />
+              <h3 className="text-sm font-bold tracking-wide uppercase">Set New Goal</h3>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -180,7 +182,7 @@ export default function Goals() {
         </div>
 
         {/* Goals History List */}
-        <div className="glass-card p-6 md:col-span-2">
+        <div className="glass-card p-6 lg:col-span-8 flex flex-col justify-between">
           <h3 className="text-sm font-bold tracking-wide uppercase text-[var(--color-text-secondary)] mb-6">Goals History</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">

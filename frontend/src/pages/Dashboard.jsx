@@ -180,7 +180,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8 fade-in">
+    <div className="w-full space-y-8 fade-in flex-1 flex flex-col">
       <section className="dashboard-hero overflow-hidden p-6 md:p-8">
         <video
           className="dashboard-hero-video"

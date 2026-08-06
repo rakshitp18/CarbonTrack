@@ -193,11 +193,11 @@ export default function Profile() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8 fade-in pb-12">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="w-full space-y-8 fade-in pb-12 flex-1 flex flex-col">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 flex-1">
         
         {/* Left Column: Level and form */}
-        <div className="md:col-span-1 space-y-6">
+        <div className="lg:col-span-4 space-y-6 flex flex-col">
           
           {/* Level Progress Card */}
           <div className="glass-card p-6 relative overflow-hidden shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)]">
@@ -381,7 +381,7 @@ export default function Profile() {
         </div>
 
         {/* Right Column: Badges Grid */}
-        <div className="md:col-span-2 self-start">
+        <div className="lg:col-span-8 flex flex-col justify-between">
           <div className="glass-card p-5 mb-6 overflow-hidden relative flex flex-col sm:flex-row items-center gap-4 shadow-[0_10px_30px_-10px_rgba(16,185,129,0.10)]">
             <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 shrink-0 shadow-sm">
               <GiSprout className="text-4xl" />

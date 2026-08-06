@@ -20,7 +20,7 @@ export default function Badges() {
       loadBadges();
     }, []);
   return (
-    <div className="max-w-7xl mx-auto space-y-8 fade-in">
+    <div className="w-full space-y-8 fade-in flex-1 flex flex-col">
 
       {/* Page Header */}
       <div className="glass-card p-6">
@@ -40,7 +40,7 @@ export default function Badges() {
       </div>
 
       {/* Badge Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 flex-1">
         {badges.map((badge) => (
           <BadgeCard
             key={badge.id}

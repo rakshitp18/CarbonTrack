@@ -37,7 +37,7 @@ export default function DashboardLayout({ title }) {
         <main className="relative flex-1 overflow-y-auto p-4 sm:p-6 md:p-8">
           <div className="app-orb app-orb-one" aria-hidden="true" />
           <div className="app-orb app-orb-two" aria-hidden="true" />
-          <div className="relative z-10 max-w-7xl mx-auto w-full">
+          <div className="relative z-10 max-w-[1600px] mx-auto w-full flex-1 flex flex-col">
             <Outlet />
           </div>
         </main>

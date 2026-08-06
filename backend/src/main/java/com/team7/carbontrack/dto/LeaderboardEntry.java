@@ -10,5 +10,6 @@ public record LeaderboardEntry(
     List<String> badges,
     String categoryStrength,
     List<String> habitTips,
-    String selectedBadge
+    String selectedBadge,
+    String profilePhoto
 ) {}

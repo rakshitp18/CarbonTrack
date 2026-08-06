@@ -256,11 +256,11 @@ export default function LogActivity() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto fade-in pb-12">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div className="w-full fade-in pb-12 flex-1 flex flex-col">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 flex-1">
 
         {/* Left Side: Logger Actions & Carousel */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-7 xl:col-span-8 space-y-6 flex flex-col">
           {/* Capsule Track Tab Navigation */}
           <div className="flex p-1 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-2xl shadow-inner">
             {CATEGORIES.map((cat) => (
@@ -413,8 +413,8 @@ export default function LogActivity() {
         </div>
 
         {/* Right Side: Activity Log History Sidebar */}
-        <div className="lg:col-span-1">
-          <div className="glass-card p-6 space-y-4 sticky top-24">
+        <div className="lg:col-span-5 xl:col-span-4 h-full flex flex-col">
+          <div className="glass-card p-6 space-y-4 flex-1 flex flex-col">
             <div className="flex justify-between items-center pb-2 border-b border-[var(--color-border)]/50">
               <h3 className="text-xs font-bold tracking-wide uppercase text-[var(--color-text-secondary)]">{t('recentActivityLogs')}</h3>
               <span className="text-[10px] text-[var(--color-text-muted)] font-bold">{t('loggedCount', { count: recentLogs.length })}</span>

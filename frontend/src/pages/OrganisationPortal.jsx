@@ -43,7 +43,7 @@ export default function OrganisationPortal() {
       : "—";
 
   return (
-    <div className="mx-auto max-w-7xl space-y-6">
+    <div className="w-full space-y-6 flex-1 flex flex-col">
 
       <Title
         eyebrow="Organisation Overview"
