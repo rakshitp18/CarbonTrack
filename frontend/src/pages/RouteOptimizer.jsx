@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify';
+
+import '../styles/RoutePlanner.css';
 import { 
   FiMapPin, 
   FiNavigation, 
@@ -362,7 +364,7 @@ export default function RouteOptimizer() {
   return (
     <div className="space-y-8 w-full pb-16 flex-1 flex flex-col">
       {/* Header Banner - Clean Professional Layout */}
-      <div className="rounded-2xl p-6 md:p-8 bg-[var(--color-bg-card)] border border-[var(--color-border)] shadow-sm">
+      <div className="route-hero p-6 md:p-8 shadow-sm">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">

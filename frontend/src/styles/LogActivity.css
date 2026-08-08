@@ -1,0 +1,281 @@
+/* Quick log icons */
+
+.quick-log-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.18);
+  color: #059669;
+}
+
+/* Recent activity icons */
+
+.activity-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(59,130,246,0.12);
+  border: 1px solid rgba(59,130,246,0.18);
+  color: #2563eb;
+  flex-shrink: 0;
+}
+/* Strong premium icon colors */
+
+.quick-log-icon,
+.activity-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.08);
+}
+
+/* Petrol */
+.quick-log-icon.blue,
+.activity-icon.blue {
+  background: rgba(255,255,255,0.18);
+  border-color: #bfd7ff;
+   color: #f59e0b;
+}
+
+/* Diesel */
+.quick-log-icon.gold,
+.activity-icon.gold {
+  background: rgba(251,191,36,0.18);
+  border-color: #fbbf24;
+  color: #f59e0b;
+
+}
+
+/* Electric */
+.quick-log-icon.green,
+.activity-icon.green {
+  background: rgba(255,255,255,0.18);
+  border-color:#bfd7ff;
+   color: #86efac;
+}
+
+/* Flight short */
+.quick-log-icon.purple,
+.activity-icon.purple {
+  background: #efe7ff;
+  border-color: #d8c7ff;
+  color: #7c3aed;
+}
+
+/* Flight long */
+.quick-log-icon.indigo,
+.activity-icon.indigo {
+  background: #e7e9ff;
+  border-color: #c7ccff;
+  color: #4f46e5;
+}
+
+/* Bus */
+.quick-log-icon.cyan,
+.activity-icon.cyan {
+  background: #e7e9ff;
+  border-color: #b6f4ff;
+  color: #67e8f9;
+}
+
+/* Train */
+.quick-log-icon.indigo,
+.activity-icon.indigo {
+  background: #e7e9ff;
+  border-color: #c7ccff;
+  color: #4f46e5;
+}
+
+/* Walking */
+.quick-log-icon.teal,
+.activity-icon.teal {
+  background: rgba(255,255,255,0.22);
+  border-color: #99f6e4;
+ color: #14b8a6;
+}
+
+/* Bicycle - emerald icon */
+.quick-log-icon.emerald,
+.activity-icon.emerald {
+  background: rgba(255,255,255,0.22);
+  border-color: #86efac;
+  color: #34d399;
+}
+
+/* Vegan */
+.quick-log-icon.lime,
+.activity-icon.lime {
+  background: #efffd6;
+  border-color: #d9f99d;
+  color: #65a30d;
+}
+
+
+
+
+/* ========================================
+   QUICK LOG CARDS - EXACT 2ND IMAGE STYLE
+======================================== */
+
+.quick-log-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  transition: all 0.35s ease;
+  border: 1px solid rgba(255,255,255,0.12);
+  min-height: 160px;
+  color: white;
+  box-shadow:
+    0 18px 38px rgba(0,0,0,0.35),
+    0 0 24px rgba(255,255,255,0.04);
+}
+
+.quick-log-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow:
+    0 28px 54px rgba(0,0,0,0.45),
+    0 0 36px rgba(255,255,255,0.10);
+}
+
+/* Petrol - Royal Blue */
+.quick-log-card.transport:nth-child(1) {
+  background:
+    radial-gradient(circle at 78% 20%, rgba(96,165,250,0.55), transparent 28%),
+    linear-gradient(145deg, #0f3dff 0%, #041b6d 100%);
+}
+
+/* Diesel - Golden */
+.quick-log-card.transport:nth-child(2) {
+  background:
+    radial-gradient(circle at 76% 18%, rgba(253,224,71,0.45), transparent 30%),
+    linear-gradient(145deg, #d18a00 0%, #7a4b00 100%);
+}
+
+/* Bus - Cyan/Teal */
+.quick-log-card.transport:nth-child(3) {
+  background:
+    radial-gradient(circle at 78% 22%, rgba(103,232,249,0.45), transparent 30%),
+    linear-gradient(145deg, #0ea5b7 0%, #0b4f5a 100%);
+}
+
+/* Shopping - Emerald */
+.quick-log-card.shopping {
+  background:
+    radial-gradient(circle at 78% 22%, rgba(74,222,128,0.42), transparent 30%),
+    linear-gradient(145deg, #0b7a3b 0%, #052d1a 100%);
+}
+
+/* Electricity - Neon Mint */
+.quick-log-card.electricity {
+  background:
+    radial-gradient(circle at 82% 24%, rgba(255,255,255,0.28), transparent 26%),
+    linear-gradient(145deg, #d9ff52 0%, #38f5d6 100%);
+  color: #052d1a;
+}
+/* WALKING CARD */
+
+ .quick-log-card.walking {
+   background:
+     radial-gradient(circle at 78% 18%, rgba(255,255,255,0.18), transparent 22%),
+     linear-gradient(145deg, #0f172a 0%, #083344 55%, #0f766e 100%);
+   border: 1px solid rgba(45,212,191,0.35);
+   box-shadow: 0 18px 40px rgba(15,118,110,0.35);
+ }
+/* FLIGHT CARD */
+
+.quick-log-card.flight {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255,255,255,0.18), transparent 22%),
+    linear-gradient(145deg, #1e1b4b 0%, #312e81 55%, #4f46e5 100%);
+  border: 1px solid rgba(167,139,250,0.35);
+  box-shadow: 0 18px 40px rgba(79,70,229,0.35);
+}
+/* BICYCLE CARD */
+
+.quick-log-card.bicycle {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255,255,255,0.18), transparent 22%),
+    linear-gradient(145deg, #052e16 0%, #065f46 55%, #10b981 100%);
+  border: 1px solid rgba(52,211,153,0.35);
+  box-shadow: 0 18px 40px rgba(16,185,129,0.35);
+}
+
+/* TRAIN CARD */
+.quick-log-card.train {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255,255,255,0.18), transparent 22%),
+    linear-gradient(145deg, #1e293b 0%, #312e81 55%, #4f46e5 100%);
+  border: 1px solid rgba(129,140,248,0.35);
+  box-shadow: 0 18px 40px rgba(79,70,229,0.35);
+}
+
+/* LONG HAUL FLIGHT CARD */
+.quick-log-card.flight {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255,255,255,0.18), transparent 22%),
+    linear-gradient(145deg, #312e81 0%, #4338ca 55%, #7c3aed 100%);
+  border: 1px solid rgba(167,139,250,0.35);
+  box-shadow: 0 18px 40px rgba(124,58,237,0.35);
+}
+
+
+/* Icon box like 2nd image */
+.quick-log-card .quick-log-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+/* Neon mint card needs darker icon */
+.quick-log-card.electricity .quick-log-icon {
+  background: rgba(217,255,82,0.32);
+  border-color: rgba(255,255,255,0.30);
+}
+
+/* Text */
+.quick-log-card h5,
+.quick-log-card p {
+  color: inherit;
+}
+
+.quick-log-card h5 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.quick-log-card p {
+  font-size: 13px;
+  opacity: 0.92;
+}
+
+/* Category pill */
+.quick-log-card span {
+  background: rgba(255,255,255,0.85) !important;
+  color: rgba(15,23,42,0.78) !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+  font-weight: 700;
+}
+
+/* Keep content above glow */
+.quick-log-card > * {
+  position: relative;
+  z-index: 1;
+}

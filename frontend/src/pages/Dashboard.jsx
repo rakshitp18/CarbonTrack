@@ -4,6 +4,7 @@ import { dashboardService, activityService } from '../services/api';
 import { toast } from 'react-toastify';
 import AppleActivityCard from '../components/AppleActivityCard';
 import { useTranslation } from "react-i18next";
+import '../styles/dashboard.css';
 
 import {
   ResponsiveContainer,
@@ -180,7 +181,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="w-full space-y-8 fade-in flex-1 flex flex-col">
+    <div className="dashboard-page w-full space-y-8 fade-in flex-1 flex flex-col">
       <section className="dashboard-hero overflow-hidden p-6 md:p-8">
         <video
           className="dashboard-hero-video"
@@ -214,61 +215,93 @@ export default function Dashboard() {
         <EcoPulse className="dashboard-pulse absolute -right-3 -bottom-9 h-44 w-44 opacity-80 md:right-8" />
       </section>
 
-      {/* Top Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-        <div className="stat-card relative overflow-hidden">
-          <div className="absolute top-4 right-4 p-2 bg-[var(--color-accent-dim)] rounded-lg text-[var(--color-accent)]">
-            <FiActivity className="text-lg" />
+      {/* Premium KPI Cards */}
+      <div className="kpi-grid">
+
+        {/* Today */}
+        <div className="kpi-card kpi-purple">
+          <div className="kpi-top">
+            <div className="kpi-icon text-cyan-400">
+              <FiActivity />
+            </div>
           </div>
-          <h4 className="text-xs text-[var(--color-text-muted)] font-bold uppercase tracking-wider">{t('todaysFootprint')}</h4>
-          <h2 className="text-3xl font-bold font-outfit mt-2 text-[var(--color-text-primary)]">
-            {data.todayCo2e} <span className="text-sm font-medium text-[var(--color-text-secondary)]">{t('kgCo2e')}</span>
-          </h2>
-          <p className="text-xs text-[var(--color-text-secondary)] mt-2">{t('emissionsLoggedToday')}</p>
+
+          <div className="kpi-label">{t('todaysFootprint')}</div>
+
+          <div className="kpi-value">
+            <h2>{data.todayCo2e}</h2>
+            <span>{t('kgCo2e')}</span>
+            <div className="kpi-change ml-auto">↓ 12%</div>
+          </div>
+
+          <div className="kpi-subtitle">
+            {t('emissionsLoggedToday')}
+          </div>
         </div>
 
-        <div className="stat-card relative overflow-hidden">
-          <div className="absolute top-4 right-4 p-2 bg-[rgba(6,182,212,0.1)] border border-[rgba(6,182,212,0.2)] rounded-lg text-[var(--color-accent-blue)]">
-            <FiCalendar className="text-lg" />
+        {/* Weekly */}
+        <div className="kpi-card kpi-green">
+          <div className="kpi-top">
+            <div className="kpi-icon text-emerald-400">
+              <FiCalendar />
+            </div>
           </div>
-          <h4 className="text-xs text-[var(--color-text-muted)] font-bold uppercase tracking-wider">{t('weeklyFootprint')}</h4>
-          <h2 className="text-3xl font-bold font-outfit mt-2 text-[var(--color-text-primary)]">
-            {data.weeklyCo2e} <span className="text-sm font-medium text-[var(--color-text-secondary)]">{t('kgCo2e')}</span>
-          </h2>
-          <p className="text-xs text-[var(--color-text-secondary)] mt-2">{t('last7DaysCumulative')}</p>
+
+          <div className="kpi-label">{t('weeklyFootprint')}</div>
+
+          <div className="kpi-value">
+            <h2>{data.weeklyCo2e}</h2>
+            <span>{t('kgCo2e')}</span>
+            <div className="kpi-change ml-auto">↓ 5%</div>
+          </div>
+
+          <div className="kpi-subtitle">
+            {t('last7DaysCumulative')}
+          </div>
         </div>
 
-        <div className="stat-card relative overflow-hidden">
-          <div className="absolute top-4 right-4 p-2 bg-[rgba(245,158,11,0.1)] border border-[rgba(245,158,11,0.2)] rounded-lg text-[var(--color-warning)]">
-            <FiCompass className="text-lg" />
+        {/* Monthly */}
+        <div className="kpi-card kpi-violet">
+          <div className="kpi-top">
+            <div className="kpi-icon text-violet-400">
+              <FiCompass />
+            </div>
           </div>
-          <h4 className="text-xs text-[var(--color-text-muted)] font-bold uppercase tracking-wider">{t('monthlyFootprint')}</h4>
-          <h2 className="text-3xl font-bold font-outfit mt-2 text-[var(--color-text-primary)]">
-            {data.monthlyCo2e} <span className="text-sm font-medium text-[var(--color-text-secondary)]">{t('kgCo2e')}</span>
-          </h2>
-          <p className="text-xs text-[var(--color-text-secondary)] mt-2">{t('last30DaysCumulative')}</p>
+
+          <div className="kpi-label">{t('monthlyFootprint')}</div>
+
+          <div className="kpi-value">
+            <h2>{data.monthlyCo2e}</h2>
+            <span>{t('kgCo2e')}</span>
+            <div className="kpi-change ml-auto">↓ 0%</div>
+          </div>
+
+          <div className="kpi-subtitle">
+            {t('last30DaysCumulative')}
+          </div>
         </div>
 
-        <div className="stat-card relative overflow-hidden">
-          <div className="absolute top-4 right-4 p-2 rounded-lg border border-[rgba(249,115,22,.25)] bg-[rgba(249,115,22,.12)] text-orange-400">
-            <FiZap className="text-lg" />
+        {/* Streak */}
+        <div className="kpi-card kpi-orange">
+          <div className="kpi-top">
+            <div className="kpi-icon text-orange-400">
+              <FiZap />
+            </div>
           </div>
 
-          <h4 className="text-xs text-[var(--color-text-muted)] font-bold uppercase tracking-wider">
-            {t('currentStreak')}
-          </h4>
+          <div className="kpi-label">{t('currentStreak')}</div>
 
-          <h2 className="text-3xl font-bold font-outfit mt-2 text-orange-500">
-            🔥 {data.currentStreak}
-            <span className="text-sm font-medium text-[var(--color-text-secondary)]">
-              {" "}{t('daysCount')}
-            </span>
-          </h2>
+          <div className="kpi-value streak-value">
+              <h2 className="flex items-center gap-2">
+                  <span className="streak-fire">🔥</span> {data.currentStreak} </h2>
+                  <span>{t('daysCount')}</span>
+              </div>
 
-          <p className="text-xs text-[var(--color-text-secondary)] mt-2">
+          <div className="kpi-subtitle">
             {t('bestStreak', { count: data.longestStreak })}
-          </p>
+          </div>
         </div>
+
       </div>
 
       {/* Analytics Charts & Benchmarking Grid */}

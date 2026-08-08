@@ -4,16 +4,27 @@ import { activityService, emissionFactorService, EMISSION_FACTORS } from '../ser
 import { toast } from 'react-toastify';
 import { FiLoader, FiCheckCircle, FiInfo, FiTrash2, FiRefreshCw } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
+import '../styles/LogActivity.css';
+
+
+
+import { Car, Fuel, BatteryCharging, Plane, Bus, Train, Footprints, Bike, Leaf } from 'lucide-react';
 
 const CATEGORIES = ['TRANSPORT', 'ELECTRICITY', 'FOOD', 'SHOPPING'];
 
-const DEFAULT_QUICK_LOGS = [
-  { titleKey: 'quickLogPetrolCar', category: 'TRANSPORT', activityType: 'CAR_PETROL', quantity: 10, unit: 'KM', icon: '🚗' },
-  { titleKey: 'quickLogBusCommute', category: 'TRANSPORT', activityType: 'PUBLIC_TRANSIT_BUS', quantity: 15, unit: 'KM', icon: '🚌' },
-  { titleKey: 'quickLogTrainTravel', category: 'TRANSPORT', activityType: 'PUBLIC_TRANSIT_RAIL', quantity: 20, unit: 'KM', icon: '🚂' },
-  { titleKey: 'quickLogHomePower', category: 'ELECTRICITY', activityType: 'GRID_ELECTRICITY', quantity: 10, unit: 'KWH', icon: '⚡' },
-  { titleKey: 'quickLogVeganLunch', category: 'FOOD', activityType: 'VEGAN_MEAL', quantity: 1, unit: 'SERVING', icon: '🥗' },
-];
+const categoryIcons = {
+  CAR_PETROL: Car,
+  CAR_DIESEL: Fuel,
+  CAR_ELECTRIC: BatteryCharging,
+  FLIGHT_SHORT: Plane,
+  FLIGHT_LONG: Plane,
+  PUBLIC_TRANSIT_BUS: Bus,
+  PUBLIC_TRANSIT_TRAIN: Train,
+  WALKING: Footprints,
+  BICYCLE: Bike,
+  VEGAN_MEAL: Leaf
+};
+
 
 const getLocalDateString = (date = new Date()) => {
   const year = date.getFullYear();
@@ -48,24 +59,109 @@ export default function LogActivity() {
 
   const getQuickLogDetails = (category, type) => {
     const mappings = {
-      CAR_PETROL: { titleKey: 'quickLogPetrolCar', icon: '🚗' },
-      CAR_DIESEL: { titleKey: 'quickLogDieselCar', icon: '🚗' },
-      CAR_ELECTRIC: { titleKey: 'quickLogElectricCar', icon: '⚡🚗' },
-      FLIGHT_SHORT_HAUL: { titleKey: 'quickLogShortHaulFlight', icon: '✈️' },
-      FLIGHT_LONG_HAUL: { titleKey: 'quickLogLongHaulFlight', icon: '✈️' },
-      PUBLIC_TRANSIT_BUS: { titleKey: 'quickLogBusCommute', icon: '🚌' },
-      PUBLIC_TRANSIT_RAIL: { titleKey: 'quickLogTrainTravel', icon: '🚂' },
-      GRID_ELECTRICITY: { titleKey: 'quickLogHomePower', icon: '⚡' },
-      RENEWABLE_ELECTRICITY: { titleKey: 'quickLogRenewablePower', icon: '🌿⚡' },
-      BEEF_MEAL: { titleKey: 'quickLogBeefMeal', icon: '🥩' },
-      CHICKEN_MEAL: { titleKey: 'quickLogChickenMeal', icon: '🍗' },
-      VEGETARIAN_MEAL: { titleKey: 'quickLogVeggieMeal', icon: '🥗' },
-      VEGAN_MEAL: { titleKey: 'quickLogVeganMeal', icon: '🌱' },
-      CLOTHING: { titleKey: 'quickLogNewClothes', icon: '👕' },
-      ELECTRONICS: { titleKey: 'quickLogElectronics', icon: '💻' },
-      GENERAL_RETAIL: { titleKey: 'quickLogGeneralShopping', icon: '🛍️' },
+      CAR_PETROL: {
+        titleKey: 'quickLogPetrolCar',
+        icon: Car,
+        color: 'blue'
+      },
+     WALKING: { titleKey: 'Walking', icon: Footprints, color: 'emerald' },
+
+      CAR_DIESEL: {
+        titleKey: 'quickLogDieselCar',
+        icon: Fuel,
+        color: 'amber'
+      },
+
+      CAR_ELECTRIC: {
+        titleKey: 'quickLogElectricCar',
+        icon: BatteryCharging,
+        color: 'green'
+      },
+
+      FLIGHT_SHORT_HAUL: {
+        titleKey: 'quickLogShortHaulFlight',
+        icon: Plane,
+        color: 'sky'
+      },
+
+      FLIGHT_LONG_HAUL: {
+        titleKey: 'quickLogLongHaulFlight',
+        icon: Plane,
+        color: 'indigo'
+      },
+
+      PUBLIC_TRANSIT_BUS: {
+        titleKey: 'quickLogBusCommute',
+        icon: Bus,
+        color: 'cyan'
+      },
+
+      PUBLIC_TRANSIT_RAIL: {
+        titleKey: 'quickLogTrainTravel',
+        icon: Train,
+        color: 'violet'
+      },
+
+      GRID_ELECTRICITY: {
+        titleKey: 'quickLogHomePower',
+        icon: BatteryCharging,
+        color: 'green'
+      },
+
+      RENEWABLE_ELECTRICITY: {
+        titleKey: 'quickLogRenewablePower',
+        icon: BatteryCharging,
+        color: 'emerald'
+      },
+     BICYCLE: { titleKey: 'Bicycle', icon: Bike, color: 'teal' },
+
+      BEEF_MEAL: {
+        titleKey: 'quickLogBeefMeal',
+        icon: Leaf,
+        color: 'red'
+      },
+
+      CHICKEN_MEAL: {
+        titleKey: 'quickLogChickenMeal',
+        icon: Leaf,
+        color: 'orange'
+      },
+
+      VEGETARIAN_MEAL: {
+        titleKey: 'quickLogVeggieMeal',
+        icon: Leaf,
+        color: 'teal'
+      },
+
+      VEGAN_MEAL: {
+        titleKey: 'quickLogVeganMeal',
+        icon: Leaf,
+        color: 'lime'
+      },
+
+      CLOTHING: {
+        titleKey: 'quickLogNewClothes',
+        icon: Leaf,
+        color: 'pink'
+      },
+
+      ELECTRONICS: {
+        titleKey: 'quickLogElectronics',
+        icon: Leaf,
+        color: 'slate'
+      },
+
+      GENERAL_RETAIL: {
+        titleKey: 'quickLogGeneralShopping',
+        icon: Leaf,
+        color: 'purple'
+      }
     };
-    return mappings[type] || { title: type.replace(/_/g, ' '), icon: '☘️' };
+    return mappings[type] || {
+      title: type.replace(/_/g, ' '),
+      icon: Leaf,
+      color: 'green'
+    };
   };
 
   const fetchLogsAndFrequents = async () => {
@@ -100,16 +196,21 @@ export default function LogActivity() {
         .slice(0, 5);
 
       const mapped = sorted.map(item => {
-        const details = getQuickLogDetails(item.category, item.activityType);
-        return {
-          titleKey: details.titleKey,
-          title: details.title,
-          category: item.category,
-          activityType: item.activityType,
-          quantity: item.quantity,
-          unit: item.unit,
-          icon: details.icon
-        };
+          const details = getQuickLogDetails(item.category, item.activityType);
+
+          let cardClass = item.category.toLowerCase();
+
+            if (item.activityType === 'BICYCLE') {
+              cardClass = 'bicycle';
+            }
+
+            if (item.activityType === 'WALKING') {
+              cardClass = 'walking';
+            }
+          return {
+              titleKey: details.titleKey, title: details.title, category: item.category, activityType: item.activityType,
+              quantity: item.quantity, unit: item.unit, icon: details.icon, color: details.color
+          };
       });
 
       setQuickLogs(mapped);
@@ -286,15 +387,33 @@ export default function LogActivity() {
             </h4>
             <div className="flex gap-4 overflow-x-auto pb-3 pt-1 scrollbar-none">
               {quickLogs.map((item, idx) => (
+
                 <div
                   key={idx}
                   onClick={() => quickLoggingIndex === null && handleQuickLog(item, idx)}
-                  className={`flex-shrink-0 w-44 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-4 flex flex-col justify-between hover:border-[var(--color-accent)]/30 hover:-translate-y-1 transition-all duration-300 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] cursor-pointer relative overflow-hidden ${
+
+                  className={`quick-log-card ${
+                    item.activityType === 'BICYCLE'
+                      ? 'bicycle'
+                      : item.activityType === 'WALKING'
+                      ? 'walking'
+                      : item.activityType === 'PUBLIC_TRANSIT_RAIL'
+                        ? 'train'
+                        : item.activityType === 'FLIGHT_LONG_HAUL'
+                        ? 'flight'
+                      : item.category.toLowerCase()
+                  } flex-shrink-0 w-44 p-4 flex flex-col justify-between cursor-pointer relative transition-all duration-300 ${
                     quickLoggingIndex === idx ? 'opacity-70 pointer-events-none' : ''
-                  }`}
-                >
+                  }`}>
                   <div className="flex justify-between items-start">
-                    <span className="text-2xl">{item.icon}</span>
+                    {(() => {
+                      const Icon = item.icon;
+                      return (
+                        <div className={`quick-log-icon ${item.color}`}>
+                          <Icon size={22} strokeWidth={2} />
+                        </div>
+                      );
+                    })()}
                     <span className="text-[9px] uppercase font-extrabold px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 tracking-wider">
                       {t(`categories.${item.category.toLowerCase()}`)}
                     </span>
@@ -432,19 +551,23 @@ export default function LogActivity() {
                   const details = getQuickLogDetails(log.category, log.activityType);
                   return (
                     <div key={log.id} className="p-3 bg-[var(--color-bg-primary)]/50 border border-[var(--color-border)] rounded-xl flex items-center justify-between group hover:border-[var(--color-accent)]/20 transition-all duration-300">
-                      <div className="flex items-center gap-3 overflow-hidden">
-                        <span className="text-xl shrink-0">
-                          {details.icon}
-                        </span>
-                        <div className="overflow-hidden">
-                          <h5 className="font-bold text-[11px] text-[var(--color-text-primary)] truncate">
-                            {details.titleKey ? t(details.titleKey) : details.title}
-                          </h5>
-                          <p className="text-[10px] text-[var(--color-text-muted)] truncate">
-                            {log.logDate} • {log.quantity} {log.unit.toLowerCase()}
-                          </p>
-                        </div>
-                      </div>
+                     <div className="flex items-center gap-3 overflow-hidden">
+                       {(() => {
+                         const Icon = details.icon;
+                         return (
+                           <div className={`activity-icon ${details.color}`}>
+                             <Icon size={18} strokeWidth={2} />
+                           </div>
+                         );
+                       })()}
+
+                       <div className="min-w-0">
+                         <p className="font-medium truncate">{details.title}</p>
+                         <p className="text-xs text-slate-400 truncate">
+                           {new Date(log.logDate).toLocaleDateString()} • {log.quantity} {log.unit}
+                         </p>
+                       </div>
+                     </div>
 
                       <div className="flex items-center gap-2 shrink-0">
                         <span className="text-[11px] font-bold text-[var(--color-accent-muted)]">{log.co2eKg} {t('kgUnit')}</span>
