@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { FiMail, FiLock, FiLoader, FiEye, FiEyeOff } from 'react-icons/fi';
 import { FcGoogle } from 'react-icons/fc';
 import IntroAnimation from "../components/IntroAnimation";
+import { getGoogleOAuthUrl } from '../utils/oauth';
 
 export default function Login() {
   const { login } = useAuth();
@@ -119,7 +120,7 @@ export default function Login() {
 
         <button
           type="button"
-          onClick={() => window.location.href = '/oauth2/authorization/google'}
+          onClick={() => { window.location.href = getGoogleOAuthUrl(); }}
           className="w-full btn-ghost flex items-center justify-center gap-2 py-2.5 bg-[var(--color-bg-card)] text-[var(--color-text-primary)] hover:bg-[var(--color-bg-card-hover)] border-[var(--color-border)] font-semibold text-sm transition-all shadow-sm rounded-lg cursor-pointer"
         >
           <FcGoogle className="text-lg" />

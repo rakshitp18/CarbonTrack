@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { FcGoogle } from 'react-icons/fc';
+import { getGoogleOAuthUrl } from '../utils/oauth';
 import { 
   FiArrowRight, 
   FiActivity, 
@@ -695,7 +696,7 @@ export default function Home() {
 
                 <button
                   type="button"
-                  onClick={() => window.location.href = '/oauth2/authorization/google'}
+                  onClick={() => { window.location.href = getGoogleOAuthUrl(); }}
                   className="w-full flex items-center justify-center gap-2 py-3 bg-white hover:bg-emerald-50/50 text-[#0f291b] border border-emerald-250 hover:border-emerald-350 font-semibold text-sm transition-all rounded-xl cursor-pointer"
                 >
                   <FcGoogle className="text-lg" />
@@ -800,7 +801,7 @@ export default function Home() {
 
                 <button
                   type="button"
-                  onClick={() => window.location.href = '/oauth2/authorization/google'}
+                  onClick={() => { window.location.href = getGoogleOAuthUrl(); }}
                   className="w-full flex items-center justify-center gap-2 py-3 bg-white hover:bg-emerald-50/50 text-[#0f291b] border border-emerald-250 hover:border-emerald-350 font-semibold text-sm transition-all rounded-xl cursor-pointer"
                 >
                   <FcGoogle className="text-lg" />

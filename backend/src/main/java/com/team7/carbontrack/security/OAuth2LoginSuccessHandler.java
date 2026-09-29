@@ -47,6 +47,12 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
                 .or(() -> userRepository.findByEmailIgnoreCase(email))
                 .orElseGet(() -> provisionUser(googleSub, email, name));
 
+        if (user.getProviderId() == null || user.getAuthProvider() == null) {
+            user.setProviderId(googleSub);
+            user.setAuthProvider(AuthProvider.GOOGLE);
+            user = userRepository.save(user);
+        }
+
         UserPrincipal principal = new UserPrincipal(user);
         String accessToken = jwtService.generateAccessToken(principal, user.getId());
         String refreshToken = jwtService.generateRefreshToken(principal, user.getId());
