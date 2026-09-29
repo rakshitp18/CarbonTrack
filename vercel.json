@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/oauth2/:match*",
-      "destination": "https://carbontrack-ud64.onrender.com/oauth2/:match*"
+      "source": "/oauth2/authorization/:match*",
+      "destination": "https://carbontrack-ud64.onrender.com/oauth2/authorization/:match*"
+    },
+    {
+      "source": "/login/oauth2/:match*",
+      "destination": "https://carbontrack-ud64.onrender.com/login/oauth2/:match*"
     },
     {
       "source": "/api/:match*",
