@@ -57,7 +57,14 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
         String accessToken = jwtService.generateAccessToken(principal, user.getId());
         String refreshToken = jwtService.generateRefreshToken(principal, user.getId());
 
-        String targetUrl = authorizedRedirectUri + "?token=" + accessToken + "&refreshToken=" + refreshToken;
+        String redirectBase = authorizedRedirectUri;
+        String host = request.getHeader("host");
+        String serverName = request.getServerName();
+        if (redirectBase.contains("localhost") && ((serverName != null && serverName.contains("onrender.com")) || (host != null && host.contains("onrender.com")))) {
+            redirectBase = "https://carbon-track-beta.vercel.app/oauth2/redirect";
+        }
+
+        String targetUrl = redirectBase + "?token=" + accessToken + "&refreshToken=" + refreshToken;
         response.sendRedirect(targetUrl);
     }
 

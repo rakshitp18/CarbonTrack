@@ -25,6 +25,12 @@ public class OAuth2LoginFailureHandler implements AuthenticationFailureHandler {
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
         log.error("OAuth2 Login failed: {}", exception.getMessage(), exception);
-        response.sendRedirect(loginFailureRedirectUri);
+        String redirectBase = loginFailureRedirectUri;
+        String host = request.getHeader("host");
+        String serverName = request.getServerName();
+        if (redirectBase.contains("localhost") && ((serverName != null && serverName.contains("onrender.com")) || (host != null && host.contains("onrender.com")))) {
+            redirectBase = "https://carbon-track-beta.vercel.app/login?oauthError=true";
+        }
+        response.sendRedirect(redirectBase);
     }
 }
