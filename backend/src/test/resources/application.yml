@@ -5,11 +5,13 @@ spring:
     password:
     driver-class-name: org.h2.Driver
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: create-drop
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
+  data:
+    redis:
+      repositories:
+        enabled: false
   flyway:
     enabled: false
   cache:

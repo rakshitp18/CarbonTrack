@@ -13,12 +13,12 @@ spring:
       # Flyway owns schema evolution; Hibernate must never auto-generate DDL.
       ddl-auto: validate
     show-sql: false
+    open-in-view: false
     properties:
       hibernate:
         format_sql: true
         jdbc:
           time_zone: UTC
-  show-sql: true
 
   flyway:
     enabled: true
@@ -29,6 +29,8 @@ spring:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
+      repositories:
+        enabled: false
   cache:
     type: ${CACHE_TYPE:simple}
 
